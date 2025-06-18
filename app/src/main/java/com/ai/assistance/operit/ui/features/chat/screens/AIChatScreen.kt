@@ -13,6 +13,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
+import com.ai.assistance.operit.R
 import androidx.compose.ui.platform.LocalFocusManager
 import com.ai.assistance.operit.data.model.AttachmentInfo
 import com.ai.assistance.operit.data.preferences.ApiPreferences
@@ -465,11 +467,11 @@ fun AIChatScreen(
         popupMessage?.let { message ->
                 AlertDialog(
                         onDismissRequest = { actualViewModel.clearPopupMessage() },
-                        title = { Text("提示") },
+                        title = { Text(stringResource(R.string.dialog_title_prompt)) },
                         text = { Text(message ?: "") },
                         confirmButton = {
                                 TextButton(onClick = { actualViewModel.clearPopupMessage() }) {
-                                        Text("确定")
+                                        Text(stringResource(R.string.dialog_button_ok))
                                 }
                         }
                 )
@@ -484,7 +486,7 @@ fun AIChatScreen(
                         actualViewModel.toggleFloatingMode()
                         android.widget.Toast.makeText(
                                         context,
-                                        "未获得悬浮窗权限，已关闭悬浮窗模式",
+                                        stringResource(R.string.overlay_permission_denied_toast),
                                         android.widget.Toast.LENGTH_SHORT
                                 )
                                 .show()

@@ -415,7 +415,7 @@ fun ThemeSettingsScreen() {
                             )
                             // Update the local state
                             backgroundImageUriInput = internalUri.toString()
-                            Toast.makeText(context, "背景图片已迁移到内部存储", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, context.getString(R.string.theme_bg_migrated_toast), Toast.LENGTH_SHORT).show()
                         }
                     }
                 } catch (e: Exception) {
@@ -425,7 +425,7 @@ fun ThemeSettingsScreen() {
                     scope.launch {
                         preferencesManager.saveThemeSettings(useBackgroundImage = false)
                         useBackgroundImageInput = false
-                        Toast.makeText(context, "无法访问旧的背景图片，已关闭背景图片功能", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, context.getString(R.string.theme_bg_migration_failed_toast), Toast.LENGTH_LONG).show()
                     }
                 }
             }

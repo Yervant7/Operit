@@ -700,4 +700,71 @@
     <string name="ask">询问</string>
     <string name="ai_planning_mode">AI计划模式:</string>
     <string name="disabled">已关闭</string>
+    <string name="plugin_loading_skipped">已跳过插件加载</string>
+    <string name="press_again_to_exit">再按一次退出应用</string>
+    <string name="update_available_notification">发现新版本 %1$s，请前往「关于」页面查看详情</string>
+    <string name="dialog_title_prompt">提示</string>
+    <string name="dialog_button_ok">确定</string>
+    <string name="overlay_permission_denied_toast">未获得悬浮窗权限，已关闭悬浮窗模式</string>
+    <string name="theme_bg_migrated_toast">背景图片已迁移到内部存储</string>
+    <string name="theme_bg_migration_failed_toast">无法访问旧的背景图片，已关闭背景图片功能</string>
+
+    <!-- Tool Categories -->
+    <string name="toolbox_category_all">全部工具</string>
+    <string name="toolbox_category_file_management">文件管理</string>
+    <string name="toolbox_category_development">开发工具</string>
+    <string name="toolbox_category_system">系统工具</string>
+
+    <!-- Tool Names & Descriptions -->
+    <string name="toolbox_tool_format_converter_name">万能格式转换</string>
+    <string name="toolbox_tool_format_converter_desc">支持多种文件格式之间的转换，方便快捷</string>
+    <string name="toolbox_tool_file_manager_name">文件管理器</string>
+    <string name="toolbox_tool_file_manager_desc">浏览和管理设备文件，支持多种操作</string>
+    <string name="toolbox_tool_terminal_name">命令终端</string>
+    <string name="toolbox_tool_terminal_desc">功能强大的命令行终端，执行系统指令</string>
+    <string name="toolbox_tool_terminal_config_name">终端自动配置</string>
+    <string name="toolbox_tool_terminal_config_desc">自动安装配置Python、PIP等开发工具</string>
+    <string name="toolbox_tool_app_permissions_name">应用权限管理</string>
+    <string name="toolbox_tool_app_permissions_desc">管理手机各个应用的权限，保护隐私安全</string>
+    <string name="toolbox_tool_ui_debugger_name">UI调试工具</string>
+    <string name="toolbox_tool_ui_debugger_desc">调试和分析界面元素，支持元素查找和交互</string>
+    <string name="toolbox_tool_ffmpeg_toolbox_name">FFmpeg工具箱</string>
+    <string name="toolbox_tool_ffmpeg_toolbox_desc">强大的音视频处理工具，支持转换、裁剪、合并等功能</string>
+    <string name="toolbox_tool_markdown_demo_name">流式Markdown演示</string>
+    <string name="toolbox_tool_markdown_demo_desc">高性能流式Markdown渲染演示，支持实时字符流动效果</string>
+    <string name="toolbox_tool_command_executor_name">命令执行器</string>
+    <string name="toolbox_tool_command_executor_desc">执行Shell命令并查看输出结果，支持常用命令预设</string>
+    <string name="toolbox_tool_logcat_viewer_name">日志查看器</string>
+    <string name="toolbox_tool_logcat_viewer_desc">实时捕获并查看系统和应用日志，支持过滤和搜索</string>
+
+    <!-- ToolboxScreen TopAppSection -->
+    <string name="toolbox_title">工具箱</string>
+    <string name="toolbox_subtitle">便捷实用的工具集合，提升您的工作效率</string>
+
+    <string name="about_unknown_version">未知</string>
+    <string name="about_update_dialog_title_available">发现新版本</string>
+    <string name="about_update_dialog_title_checking">正在检查更新</string>
+    <string name="about_update_dialog_title_complete">检查完成</string>
+    <string name="about_update_dialog_title_failed">检查失败</string>
+    <string name="about_update_dialog_title_generic">更新检查</string>
+    <string name="about_update_dialog_versions_info">"当前版本: %1$s\n新版本: %2$s"</string>
+    <string name="about_update_dialog_release_notes_title">更新内容:</string>
+    <string name="about_update_dialog_up_to_date">"当前已是最新版本: %1$s"</string>
+    <string name="about_update_dialog_checking_message">检查更新中...</string>
+    <string name="about_update_dialog_button_download">去下载</string>
+    <string name="about_update_dialog_button_ok">确定</string>
+    <string name="about_update_dialog_button_close">关闭</string>
+    <string name="about_download_source_dialog_title">选择下载源</string>
+    <string name="about_download_source_dialog_message">请选择适合您网络环境的下载源：</string>
+    <string name="about_download_source_accelerated_title">国内加速镜像</string>
+    <string name="about_download_source_accelerated_desc">通过ghfast.top加速，推荐国内用户使用</string>
+    <string name="about_download_source_github_title">GitHub原始链接</string>
+    <string name="about_download_source_github_desc">直接从GitHub官方服务器下载，速度可能较慢</string>
+    <string name="about_download_source_dialog_button_cancel">取消</string>
+    <string name="about_app_logo_content_desc">App Logo</string>
+    <string name="about_info_developer">开发者</string>
+    <string name="about_info_contact">联系方式</string>
+    <string name="about_info_project_address">项目地址</string>
+    <string name="about_button_checking_for_updates">检查中...</string>
+    <string name="check_for_updates_button_text">检查更新</string>
 </resources>

@@ -700,4 +700,67 @@
     <string name="ask">Ask</string>
     <string name="ai_planning_mode">AI Planning:</string>
     <string name="disabled">Disabled</string>
+    <string name="dialog_title_prompt">Prompt</string>
+    <string name="dialog_button_ok">OK</string>
+    <string name="overlay_permission_denied_toast">Overlay permission denied, floating window mode closed</string>
+    <string name="theme_bg_migrated_toast">Background image has been migrated to internal storage</string>
+    <string name="theme_bg_migration_failed_toast">Unable to access old background image, background image feature has been disabled</string>
+
+    <!-- Tool Categories -->
+    <string name="toolbox_category_all">All Tools</string>
+    <string name="toolbox_category_file_management">File Management</string>
+    <string name="toolbox_category_development">Development Tools</string>
+    <string name="toolbox_category_system">System Tools</string>
+
+    <!-- Tool Names & Descriptions -->
+    <string name="toolbox_tool_format_converter_name">Universal Format Converter</string>
+    <string name="toolbox_tool_format_converter_desc">Supports conversion between multiple file formats, convenient and fast</string>
+    <string name="toolbox_tool_file_manager_name">File Manager</string>
+    <string name="toolbox_tool_file_manager_desc">Browse and manage device files, supports multiple operations</string>
+    <string name="toolbox_tool_terminal_name">Command Terminal</string>
+    <string name="toolbox_tool_terminal_desc">Powerful command line terminal to execute system commands</string>
+    <string name="toolbox_tool_terminal_config_name">Terminal Auto Config</string>
+    <string name="toolbox_tool_terminal_config_desc">Automatically install and configure Python, PIP and other development tools</string>
+    <string name="toolbox_tool_app_permissions_name">App Permissions Management</string>
+    <string name="toolbox_tool_app_permissions_desc">Manage permissions for various apps on the phone, protect privacy and security</string>
+    <string name="toolbox_tool_ui_debugger_name">UI Debugger Tool</string>
+    <string name="toolbox_tool_ui_debugger_desc">Debug and analyze UI elements, supports element search and interaction</string>
+    <string name="toolbox_tool_ffmpeg_toolbox_name">FFmpeg Toolbox</string>
+    <string name="toolbox_tool_ffmpeg_toolbox_desc">Powerful audio and video processing tool, supports conversion, cropping, merging, etc.</string>
+    <string name="toolbox_tool_markdown_demo_name">Streaming Markdown Demo</string>
+    <string name="toolbox_tool_markdown_demo_desc">High-performance streaming Markdown rendering demo, supports real-time character flow effect</string>
+    <string name="toolbox_tool_command_executor_name">Command Executor</string>
+    <string name="toolbox_tool_command_executor_desc">Execute Shell commands and view output results, supports common command presets</string>
+    <string name="toolbox_tool_logcat_viewer_name">Logcat Viewer</string>
+    <string name="toolbox_tool_logcat_viewer_desc">Capture and view system and app logs in real time, supports filtering and searching</string>
+
+    <!-- ToolboxScreen TopAppSection -->
+    <string name="toolbox_title">Toolbox</string>
+    <string name="toolbox_subtitle">A collection of convenient and practical tools to improve your work efficiency</string>
+
+    <string name="about_unknown_version">Unknown</string>
+    <string name="about_update_dialog_title_available">New Version Found</string>
+    <string name="about_update_dialog_title_checking">Checking for Updates</string>
+    <string name="about_update_dialog_title_complete">Check Complete</string>
+    <string name="about_update_dialog_title_failed">Check Failed</string>
+    <string name="about_update_dialog_title_generic">Update Check</string>
+    <string name="about_update_dialog_versions_info">"Current version: %1$s\nNew version: %2$s"</string>
+    <string name="about_update_dialog_release_notes_title">Release Notes:</string>
+    <string name="about_update_dialog_up_to_date">"Already up to date: %1$s"</string>
+    <string name="about_update_dialog_checking_message">Checking for updates...</string>
+    <string name="about_update_dialog_button_download">Download</string>
+    <string name="about_update_dialog_button_ok">OK</string>
+    <string name="about_update_dialog_button_close">Close</string>
+    <string name="about_download_source_dialog_title">Select Download Source</string>
+    <string name="about_download_source_dialog_message">Please select a download source suitable for your network environment:</string>
+    <string name="about_download_source_accelerated_title">Domestic Accelerated Mirror</string>
+    <string name="about_download_source_accelerated_desc">Accelerated via ghfast.top, recommended for users in China</string>
+    <string name="about_download_source_github_title">Original GitHub Link</string>
+    <string name="about_download_source_github_desc">Direct download from GitHub official server, speed may be slower</string>
+    <string name="about_download_source_dialog_button_cancel">Cancel</string>
+    <string name="about_app_logo_content_desc">App Logo</string>
+    <string name="about_info_developer">Developer</string>
+    <string name="about_info_contact">Contact</string>
+    <string name="about_info_project_address">Project Address</string>
+    <string name="about_button_checking_for_updates">Checking...</string>
 </resources> 

@@ -27,6 +27,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -41,19 +42,21 @@ import com.ai.assistance.operit.ui.features.toolbox.screens.terminalconfig.Termi
 import com.ai.assistance.operit.ui.features.toolbox.screens.uidebugger.UIDebuggerScreen
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import androidx.annotation.StringRes
+import com.ai.assistance.operit.R
 
 // 工具类别
-enum class ToolCategory(val displayName: String) {
-        ALL("全部工具"),
-        FILE_MANAGEMENT("文件管理"),
-        DEVELOPMENT("开发工具"),
-        SYSTEM("系统工具")
+enum class ToolCategory(@StringRes val displayName: Int) {
+        ALL(R.string.toolbox_category_all),
+        FILE_MANAGEMENT(R.string.toolbox_category_file_management),
+        DEVELOPMENT(R.string.toolbox_category_development),
+        SYSTEM(R.string.toolbox_category_system)
 }
 
 data class Tool(
-        val name: String,
+        @StringRes val name: Int,
         val icon: ImageVector,
-        val description: String,
+        @StringRes val description: Int,
         val category: ToolCategory,
         val onClick: () -> Unit
 )
@@ -92,72 +95,72 @@ fun ToolboxScreen(
         val tools =
                 listOf(
                         Tool(
-                                name = "万能格式转换",
+                                name = R.string.toolbox_tool_format_converter_name,
                                 icon = Icons.Rounded.Transform,
-                                description = "支持多种文件格式之间的转换，方便快捷",
+                                description = R.string.toolbox_tool_format_converter_desc,
                                 category = ToolCategory.FILE_MANAGEMENT,
                                 onClick = onFormatConverterSelected
                         ),
                         Tool(
-                                name = "文件管理器",
+                                name = R.string.toolbox_tool_file_manager_name,
                                 icon = Icons.Rounded.Folder,
-                                description = "浏览和管理设备文件，支持多种操作",
+                                description = R.string.toolbox_tool_file_manager_desc,
                                 category = ToolCategory.FILE_MANAGEMENT,
                                 onClick = onFileManagerSelected
                         ),
                         Tool(
-                                name = "命令终端",
+                                name = R.string.toolbox_tool_terminal_name,
                                 icon = Icons.Rounded.Terminal,
-                                description = "功能强大的命令行终端，执行系统指令",
+                                description = R.string.toolbox_tool_terminal_desc,
                                 category = ToolCategory.DEVELOPMENT,
                                 onClick = onTerminalSelected
                         ),
                         Tool(
-                                name = "终端自动配置",
+                                name = R.string.toolbox_tool_terminal_config_name,
                                 icon = Icons.Rounded.Build,
-                                description = "自动安装配置Python、PIP等开发工具",
+                                description = R.string.toolbox_tool_terminal_config_desc,
                                 category = ToolCategory.DEVELOPMENT,
                                 onClick = onTerminalAutoConfigSelected
                         ),
                         Tool(
-                                name = "应用权限管理",
+                                name = R.string.toolbox_tool_app_permissions_name,
                                 icon = Icons.Rounded.Security,
-                                description = "管理手机各个应用的权限，保护隐私安全",
+                                description = R.string.toolbox_tool_app_permissions_desc,
                                 category = ToolCategory.SYSTEM,
                                 onClick = onAppPermissionsSelected
                         ),
                         Tool(
-                                name = "UI调试工具",
+                                name = R.string.toolbox_tool_ui_debugger_name,
                                 icon = Icons.Default.DeviceHub,
-                                description = "调试和分析界面元素，支持元素查找和交互",
+                                description = R.string.toolbox_tool_ui_debugger_desc,
                                 category = ToolCategory.DEVELOPMENT,
                                 onClick = onUIDebuggerSelected
                         ),
                         Tool(
-                                name = "FFmpeg工具箱",
+                                name = R.string.toolbox_tool_ffmpeg_toolbox_name,
                                 icon = Icons.Default.VideoSettings,
-                                description = "强大的音视频处理工具，支持转换、裁剪、合并等功能",
+                                description = R.string.toolbox_tool_ffmpeg_toolbox_desc,
                                 category = ToolCategory.DEVELOPMENT,
                                 onClick = onFFmpegToolboxSelected
                         ),
                         Tool(
-                                name = "流式Markdown演示",
+                                name = R.string.toolbox_tool_markdown_demo_name,
                                 icon = Icons.Default.FormatAlignLeft,
-                                description = "高性能流式Markdown渲染演示，支持实时字符流动效果",
+                                description = R.string.toolbox_tool_markdown_demo_desc,
                                 category = ToolCategory.DEVELOPMENT,
                                 onClick = onMarkdownDemoSelected
                         ),
                         Tool(
-                                name = "命令执行器",
+                                name = R.string.toolbox_tool_command_executor_name,
                                 icon = Icons.Default.Code,
-                                description = "执行Shell命令并查看输出结果，支持常用命令预设",
+                                description = R.string.toolbox_tool_command_executor_desc,
                                 category = ToolCategory.DEVELOPMENT,
                                 onClick = onShellExecutorSelected
                         ),
                         Tool(
-                                name = "日志查看器",
+                                name = R.string.toolbox_tool_logcat_viewer_name,
                                 icon = Icons.Default.DataObject,
-                                description = "实时捕获并查看系统和应用日志，支持过滤和搜索",
+                                description = R.string.toolbox_tool_logcat_viewer_desc,
                                 category = ToolCategory.DEVELOPMENT,
                                 onClick = onLogcatSelected
                         )
@@ -216,7 +219,7 @@ private fun TopAppSection() {
                                 .padding(start = 24.dp, end = 24.dp, top = 24.dp, bottom = 8.dp)
         ) {
                 Text(
-                        text = "工具箱",
+                        text = stringResource(R.string.toolbox_title),
                         style =
                                 MaterialTheme.typography.headlineMedium.copy(
                                         fontWeight = FontWeight.Bold
@@ -226,7 +229,7 @@ private fun TopAppSection() {
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                        text = "便捷实用的工具集合，提升您的工作效率",
+                        text = stringResource(R.string.toolbox_subtitle),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
                 )
@@ -277,7 +280,7 @@ private fun CategorySelector(
                                         modifier = Modifier.padding(horizontal = 16.dp)
                                 ) {
                                         Text(
-                                                text = category.displayName,
+                                                text = stringResource(category.displayName),
                                                 style =
                                                         MaterialTheme.typography.bodyMedium.copy(
                                                                 fontWeight =
@@ -368,7 +371,7 @@ fun ToolCard(tool: Tool) {
                         ) {
                                 Icon(
                                         imageVector = tool.icon,
-                                        contentDescription = tool.name,
+                                        contentDescription = stringResource(tool.name),
                                         modifier = Modifier.size(24.dp),
                                         tint =
                                                 when (tool.category) {
@@ -384,14 +387,14 @@ fun ToolCard(tool: Tool) {
                         }
 
                         Text(
-                                text = tool.name,
+                                text = stringResource(tool.name),
                                 style = MaterialTheme.typography.bodyMedium,
                                 fontWeight = FontWeight.Bold,
                                 textAlign = TextAlign.Center
                         )
 
                         Text(
-                                text = tool.description,
+                                text = stringResource(tool.description),
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                                 textAlign = TextAlign.Center,

@@ -296,4 +296,67 @@
     <string name="network_transfer_failed">Error en la transferencia de red, verifique la conexión de red</string>
     <string name="error_occurred">Ocurrió un error: %1$s</string>
     <string name="try_again_later">Solicitud fallida, inténtelo de nuevo más tarde</string>
+    <string name="dialog_title_prompt">Aviso</string>
+    <string name="dialog_button_ok">Aceptar</string>
+    <string name="overlay_permission_denied_toast">Permiso de superposición denegado, modo de ventana flotante cerrado</string>
+    <string name="theme_bg_migrated_toast">La imagen de fondo ha sido migrada al almacenamiento interno</string>
+    <string name="theme_bg_migration_failed_toast">No se puede acceder a la imagen de fondo anterior, la función de imagen de fondo ha sido deshabilitada</string>
+
+    <!-- Tool Categories -->
+    <string name="toolbox_category_all">Todas las Herramientas</string>
+    <string name="toolbox_category_file_management">Gestión de Archivos</string>
+    <string name="toolbox_category_development">Herramientas de Desarrollo</string>
+    <string name="toolbox_category_system">Herramientas del Sistema</string>
+
+    <!-- Tool Names & Descriptions -->
+    <string name="toolbox_tool_format_converter_name">Convertidor de Formato Universal</string>
+    <string name="toolbox_tool_format_converter_desc">Admite la conversión entre múltiples formatos de archivo, conveniente y rápido</string>
+    <string name="toolbox_tool_file_manager_name">Administrador de Archivos</string>
+    <string name="toolbox_tool_file_manager_desc">Navegar y administrar archivos del dispositivo, admite múltiples operaciones</string>
+    <string name="toolbox_tool_terminal_name">Terminal de Comandos</string>
+    <string name="toolbox_tool_terminal_desc">Potente terminal de línea de comandos para ejecutar comandos del sistema</string>
+    <string name="toolbox_tool_terminal_config_name">Configuración Automática de Terminal</string>
+    <string name="toolbox_tool_terminal_config_desc">Instalar y configurar automáticamente Python, PIP y otras herramientas de desarrollo</string>
+    <string name="toolbox_tool_app_permissions_name">Gestión de Permisos de Aplicaciones</string>
+    <string name="toolbox_tool_app_permissions_desc">Administrar permisos para varias aplicaciones en el teléfono, proteger la privacidad y seguridad</string>
+    <string name="toolbox_tool_ui_debugger_name">Herramienta de Depuración de UI</string>
+    <string name="toolbox_tool_ui_debugger_desc">Depurar y analizar elementos de la interfaz de usuario, admite búsqueda e interacción de elementos</string>
+    <string name="toolbox_tool_ffmpeg_toolbox_name">Caja de Herramientas FFmpeg</string>
+    <string name="toolbox_tool_ffmpeg_toolbox_desc">Potente herramienta de procesamiento de audio y video, admite conversión, recorte, fusión, etc.</string>
+    <string name="toolbox_tool_markdown_demo_name">Demostración de Markdown en Streaming</string>
+    <string name="toolbox_tool_markdown_demo_desc">Demostración de renderizado de Markdown en streaming de alto rendimiento, admite efecto de flujo de caracteres en tiempo real</string>
+    <string name="toolbox_tool_command_executor_name">Ejecutor de Comandos</string>
+    <string name="toolbox_tool_command_executor_desc">Ejecutar comandos de Shell y ver resultados de salida, admite preajustes de comandos comunes</string>
+    <string name="toolbox_tool_logcat_viewer_name">Visor de Logcat</string>
+    <string name="toolbox_tool_logcat_viewer_desc">Capturar y ver registros del sistema y de aplicaciones en tiempo real, admite filtrado y búsqueda</string>
+
+    <!-- ToolboxScreen TopAppSection -->
+    <string name="toolbox_title">Caja de Herramientas</string>
+    <string name="toolbox_subtitle">Una colección de herramientas convenientes y prácticas para mejorar su eficiencia en el trabajo</string>
+
+    <string name="about_unknown_version">Desconocido</string>
+    <string name="about_update_dialog_title_available">Nueva Versión Encontrada</string>
+    <string name="about_update_dialog_title_checking">Comprobando Actualizaciones</string>
+    <string name="about_update_dialog_title_complete">Comprobación Completa</string>
+    <string name="about_update_dialog_title_failed">Error en la Comprobación</string>
+    <string name="about_update_dialog_title_generic">Comprobar Actualización</string>
+    <string name="about_update_dialog_versions_info">"Versión actual: %1$s\nNueva versión: %2$s"</string>
+    <string name="about_update_dialog_release_notes_title">Notas de la Versión:</string>
+    <string name="about_update_dialog_up_to_date">"Ya está actualizado: %1$s"</string>
+    <string name="about_update_dialog_checking_message">Comprobando actualizaciones...</string>
+    <string name="about_update_dialog_button_download">Descargar</string>
+    <string name="about_update_dialog_button_ok">Aceptar</string>
+    <string name="about_update_dialog_button_close">Cerrar</string>
+    <string name="about_download_source_dialog_title">Seleccionar Fuente de Descarga</string>
+    <string name="about_download_source_dialog_message">Seleccione una fuente de descarga adecuada para su entorno de red:</string>
+    <string name="about_download_source_accelerated_title">Mirror Acelerado (Doméstico)</string>
+    <string name="about_download_source_accelerated_desc">Acelerado a través de ghfast.top, recomendado para usuarios en China</string>
+    <string name="about_download_source_github_title">Enlace Original de GitHub</string>
+    <string name="about_download_source_github_desc">Descarga directa desde el servidor oficial de GitHub, la velocidad puede ser más lenta</string>
+    <string name="about_download_source_dialog_button_cancel">Cancelar</string>
+    <string name="about_app_logo_content_desc">Logo de la Aplicación</string>
+    <string name="about_info_developer">Desarrollador</string>
+    <string name="about_info_contact">Contacto</string>
+    <string name="about_info_project_address">Dirección del Proyecto</string>
+    <string name="about_button_checking_for_updates">Comprobando...</string>
 </resources>

@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.zIndex
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import com.ai.assistance.operit.R
 import com.ai.assistance.operit.core.tools.AIToolHandler
 import com.ai.assistance.operit.data.migration.ChatHistoryMigrationManager
 import com.ai.assistance.operit.data.preferences.AgreementPreferences
@@ -108,7 +109,7 @@ class MainActivity : ComponentActivity() {
         // 设置跳过加载的回调
         pluginLoadingState.setOnSkipCallback {
             Log.d(TAG, "用户跳过了插件加载过程")
-            Toast.makeText(this, "已跳过插件加载", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.plugin_loading_skipped), Toast.LENGTH_SHORT).show()
         }
 
         // 设置初始界面 - 显示加载占位符
@@ -225,7 +226,7 @@ class MainActivity : ComponentActivity() {
                         if (currentTime - backPressedTime > backPressedInterval) {
                             // 第一次点击，显示提示
                             backPressedTime = currentTime
-                            Toast.makeText(this@MainActivity, "再按一次退出应用", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@MainActivity, getString(R.string.press_again_to_exit), Toast.LENGTH_SHORT).show()
                         } else {
                             // 第二次点击，退出应用
                             finish()
@@ -470,7 +471,7 @@ class MainActivity : ComponentActivity() {
         Log.d(TAG, "发现新版本: ${updateInfo.newVersion}，当前版本: $currentVersion")
 
         // 显示更新提示
-        val updateMessage = "发现新版本 ${updateInfo.newVersion}，请前往「关于」页面查看详情"
+        val updateMessage = getString(R.string.update_available_notification, updateInfo.newVersion)
         Toast.makeText(this, updateMessage, Toast.LENGTH_LONG).show()
     }
 
