@@ -150,7 +150,7 @@ fun AboutScreen() {
             val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
             packageInfo.versionName
         } catch (e: PackageManager.NameNotFoundException) {
-            "未知"
+            stringResource(R.string.about_unknown_version)
         }
     }
 
@@ -243,11 +243,11 @@ fun AboutScreen() {
                         Text(
                                 text =
                                         when (updateStatus) {
-                                            is UpdateStatus.Available -> "发现新版本"
-                                            is UpdateStatus.Checking -> "正在检查更新"
-                                            is UpdateStatus.UpToDate -> "检查完成"
-                                            is UpdateStatus.Error -> "检查失败"
-                                            else -> "更新检查"
+                                            is UpdateStatus.Available -> stringResource(R.string.about_update_dialog_title_available)
+                                            is UpdateStatus.Checking -> stringResource(R.string.about_update_dialog_title_checking)
+                                            is UpdateStatus.UpToDate -> stringResource(R.string.about_update_dialog_title_complete)
+                                            is UpdateStatus.Error -> stringResource(R.string.about_update_dialog_title_failed)
+                                            else -> stringResource(R.string.about_update_dialog_title_generic)
                                         }
                         )
                     }
@@ -257,7 +257,7 @@ fun AboutScreen() {
                         is UpdateStatus.Available -> {
                             Column {
                                 Text(
-                                        "当前版本: $appVersion\n新版本: ${status.newVersion}",
+                                        stringResource(R.string.about_update_dialog_versions_info, appVersion, status.newVersion),
                                         style = MaterialTheme.typography.bodyMedium,
                                         modifier = Modifier.padding(bottom = 8.dp)
                                 )
@@ -266,7 +266,7 @@ fun AboutScreen() {
                                     Divider(modifier = Modifier.padding(vertical = 8.dp))
 
                                     Text(
-                                            "更新内容:",
+                                            stringResource(R.string.about_update_dialog_release_notes_title),
                                             style = MaterialTheme.typography.titleSmall,
                                             fontWeight = FontWeight.Bold,
                                             modifier = Modifier.padding(bottom = 4.dp)
@@ -280,13 +280,13 @@ fun AboutScreen() {
                             }
                         }
                         is UpdateStatus.UpToDate -> {
-                            Text("当前已是最新版本: $appVersion")
+                            Text(stringResource(R.string.about_update_dialog_up_to_date, appVersion))
                         }
                         is UpdateStatus.Error -> {
                             Text(status.message)
                         }
                         else -> {
-                            Text("检查更新中...")
+                            Text(stringResource(R.string.about_update_dialog_checking_message))
                         }
                     }
                 },
@@ -305,15 +305,15 @@ fun AboutScreen() {
                     ) {
                         Text(
                                 when (updateStatus) {
-                                    is UpdateStatus.Available -> "去下载"
-                                    else -> "确定"
+                                    is UpdateStatus.Available -> stringResource(R.string.about_update_dialog_button_download)
+                                    else -> stringResource(R.string.about_update_dialog_button_ok)
                                 }
                         )
                     }
                 },
                 dismissButton = {
                     if (updateStatus !is UpdateStatus.Checking) {
-                        TextButton(onClick = { showUpdateDialog = false }) { Text("关闭") }
+                        TextButton(onClick = { showUpdateDialog = false }) { Text(stringResource(R.string.about_update_dialog_button_close)) }
                     }
                 }
         )
@@ -334,7 +334,7 @@ fun AboutScreen() {
                         tint = MaterialTheme.colorScheme.primary
                     )
                     Text(
-                        "选择下载源",
+                        stringResource(R.string.about_download_source_dialog_title),
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold
                     )
@@ -346,7 +346,7 @@ fun AboutScreen() {
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     Text(
-                        "请选择适合您网络环境的下载源：",
+                        stringResource(R.string.about_download_source_dialog_message),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.padding(bottom = 8.dp)
@@ -386,13 +386,13 @@ fun AboutScreen() {
                                 modifier = Modifier.weight(1f)
                             ) {
                                 Text(
-                                    "国内加速镜像",
+                                    stringResource(R.string.about_download_source_accelerated_title),
                                     style = MaterialTheme.typography.titleMedium,
                                     fontWeight = FontWeight.Bold,
                                     color = MaterialTheme.colorScheme.onPrimaryContainer
                                 )
                                 Text(
-                                    "通过ghfast.top加速，推荐国内用户使用",
+                                    stringResource(R.string.about_download_source_accelerated_desc),
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
                                 )
@@ -442,12 +442,12 @@ fun AboutScreen() {
                                 modifier = Modifier.weight(1f)
                             ) {
                                 Text(
-                                    "GitHub原始链接",
+                                    stringResource(R.string.about_download_source_github_title),
                                     style = MaterialTheme.typography.titleMedium,
                                     fontWeight = FontWeight.Bold
                                 )
                                 Text(
-                                    "直接从GitHub官方服务器下载，速度可能较慢",
+                                    stringResource(R.string.about_download_source_github_desc),
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
                                 )
@@ -465,7 +465,7 @@ fun AboutScreen() {
                     )
                 ) {
                     Text(
-                        "取消",
+                        stringResource(R.string.about_download_source_dialog_button_cancel),
                         fontWeight = FontWeight.Medium
                     )
                 }
@@ -492,7 +492,7 @@ fun AboutScreen() {
             ) {
                 Image(
                         painter = painterResource(id = R.drawable.ic_launcher_foreground),
-                        contentDescription = "App Logo",
+                        contentDescription = stringResource(R.string.about_app_logo_content_desc),
                         modifier = Modifier.size(100.dp)
                 )
             }
@@ -556,7 +556,7 @@ fun AboutScreen() {
                         Spacer(modifier = Modifier.width(8.dp))
                     }
                     Text(
-                            text = if (updateStatus is UpdateStatus.Checking) "检查中..." else "检查更新",
+                            text = if (updateStatus is UpdateStatus.Checking) stringResource(R.string.about_button_checking_for_updates) else stringResource(R.string.check_for_updates_button_text),
                             style = MaterialTheme.typography.bodyMedium,
                             fontWeight = FontWeight.Medium
                     )
@@ -592,7 +592,7 @@ fun AboutScreen() {
                     // 使用InfoItem组件展示信息
                     InfoItem(
                             icon = Icons.Rounded.Info,
-                            title = "开发者",
+                            title = stringResource(R.string.about_info_developer),
                             content = {
                                 HtmlText(
                                         html = stringResource(id = R.string.about_developer),
@@ -605,7 +605,7 @@ fun AboutScreen() {
 
                     InfoItem(
                             icon = Icons.Rounded.Info,
-                            title = "联系方式",
+                            title = stringResource(R.string.about_info_contact),
                             content = {
                                 Text(
                                         text = stringResource(id = R.string.about_contact),
@@ -618,7 +618,7 @@ fun AboutScreen() {
 
                     InfoItem(
                             icon = Icons.Rounded.Info,
-                            title = "项目地址",
+                            title = stringResource(R.string.about_info_project_address),
                             content = {
                                 HtmlText(
                                         html = stringResource(id = R.string.about_website),

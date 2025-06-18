@@ -13,7 +13,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import com.ai.assistance.operit.R
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -25,7 +27,7 @@ fun HelpScreen(onBackPressed: () -> Unit = {}) {
     Column(modifier = Modifier.fillMaxSize().padding(16.dp).verticalScroll(rememberScrollState())) {
         // 标题部分
         Text(
-                text = "Operit AI 工具指南",
+                text = stringResource(R.string.help_screen_title),
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(bottom = 16.dp)
@@ -39,13 +41,13 @@ fun HelpScreen(onBackPressed: () -> Unit = {}) {
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text(
-                        text = "Operit AI 内置强大工具集",
+                        text = stringResource(R.string.help_screen_subtitle),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier.padding(bottom = 8.dp)
                 )
                 Text(
-                        text = "以下是AI可以调用的内置工具和扩展包，使用这些工具可以帮助AI更高效地完成各种任务。",
+                        text = stringResource(R.string.help_screen_intro_text),
                         style = MaterialTheme.typography.bodyMedium
                 )
             }
@@ -74,12 +76,12 @@ fun HelpScreen(onBackPressed: () -> Unit = {}) {
                 ) {
                     Icon(
                             imageVector = Icons.Default.Code,
-                            contentDescription = "GitHub",
+                            contentDescription = stringResource(R.string.help_screen_github_cd),
                             tint = MaterialTheme.colorScheme.onSecondaryContainer
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                            text = "GitHub 文档",
+                            text = stringResource(R.string.help_screen_github_docs_link),
                             style = MaterialTheme.typography.titleSmall,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onSecondaryContainer
@@ -103,12 +105,12 @@ fun HelpScreen(onBackPressed: () -> Unit = {}) {
                 ) {
                     Icon(
                             imageVector = Icons.Default.Language,
-                            contentDescription = "官网",
+                            contentDescription = stringResource(R.string.help_screen_website_cd),
                             tint = MaterialTheme.colorScheme.onTertiaryContainer
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                            text = "官方网站",
+                            text = stringResource(R.string.help_screen_website_link),
                             style = MaterialTheme.typography.titleSmall,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onTertiaryContainer
@@ -122,92 +124,92 @@ fun HelpScreen(onBackPressed: () -> Unit = {}) {
         // 内置工具部分
         var expandedCoreTools by remember { mutableStateOf(true) }
         ExpandableCard(
-                title = "内置核心工具",
+                title = stringResource(R.string.help_screen_core_tools_title),
                 icon = Icons.Default.Build,
                 expanded = expandedCoreTools,
                 onExpandChange = { expandedCoreTools = it }
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 ToolCategoryItem(
-                        title = "基础工具",
+                        title = stringResource(R.string.help_screen_basic_tools_category_title),
                         items =
                                 listOf(
-                                        "sleep: 短暂暂停执行",
-                                        "device_info: 获取设备详细信息",
-                                        "use_package: 激活扩展包",
-                                        "query_problem_library: 查询问题库"
+                                        Pair(R.string.help_tool_sleep_name, R.string.help_tool_sleep_desc),
+                                        Pair(R.string.help_tool_device_info_name, R.string.help_tool_device_info_desc),
+                                        Pair(R.string.help_tool_use_package_name, R.string.help_tool_use_package_desc),
+                                        Pair(R.string.help_tool_query_problem_library_name, R.string.help_tool_query_problem_library_desc)
                                 )
                 )
 
                 ToolCategoryItem(
-                        title = "文件系统工具",
+                        title = stringResource(R.string.help_screen_filesystem_tools_category_title),
                         items =
                                 listOf(
-                                        "list_files: 列出目录中的文件",
-                                        "read_file_part: 分部分读取文件内容（每部分200行）",
-                                        "write_file: 写入内容到文件",
-                                        "apply_file: 智能地修改文件内容",
-                                        "delete_file: 删除文件或目录",
-                                        "file_exists: 检查文件是否存在",
-                                        "move_file: 移动或重命名文件",
-                                        "copy_file: 复制文件或目录",
-                                        "make_directory: 创建目录",
-                                        "find_files: 搜索匹配文件",
-                                        "file_info: 获取文件详细信息",
-                                        "zip_files/unzip_files: 压缩/解压文件",
-                                        "open_file: 使用系统默认应用打开文件",
-                                        "share_file: 与其他应用共享文件",
-                                        "download_file: 从网络下载文件",
-                                        "convert_file: 文件格式转换",
-                                        "get_supported_conversions: 列出支持的转换格式"
+                                        Pair(R.string.help_tool_list_files_name, R.string.help_tool_list_files_desc),
+                                        Pair(R.string.help_tool_read_file_part_name, R.string.help_tool_read_file_part_desc),
+                                        Pair(R.string.help_tool_write_file_name, R.string.help_tool_write_file_desc),
+                                        Pair(R.string.help_tool_apply_file_name, R.string.help_tool_apply_file_desc),
+                                        Pair(R.string.help_tool_delete_file_name, R.string.help_tool_delete_file_desc),
+                                        Pair(R.string.help_tool_file_exists_name, R.string.help_tool_file_exists_desc),
+                                        Pair(R.string.help_tool_move_file_name, R.string.help_tool_move_file_desc),
+                                        Pair(R.string.help_tool_copy_file_name, R.string.help_tool_copy_file_desc),
+                                        Pair(R.string.help_tool_make_directory_name, R.string.help_tool_make_directory_desc),
+                                        Pair(R.string.help_tool_find_files_name, R.string.help_tool_find_files_desc),
+                                        Pair(R.string.help_tool_file_info_name, R.string.help_tool_file_info_desc),
+                                        Pair(R.string.help_tool_zip_files_name, R.string.help_tool_zip_files_desc),
+                                        Pair(R.string.help_tool_open_file_name, R.string.help_tool_open_file_desc),
+                                        Pair(R.string.help_tool_share_file_name, R.string.help_tool_share_file_desc),
+                                        Pair(R.string.help_tool_download_file_name, R.string.help_tool_download_file_desc),
+                                        Pair(R.string.help_tool_convert_file_name, R.string.help_tool_convert_file_desc),
+                                        Pair(R.string.help_tool_get_supported_conversions_name, R.string.help_tool_get_supported_conversions_desc)
                                 )
                 )
 
                 ToolCategoryItem(
-                        title = "HTTP工具",
+                        title = stringResource(R.string.help_screen_http_tools_category_title),
                         items =
                                 listOf(
-                                        "http_request: 发送HTTP请求",
-                                        "multipart_request: 上传文件",
-                                        "manage_cookies: 管理cookies",
-                                        "visit_web: 访问并提取网页内容"
+                                        Pair(R.string.help_tool_http_request_name, R.string.help_tool_http_request_desc),
+                                        Pair(R.string.help_tool_multipart_request_name, R.string.help_tool_multipart_request_desc),
+                                        Pair(R.string.help_tool_manage_cookies_name, R.string.help_tool_manage_cookies_desc),
+                                        Pair(R.string.help_tool_visit_web_name, R.string.help_tool_visit_web_desc)
                                 )
                 )
 
                 ToolCategoryItem(
-                        title = "系统操作工具",
+                        title = stringResource(R.string.help_screen_system_tools_category_title),
                         items =
                                 listOf(
-                                        "get_system_setting: 获取系统设置",
-                                        "modify_system_setting: 修改系统设置",
-                                        "install_app/uninstall_app: 安装/卸载应用",
-                                        "start_app/stop_app: 启动/停止应用",
-                                        "get_notifications: 获取设备通知",
-                                        "get_device_location: 获取设备位置"
+                                        Pair(R.string.help_tool_get_system_setting_name, R.string.help_tool_get_system_setting_desc),
+                                        Pair(R.string.help_tool_modify_system_setting_name, R.string.help_tool_modify_system_setting_desc),
+                                        Pair(R.string.help_tool_install_app_name, R.string.help_tool_install_app_desc),
+                                        Pair(R.string.help_tool_start_app_name, R.string.help_tool_start_app_desc),
+                                        Pair(R.string.help_tool_get_notifications_name, R.string.help_tool_get_notifications_desc),
+                                        Pair(R.string.help_tool_get_device_location_name, R.string.help_tool_get_device_location_desc)
                                 )
                 )
 
                 ToolCategoryItem(
-                        title = "UI自动化工具",
+                        title = stringResource(R.string.help_screen_ui_auto_tools_category_title),
                         items =
                                 listOf(
-                                        "get_page_info: 获取UI屏幕信息",
-                                        "tap: 模拟点击坐标",
-                                        "click_element: 点击UI元素",
-                                        "set_input_text: 设置输入文本",
-                                        "press_key: 模拟按键",
-                                        "swipe: 模拟滑动手势",
-                                        "find_element: 查找UI元素"
+                                        Pair(R.string.help_tool_get_page_info_name, R.string.help_tool_get_page_info_desc),
+                                        Pair(R.string.help_tool_tap_name, R.string.help_tool_tap_desc),
+                                        Pair(R.string.help_tool_click_element_name, R.string.help_tool_click_element_desc),
+                                        Pair(R.string.help_tool_set_input_text_name, R.string.help_tool_set_input_text_desc),
+                                        Pair(R.string.help_tool_press_key_name, R.string.help_tool_press_key_desc),
+                                        Pair(R.string.help_tool_swipe_name, R.string.help_tool_swipe_desc),
+                                        Pair(R.string.help_tool_find_element_name, R.string.help_tool_find_element_desc)
                                 )
                 )
 
                 ToolCategoryItem(
-                        title = "FFmpeg工具",
+                        title = stringResource(R.string.help_screen_ffmpeg_tools_category_title),
                         items =
                                 listOf(
-                                        "ffmpeg_execute: 执行FFmpeg命令",
-                                        "ffmpeg_info: 获取FFmpeg信息",
-                                        "ffmpeg_convert: 转换视频文件"
+                                        Pair(R.string.help_tool_ffmpeg_execute_name, R.string.help_tool_ffmpeg_execute_desc),
+                                        Pair(R.string.help_tool_ffmpeg_info_name, R.string.help_tool_ffmpeg_info_desc),
+                                        Pair(R.string.help_tool_ffmpeg_convert_name, R.string.help_tool_ffmpeg_convert_desc)
                                 )
                 )
             }
@@ -218,59 +220,59 @@ fun HelpScreen(onBackPressed: () -> Unit = {}) {
         // 扩展包部分
         var expandedPackages by remember { mutableStateOf(true) }
         ExpandableCard(
-                title = "可用扩展包",
+                title = stringResource(R.string.help_screen_extensions_title),
                 icon = Icons.Default.Extension,
                 expanded = expandedPackages,
                 onExpandChange = { expandedPackages = it }
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 PackageItem(
-                        name = "writer",
-                        description = "高级文件编辑和读取功能，支持分段编辑、差异编辑、行号编辑以及高级文件读取操作",
+                        name = stringResource(R.string.help_package_writer_name),
+                        description = stringResource(R.string.help_package_writer_desc),
                         icon = Icons.Default.Edit
                 )
 
                 PackageItem(
-                        name = "various_search",
-                        description = "多平台搜索功能，支持从必应、百度、搜狗、夸克等平台获取搜索结果",
+                        name = stringResource(R.string.help_package_various_search_name),
+                        description = stringResource(R.string.help_package_various_search_desc),
                         icon = Icons.Default.Search
                 )
 
                 PackageItem(
-                        name = "daily_life",
-                        description = "日常生活工具集合，包括日期时间查询、设备状态监测、天气搜索、提醒闹钟设置、短信电话通讯等",
+                        name = stringResource(R.string.help_package_daily_life_name),
+                        description = stringResource(R.string.help_package_daily_life_desc),
                         icon = Icons.Default.DateRange
                 )
 
                 PackageItem(
-                        name = "super_admin",
-                        description = "超级管理员工具集，提供终端命令和Shell操作的高级功能",
+                        name = stringResource(R.string.help_package_super_admin_name),
+                        description = stringResource(R.string.help_package_super_admin_desc),
                         icon = Icons.Default.AdminPanelSettings
                 )
 
                 PackageItem(
-                        name = "code_runner",
-                        description = "多语言代码执行能力，支持JavaScript、Python、Ruby、Go和Rust脚本的运行",
+                        name = stringResource(R.string.help_package_code_runner_name),
+                        description = stringResource(R.string.help_package_code_runner_desc),
                         icon = Icons.Default.Code
                 )
 
-                PackageItem(name = "baidu_map", description = "百度地图相关功能", icon = Icons.Default.Map)
+                PackageItem(name = stringResource(R.string.help_package_baidu_map_name), description = stringResource(R.string.help_package_baidu_map_desc), icon = Icons.Default.Map)
 
                 PackageItem(
-                        name = "qq_intelligent",
-                        description = "QQ智能助手，通过UI自动化技术实现QQ应用交互",
+                        name = stringResource(R.string.help_package_qq_intelligent_name),
+                        description = stringResource(R.string.help_package_qq_intelligent_desc),
                         icon = Icons.Default.Message
                 )
 
                 PackageItem(
-                        name = "time",
-                        description = "提供时间相关功能",
+                        name = stringResource(R.string.help_package_time_name),
+                        description = stringResource(R.string.help_package_time_desc),
                         icon = Icons.Default.AccessTime
                 )
 
                 PackageItem(
-                        name = "various_output",
-                        description = "提供图片输出功能",
+                        name = stringResource(R.string.help_package_various_output_name),
+                        description = stringResource(R.string.help_package_various_output_desc),
                         icon = Icons.Default.Image
                 )
             }
@@ -281,25 +283,25 @@ fun HelpScreen(onBackPressed: () -> Unit = {}) {
         // 使用指南
         var expandedGuide by remember { mutableStateOf(true) }
         ExpandableCard(
-                title = "工具使用指南",
+                title = stringResource(R.string.help_screen_usage_guide_title),
                 icon = Icons.Default.Info,
                 expanded = expandedGuide,
                 onExpandChange = { expandedGuide = it }
         ) {
             Column(modifier = Modifier.padding(vertical = 8.dp)) {
                 GuideItem(
-                        title = "工具调用",
-                        content = "AI会根据需要自动调用合适的工具。每次只能调用一个工具，工具执行完成后会自动将结果返回给AI。"
+                        title = stringResource(R.string.help_guide_tool_invocation_title),
+                        content = stringResource(R.string.help_guide_tool_invocation_content)
                 )
 
                 GuideItem(
-                        title = "扩展包激活",
-                        content = "使用扩展包中的工具前，需要先激活该包。AI会自动使用use_package工具来激活所需的包。"
+                        title = stringResource(R.string.help_guide_extension_activation_title),
+                        content = stringResource(R.string.help_guide_extension_activation_content)
                 )
 
-                GuideItem(title = "权限管理", content = "部分工具（如系统操作、UI自动化等）需要用户授予相应权限才能使用。")
+                GuideItem(title = stringResource(R.string.help_guide_permission_management_title), content = stringResource(R.string.help_guide_permission_management_content))
 
-                GuideItem(title = "计划模式", content = "在处理复杂任务时，可以使用计划模式，AI会将任务拆分为多个步骤并依次执行。")
+                GuideItem(title = stringResource(R.string.help_guide_planning_mode_title), content = stringResource(R.string.help_guide_planning_mode_content))
             }
         }
 
@@ -317,7 +319,7 @@ fun HelpScreen(onBackPressed: () -> Unit = {}) {
                     horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                        text = "如需更多帮助，请联系我们",
+                        text = stringResource(R.string.help_screen_contact_us_prompt),
                         style = MaterialTheme.typography.bodyMedium,
                         fontWeight = FontWeight.Medium
                 )
@@ -372,7 +374,7 @@ fun ExpandableCard(
                             imageVector =
                                     if (expanded) Icons.Default.ExpandLess
                                     else Icons.Default.ExpandMore,
-                            contentDescription = if (expanded) "收起" else "展开"
+                            contentDescription = if (expanded) stringResource(R.string.help_screen_collapse_cd) else stringResource(R.string.help_screen_expand_cd)
                     )
                 }
             }
@@ -384,10 +386,10 @@ fun ExpandableCard(
 }
 
 @Composable
-fun ToolCategoryItem(title: String, items: List<String>) {
+fun ToolCategoryItem(title: String, items: List<Pair<Int, Int>>) { // Changed items type
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
-                text = title,
+                text = title, // This title is already a stringResource at call site
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold,
                 color = MaterialTheme.colorScheme.primary,
@@ -402,9 +404,10 @@ fun ToolCategoryItem(title: String, items: List<String>) {
                     modifier = Modifier.padding(12.dp),
                     verticalArrangement = Arrangement.spacedBy(6.dp)
             ) {
-                items.forEach { item ->
+                items.forEach { itemPair ->
+                    // Display tool name and description using stringResource
                     Text(
-                            text = "• $item",
+                            text = "• ${stringResource(itemPair.first)}: ${stringResource(itemPair.second)}",
                             style = MaterialTheme.typography.bodyMedium,
                             lineHeight = 18.sp
                     )
@@ -415,7 +418,7 @@ fun ToolCategoryItem(title: String, items: List<String>) {
 }
 
 @Composable
-fun PackageItem(name: String, description: String, icon: ImageVector) {
+fun PackageItem(name: String, description: String, icon: ImageVector) { // name and description are already stringResource at call site
     Surface(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(8.dp),
@@ -438,13 +441,13 @@ fun PackageItem(name: String, description: String, icon: ImageVector) {
 
             Column {
                 Text(
-                        text = name,
+                        text = name, // Already a stringResource
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                        text = description,
+                        text = description, // Already a stringResource
                         style = MaterialTheme.typography.bodySmall,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis
@@ -455,7 +458,7 @@ fun PackageItem(name: String, description: String, icon: ImageVector) {
 }
 
 @Composable
-fun GuideItem(title: String, content: String) {
+fun GuideItem(title: String, content: String) { // title and content are already stringResource at call site
     Column(modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
@@ -466,14 +469,14 @@ fun GuideItem(title: String, content: String) {
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(
-                    text = title,
+                    text = title, // Already a stringResource
                     style = MaterialTheme.typography.titleSmall,
                     fontWeight = FontWeight.SemiBold
             )
         }
 
         Text(
-                text = content,
+                text = content, // Already a stringResource
                 style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(start = 28.dp, top = 4.dp)
         )

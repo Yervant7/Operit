@@ -763,4 +763,168 @@
     <string name="about_info_contact">Contact</string>
     <string name="about_info_project_address">Project Address</string>
     <string name="about_button_checking_for_updates">Checking...</string>
+    <string name="check_for_updates_button_text">Check for Updates</string>
+
+    <!-- Help Screen Strings -->
+    <string name="help_screen_title">Operit AI Tool Guide</string>
+    <string name="help_screen_subtitle">Operit AI Built-in Powerful Toolset</string>
+    <string name="help_screen_intro_text">Below are the built-in tools and extension packages that AI can call. Using these tools can help AI complete various tasks more efficiently.</string>
+    <string name="help_screen_github_cd">GitHub</string>
+    <string name="help_screen_github_docs_link">GitHub Docs</string>
+    <string name="help_screen_website_cd">Official Website</string>
+    <string name="help_screen_website_link">Official Website</string>
+    <string name="help_screen_core_tools_title">Built-in Core Tools</string>
+    <string name="help_screen_basic_tools_category_title">Basic Tools</string>
+    <string name="help_screen_filesystem_tools_category_title">File System Tools</string>
+    <string name="help_screen_http_tools_category_title">HTTP Tools</string>
+    <string name="help_screen_system_op_tools_category_title">System Operation Tools</string>
+    <string name="help_screen_ui_auto_tools_category_title">UI Automation Tools</string>
+    <string name="help_screen_ffmpeg_tools_category_title">FFmpeg Tools</string>
+    <string name="help_screen_available_packages_title">Available Extension Packages</string>
+    <string name="help_screen_usage_guide_title">Tool Usage Guide</string>
+    <string name="help_screen_need_more_help">For more help, please contact us</string>
+    <string name="help_screen_collapse_cd">Collapse</string>
+    <string name="help_screen_expand_cd">Expand</string>
+
+    <!-- Help Screen - Basic Tools -->
+    <string name="help_tool_sleep_name">sleep</string>
+    <string name="help_tool_sleep_desc">Pause execution briefly</string>
+    <string name="help_tool_device_info_name">device_info</string>
+    <string name="help_tool_device_info_desc">Get detailed device information</string>
+    <string name="help_tool_use_package_name">use_package</string>
+    <string name="help_tool_use_package_desc">Activate extension package</string>
+    <string name="help_tool_query_problem_library_name">query_problem_library</string>
+    <string name="help_tool_query_problem_library_desc">Query problem library</string>
+
+    <!-- Help Screen - Filesystem Tools -->
+    <string name="help_tool_list_files_name">list_files</string>
+    <string name="help_tool_list_files_desc">List files in a directory</string>
+    <string name="help_tool_read_file_part_name">read_file_part</string>
+    <string name="help_tool_read_file_part_desc">Read file content in parts (200 lines each)</string>
+    <string name="help_tool_write_file_name">write_file</string>
+    <string name="help_tool_write_file_desc">Write content to a file</string>
+    <string name="help_tool_apply_file_name">apply_file</string>
+    <string name="help_tool_apply_file_desc">Intelligently modify file content</string>
+    <string name="help_tool_delete_file_name">delete_file</string>
+    <string name="help_tool_delete_file_desc">Delete a file or directory</string>
+    <string name="help_tool_file_exists_name">file_exists</string>
+    <string name="help_tool_file_exists_desc">Check if a file exists</string>
+    <string name="help_tool_move_file_name">move_file</string>
+    <string name="help_tool_move_file_desc">Move or rename a file</string>
+    <string name="help_tool_copy_file_name">copy_file</string>
+    <string name="help_tool_copy_file_desc">Copy a file or directory</string>
+    <string name="help_tool_make_directory_name">make_directory</string>
+    <string name="help_tool_make_directory_desc">Create a directory</string>
+    <string name="help_tool_find_files_name">find_files</string>
+    <string name="help_tool_find_files_desc">Search for matching files</string>
+    <string name="help_tool_file_info_name">file_info</string>
+    <string name="help_tool_file_info_desc">Get detailed file information</string>
+    <string name="help_tool_zip_files_name">zip_files/unzip_files</string>
+    <string name="help_tool_zip_files_desc">Compress/decompress files</string>
+    <string name="help_tool_open_file_name">open_file</string>
+    <string name="help_tool_open_file_desc">Open a file using the system default application</string>
+    <string name="help_tool_share_file_name">share_file</string>
+    <string name="help_tool_share_file_desc">Share a file with other applications</string>
+    <string name="help_tool_download_file_name">download_file</string>
+    <string name="help_tool_download_file_desc">Download a file from the network</string>
+    <string name="help_tool_convert_file_name">convert_file</string>
+    <string name="help_tool_convert_file_desc">File format conversion</string>
+    <string name="help_tool_get_supported_conversions_name">get_supported_conversions</string>
+    <string name="help_tool_get_supported_conversions_desc">List supported conversion formats</string>
+
+    <!-- Help Screen - HTTP Tools -->
+    <string name="help_tool_http_request_name">http_request</string>
+    <string name="help_tool_http_request_desc">Send HTTP request</string>
+    <string name="help_tool_multipart_request_name">multipart_request</string>
+    <string name="help_tool_multipart_request_desc">Upload file</string>
+    <string name="help_tool_manage_cookies_name">manage_cookies</string>
+    <string name="help_tool_manage_cookies_desc">Manage cookies</string>
+    <string name="help_tool_visit_web_name">visit_web</string>
+    <string name="help_tool_visit_web_desc">Visit and extract web page content</string>
+
+    <!-- Help Screen - System Tools -->
+    <string name="help_tool_get_system_setting_name">get_system_setting</string>
+    <string name="help_tool_get_system_setting_desc">Get system setting</string>
+    <string name="help_tool_modify_system_setting_name">modify_system_setting</string>
+    <string name="help_tool_modify_system_setting_desc">Modify system setting</string>
+    <string name="help_tool_install_app_name">install_app/uninstall_app</string>
+    <string name="help_tool_install_app_desc">Install/uninstall application</string>
+    <string name="help_tool_start_app_name">start_app/stop_app</string>
+    <string name="help_tool_start_app_desc">Start/stop application</string>
+    <string name="help_tool_get_notifications_name">get_notifications</string>
+    <string name="help_tool_get_notifications_desc">Get device notifications</string>
+    <string name="help_tool_get_device_location_name">get_device_location</string>
+    <string name="help_tool_get_device_location_desc">Get device location</string>
+
+    <!-- Help Screen - UI Automation Tools -->
+    <string name="help_tool_get_page_info_name">get_page_info</string>
+    <string name="help_tool_get_page_info_desc">Get UI screen information</string>
+    <string name="help_tool_tap_name">tap</string>
+    <string name="help_tool_tap_desc">Simulate tap on coordinates</string>
+    <string name="help_tool_click_element_name">click_element</string>
+    <string name="help_tool_click_element_desc">Click UI element</string>
+    <string name="help_tool_set_input_text_name">set_input_text</string>
+    <string name="help_tool_set_input_text_desc">Set input text</string>
+    <string name="help_tool_press_key_name">press_key</string>
+    <string name="help_tool_press_key_desc">Simulate key press</string>
+    <string name="help_tool_swipe_name">swipe</string>
+    <string name="help_tool_swipe_desc">Simulate swipe gesture</string>
+    <string name="help_tool_find_element_name">find_element</string>
+    <string name="help_tool_find_element_desc">Find UI element</string>
+
+    <!-- Help Screen - FFmpeg Tools -->
+    <string name="help_tool_ffmpeg_execute_name">ffmpeg_execute</string>
+    <string name="help_tool_ffmpeg_execute_desc">Execute FFmpeg command</string>
+    <string name="help_tool_ffmpeg_info_name">ffmpeg_info</string>
+    <string name="help_tool_ffmpeg_info_desc">Get FFmpeg information</string>
+    <string name="help_tool_ffmpeg_convert_name">ffmpeg_convert</string>
+    <string name="help_tool_ffmpeg_convert_desc">Convert video file</string>
+
+    <!-- Help Screen - Package Items -->
+    <string name="help_package_writer_name">writer</string>
+    <string name="help_package_writer_desc">Advanced file editing and reading functions, supporting segmented editing, diff editing, line number editing, and advanced file reading operations.</string>
+    <string name="help_package_various_search_name">various_search</string>
+    <string name="help_package_various_search_desc">Multi-platform search function, supporting search results from platforms like Bing, Baidu, Sogou, Quark, etc.</string>
+    <string name="help_package_daily_life_name">daily_life</string>
+    <string name="help_package_daily_life_desc">Collection of daily life tools, including date/time query, device status monitoring, weather search, alarm/reminder settings, SMS/phone communication, etc.</string>
+    <string name="help_package_super_admin_name">super_admin</string>
+    <string name="help_package_super_admin_desc">Super administrator toolset, providing advanced functions for terminal commands and Shell operations.</string>
+    <string name="help_package_code_runner_name">code_runner</string>
+    <string name="help_package_code_runner_desc">Multi-language code execution capability, supporting the execution of JavaScript, Python, Ruby, Go, and Rust scripts.</string>
+    <string name="help_package_baidu_map_name">baidu_map</string>
+    <string name="help_package_baidu_map_desc">Baidu Maps related functions.</string>
+    <string name="help_package_qq_intelligent_name">qq_intelligent</string>
+    <string name="help_package_qq_intelligent_desc">QQ intelligent assistant, enabling QQ application interaction through UI automation technology.</string>
+    <string name="help_package_time_name">time</string>
+    <string name="help_package_time_desc">Provides time-related functions.</string>
+    <string name="help_package_various_output_name">various_output</string>
+    <string name="help_package_various_output_desc">Provides image output functions.</string>
+
+    <!-- Help Screen - Guide Items -->
+    <string name="help_guide_tool_invocation_title">Tool Invocation</string>
+    <string name="help_guide_tool_invocation_content">AI will automatically call the appropriate tools as needed. Only one tool can be called at a time. After the tool execution is complete, the result will be automatically returned to the AI.</string>
+    <string name="help_guide_extension_activation_title">Extension Package Activation</string>
+    <string name="help_guide_extension_activation_content">Before using tools from an extension package, the package needs to be activated. AI will automatically use the use_package tool to activate the required package.</string>
+    <string name="help_guide_permission_management_title">Permission Management</string>
+    <string name="help_guide_permission_management_content">Some tools (such as system operations, UI automation, etc.) require user-granted permissions to be used.</string>
+    <string name="help_guide_planning_mode_title">Planning Mode</string>
+    <string name="help_guide_planning_mode_content">When dealing with complex tasks, planning mode can be used. AI will break down the task into multiple steps and execute them sequentially.</string>
+
+    <!-- ShizukuDemoScreen Strings -->
+    <string name="shizuku_demo_wizard_icon_cd">Setup Wizard Icon</string>
+    <string name="shizuku_demo_termux_welcome">Welcome to Termux Configuration Tool\nClick the corresponding button to start configuration</string>
+    <string name="shizuku_demo_executing_prefix">Executing: </string>
+    <string name="shizuku_demo_ellipsis">...</string>
+    <string name="shizuku_demo_docs_link_failed">Cannot open documentation link</string>
+
+    <!-- ProblemLibraryScreen Strings -->
+    <string name="problem_library_deleted_snackbar">Problem deleted</string>
+    <string name="problem_library_changes_saved_snackbar">Changes saved</string>
+    <string name="problem_library_loading">Loading...</string>
+    <string name="problem_library_clear_search_cd">Clear search</string>
+    <string name="problem_library_empty_message">When you solve problems via AI chat, the system will automatically record and add them to this problem library.</string>
+    <string name="problem_library_no_summary">No summary information</string>
+    <string name="problem_library_original_query_title">Original Query</string>
+    <string name="problem_library_record_time_prefix">Record Time: </string>
+    <string name="problem_library_no_tools_used">No tools used</string>
 </resources> 

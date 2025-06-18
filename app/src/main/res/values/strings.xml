@@ -767,4 +767,156 @@
     <string name="about_info_project_address">项目地址</string>
     <string name="about_button_checking_for_updates">检查中...</string>
     <string name="check_for_updates_button_text">检查更新</string>
+
+    <!-- Help Screen Strings -->
+    <string name="help_screen_title">Operit AI 工具指南</string>
+    <string name="help_screen_subtitle">Operit AI 内置强大工具集</string>
+    <string name="help_screen_description">以下是AI可以调用的内置工具和扩展包，使用这些工具可以帮助AI更高效地完成各种任务。</string>
+    <string name="help_screen_github_cd">GitHub</string>
+    <string name="help_screen_github_docs">GitHub 文档</string>
+    <string name="help_screen_website_cd">官网</string>
+    <string name="help_screen_official_website">官方网站</string>
+    <string name="help_screen_core_tools_title">内置核心工具</string>
+    <string name="help_screen_basic_tools_category_title">基础工具</string>
+    <string name="help_screen_filesystem_tools_category_title">文件系统工具</string>
+    <string name="help_screen_http_tools_category_title">HTTP工具</string>
+    <string name="help_screen_system_tools_category_title">系统操作工具</string>
+    <string name="help_screen_ui_auto_tools_category_title">UI自动化工具</string>
+    <string name="help_screen_ffmpeg_tools_category_title">FFmpeg工具</string>
+    <string name="help_screen_extensions_title">可用扩展包</string>
+    <string name="help_screen_usage_guide_title">工具使用指南</string>
+    <string name="help_screen_contact_us_prompt">如需更多帮助，请联系我们</string>
+    <string name="help_screen_collapse_cd">收起</string>
+    <string name="help_screen_expand_cd">展开</string>
+
+    <!-- Help Screen - Basic Tools -->
+    <string name="help_tool_sleep_name">sleep</string>
+    <string name="help_tool_sleep_desc">短暂暂停执行</string>
+    <string name="help_tool_device_info_name">device_info</string>
+    <string name="help_tool_device_info_desc">获取设备详细信息</string>
+    <string name="help_tool_use_package_name">use_package</string>
+    <string name="help_tool_use_package_desc">激活扩展包</string>
+    <string name="help_tool_query_problem_library_name">query_problem_library</string>
+    <string name="help_tool_query_problem_library_desc">查询问题库</string>
+
+    <!-- Help Screen - Filesystem Tools -->
+    <string name="help_tool_list_files_name">list_files</string>
+    <string name="help_tool_list_files_desc">列出目录中的文件</string>
+    <string name="help_tool_read_file_part_name">read_file_part</string>
+    <string name="help_tool_read_file_part_desc">分部分读取文件内容（每部分200行）</string>
+    <string name="help_tool_write_file_name">write_file</string>
+    <string name="help_tool_write_file_desc">写入内容到文件</string>
+    <string name="help_tool_apply_file_name">apply_file</string>
+    <string name="help_tool_apply_file_desc">智能地修改文件内容</string>
+    <string name="help_tool_delete_file_name">delete_file</string>
+    <string name="help_tool_delete_file_desc">删除文件或目录</string>
+    <string name="help_tool_file_exists_name">file_exists</string>
+    <string name="help_tool_file_exists_desc">检查文件是否存在</string>
+    <string name="help_tool_move_file_name">move_file</string>
+    <string name="help_tool_move_file_desc">移动或重命名文件</string>
+    <string name="help_tool_copy_file_name">copy_file</string>
+    <string name="help_tool_copy_file_desc">复制文件或目录</string>
+    <string name="help_tool_make_directory_name">make_directory</string>
+    <string name="help_tool_make_directory_desc">创建目录</string>
+    <string name="help_tool_find_files_name">find_files</string>
+    <string name="help_tool_find_files_desc">搜索匹配文件</string>
+    <string name="help_tool_file_info_name">file_info</string>
+    <string name="help_tool_file_info_desc">获取文件详细信息</string>
+    <string name="help_tool_zip_files_name">zip_files/unzip_files</string>
+    <string name="help_tool_zip_files_desc">压缩/解压文件</string>
+    <string name="help_tool_open_file_name">open_file</string>
+    <string name="help_tool_open_file_desc">使用系统默认应用打开文件</string>
+    <string name="help_tool_share_file_name">share_file</string>
+    <string name="help_tool_share_file_desc">与其他应用共享文件</string>
+    <string name="help_tool_download_file_name">download_file</string>
+    <string name="help_tool_download_file_desc">从网络下载文件</string>
+    <string name="help_tool_convert_file_name">convert_file</string>
+    <string name="help_tool_convert_file_desc">文件格式转换</string>
+    <string name="help_tool_get_supported_conversions_name">get_supported_conversions</string>
+    <string name="help_tool_get_supported_conversions_desc">列出支持的转换格式</string>
+
+    <!-- Help Screen - HTTP Tools -->
+    <string name="help_tool_http_request_name">http_request</string>
+    <string name="help_tool_http_request_desc">发送HTTP请求</string>
+    <string name="help_tool_multipart_request_name">multipart_request</string>
+    <string name="help_tool_multipart_request_desc">上传文件</string>
+    <string name="help_tool_manage_cookies_name">manage_cookies</string>
+    <string name="help_tool_manage_cookies_desc">管理cookies</string>
+    <string name="help_tool_visit_web_name">visit_web</string>
+    <string name="help_tool_visit_web_desc">访问并提取网页内容</string>
+
+    <!-- Help Screen - System Tools -->
+    <string name="help_tool_get_system_setting_name">get_system_setting</string>
+    <string name="help_tool_get_system_setting_desc">获取系统设置</string>
+    <string name="help_tool_modify_system_setting_name">modify_system_setting</string>
+    <string name="help_tool_modify_system_setting_desc">修改系统设置</string>
+    <string name="help_tool_install_app_name">install_app/uninstall_app</string>
+    <string name="help_tool_install_app_desc">安装/卸载应用</string>
+    <string name="help_tool_start_app_name">start_app/stop_app</string>
+    <string name="help_tool_start_app_desc">启动/停止应用</string>
+    <string name="help_tool_get_notifications_name">get_notifications</string>
+    <string name="help_tool_get_notifications_desc">获取设备通知</string>
+    <string name="help_tool_get_device_location_name">get_device_location</string>
+    <string name="help_tool_get_device_location_desc">获取设备位置</string>
+
+    <!-- Help Screen - UI Automation Tools -->
+    <string name="help_tool_get_page_info_name">get_page_info</string>
+    <string name="help_tool_get_page_info_desc">获取UI屏幕信息</string>
+    <string name="help_tool_tap_name">tap</string>
+    <string name="help_tool_tap_desc">模拟点击坐标</string>
+    <string name="help_tool_click_element_name">click_element</string>
+    <string name="help_tool_click_element_desc">点击UI元素</string>
+    <string name="help_tool_set_input_text_name">set_input_text</string>
+    <string name="help_tool_set_input_text_desc">设置输入文本</string>
+    <string name="help_tool_press_key_name">press_key</string>
+    <string name="help_tool_press_key_desc">模拟按键</string>
+    <string name="help_tool_swipe_name">swipe</string>
+    <string name="help_tool_swipe_desc">模拟滑动手势</string>
+    <string name="help_tool_find_element_name">find_element</string>
+    <string name="help_tool_find_element_desc">查找UI元素</string>
+
+    <!-- Help Screen - FFmpeg Tools -->
+    <string name="help_tool_ffmpeg_execute_name">ffmpeg_execute</string>
+    <string name="help_tool_ffmpeg_execute_desc">执行FFmpeg命令</string>
+    <string name="help_tool_ffmpeg_info_name">ffmpeg_info</string>
+    <string name="help_tool_ffmpeg_info_desc">获取FFmpeg信息</string>
+    <string name="help_tool_ffmpeg_convert_name">ffmpeg_convert</string>
+    <string name="help_tool_ffmpeg_convert_desc">转换视频文件</string>
+
+    <!-- Help Screen - Package Items -->
+    <string name="help_package_writer_name">writer</string>
+    <string name="help_package_writer_desc">高级文件编辑和读取功能，支持分段编辑、差异编辑、行号编辑以及高级文件读取操作</string>
+    <string name="help_package_various_search_name">various_search</string>
+    <string name="help_package_various_search_desc">多平台搜索功能，支持从必应、百度、搜狗、夸克等平台获取搜索结果</string>
+    <string name="help_package_daily_life_name">daily_life</string>
+    <string name="help_package_daily_life_desc">日常生活工具集合，包括日期时间查询、设备状态监测、天气搜索、提醒闹钟设置、短信电话通讯等</string>
+    <string name="help_package_super_admin_name">super_admin</string>
+    <string name="help_package_super_admin_desc">超级管理员工具集，提供终端命令和Shell操作的高级功能</string>
+    <string name="help_package_code_runner_name">code_runner</string>
+    <string name="help_package_code_runner_desc">多语言代码执行能力，支持JavaScript、Python、Ruby、Go和Rust脚本的运行</string>
+    <string name="help_package_baidu_map_name">baidu_map</string>
+    <string name="help_package_baidu_map_desc">百度地图相关功能</string>
+    <string name="help_package_qq_intelligent_name">qq_intelligent</string>
+    <string name="help_package_qq_intelligent_desc">QQ智能助手，通过UI自动化技术实现QQ应用交互</string>
+    <string name="help_package_time_name">time</string>
+    <string name="help_package_time_desc">提供时间相关功能</string>
+    <string name="help_package_various_output_name">various_output</string>
+    <string name="help_package_various_output_desc">提供图片输出功能</string>
+
+    <!-- Help Screen - Guide Items -->
+    <string name="help_guide_tool_invocation_title">工具调用</string>
+    <string name="help_guide_tool_invocation_content">AI会根据需要自动调用合适的工具。每次只能调用一个工具，工具执行完成后会自动将结果返回给AI。</string>
+    <string name="help_guide_extension_activation_title">扩展包激活</string>
+    <string name="help_guide_extension_activation_content">使用扩展包中的工具前，需要先激活该包。AI会自动使用use_package工具来激活所需的包。</string>
+    <string name="help_guide_permission_management_title">权限管理</string>
+    <string name="help_guide_permission_management_content">部分工具（如系统操作、UI自动化等）需要用户授予相应权限才能使用。</string>
+    <string name="help_guide_planning_mode_title">计划模式</string>
+    <string name="help_guide_planning_mode_content">在处理复杂任务时，可以使用计划模式，AI会将任务拆分为多个步骤并依次执行。</string>
+
+    <!-- ShizukuDemoScreen Strings -->
+    <string name="shizuku_demo_wizard_icon_cd">设置向导图标</string>
+    <string name="shizuku_demo_termux_welcome">欢迎使用Termux配置工具\n点击对应按钮开始配置</string>
+    <string name="shizuku_demo_executing_prefix">正在执行: </string>
+    <string name="shizuku_demo_ellipsis">...</string>
+    <string name="shizuku_demo_docs_link_failed">无法打开文档链接</string>
 </resources>
