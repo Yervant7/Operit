@@ -485,11 +485,10 @@ fun AIChatScreen(
                 if (isFloatingMode && !canDrawOverlays.value) {
                         actualViewModel.toggleFloatingMode()
                         android.widget.Toast.makeText(
-                                        context,
-                                        stringResource(R.string.overlay_permission_denied_toast),
-                                        android.widget.Toast.LENGTH_SHORT
-                                )
-                                .show()
+                                context,
+                                context.getString(R.string.overlay_permission_denied_toast),
+                                android.widget.Toast.LENGTH_SHORT
+                        ).show()
                 }
         }
 }

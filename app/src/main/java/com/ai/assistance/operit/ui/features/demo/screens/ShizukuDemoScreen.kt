@@ -168,7 +168,7 @@ fun ShizukuDemoScreen(
                                     )
                             context.startActivity(intent)
                         } catch (e: Exception) {
-                            Toast.makeText(context, stringResource(R.string.shizuku_demo_permission_failed), Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, context.getString(R.string.shizuku_demo_permission_failed), Toast.LENGTH_SHORT).show()
                         }
                     }
                 },
@@ -181,7 +181,7 @@ fun ShizukuDemoScreen(
                                 )
                         context.startActivity(intent)
                     } catch (e: Exception) {
-                        Toast.makeText(context, stringResource(R.string.shizuku_demo_overlay_failed), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, context.getString(R.string.shizuku_demo_overlay_failed), Toast.LENGTH_SHORT).show()
                     }
                 },
                 onBatteryOptimizationClick = {
@@ -192,7 +192,7 @@ fun ShizukuDemoScreen(
                                 }
                         context.startActivity(intent)
                     } catch (e: Exception) {
-                        Toast.makeText(context, stringResource(R.string.shizuku_demo_battery_failed), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, context.getString(R.string.shizuku_demo_battery_failed), Toast.LENGTH_SHORT).show()
                     }
                 },
                 onAccessibilityClick = {
@@ -200,7 +200,7 @@ fun ShizukuDemoScreen(
                         val intent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
                         context.startActivity(intent)
                     } catch (e: Exception) {
-                        Toast.makeText(context, stringResource(R.string.shizuku_demo_accessibility_failed), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, context.getString(R.string.shizuku_demo_accessibility_failed), Toast.LENGTH_SHORT).show()
                     }
                 },
                 onLocationPermissionClick = {
@@ -343,7 +343,7 @@ fun ShizukuDemoScreen(
                                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl))
                                 context.startActivity(intent)
                             } catch (e: Exception) {
-                                Toast.makeText(context, stringResource(R.string.shizuku_demo_root_tutorial_failed), Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, context.getString(R.string.shizuku_demo_root_tutorial_failed), Toast.LENGTH_SHORT).show()
                             }
                         }
                 )
@@ -472,12 +472,12 @@ fun ShizukuDemoScreen(
                                     context.startActivity(intent)
                                 } else {
                                     Log.e("ShizukuDemo", "无法找到Shizuku应用")
-                                    Toast.makeText(context, stringResource(R.string.shizuku_demo_shizuku_not_found), Toast.LENGTH_SHORT)
+                                    Toast.makeText(context, context.getString(R.string.shizuku_demo_shizuku_not_found), Toast.LENGTH_SHORT)
                                             .show()
                                 }
                             } catch (e: Exception) {
                                 Log.e("ShizukuDemo", "无法启动Shizuku应用", e)
-                                Toast.makeText(context, stringResource(R.string.shizuku_demo_shizuku_launch_failed), Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, context.getString(R.string.shizuku_demo_shizuku_launch_failed), Toast.LENGTH_SHORT).show()
                             }
                         },
                         onWatchTutorial = {
@@ -486,7 +486,7 @@ fun ShizukuDemoScreen(
                                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl))
                                 context.startActivity(intent)
                             } catch (e: Exception) {
-                                Toast.makeText(context, stringResource(R.string.shizuku_demo_docs_link_failed), Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, context.getString(R.string.shizuku_demo_docs_link_failed), Toast.LENGTH_SHORT).show()
                             }
                         },
                         onRequestPermission = {
@@ -771,7 +771,7 @@ fun ShizukuDemoScreen(
                 if (!viewModel.isTermuxConfiguring.value) {
                     viewModel.hideResultDialog()
                     // 重置输出文本，准备下一次操作
-                    viewModel.updateOutputText(stringResource(R.string.shizuku_demo_termux_welcome))
+                    viewModel.updateOutputText(context.getString(R.string.shizuku_demo_termux_welcome))
                 }
             },
             title = uiState.resultDialogTitle.value,

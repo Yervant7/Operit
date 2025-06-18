@@ -66,7 +66,7 @@
     <string name="about_developer">开发者: &lt;a href="https://github.com/AAswordman"&gt;AAswordman&lt;/a&gt;</string>
     <string name="about_contact">联系我们: aaswordsman@foxmail.com</string>
     <string name="about_website">&lt;a href="https://github.com/AAswordman/Operit"&gt;GitHub: https://github.com/AAswordman/Operit&lt;/a&gt;</string>
-    <string name="about_copyright">© 2023-2024 Operit. 保留所有权利。</string>
+    <string name="about_copyright">© 2023–2024 Operit. 保留所有权利。</string>
     
     <!-- AI Chat Screen -->
     <string name="configure_ai">配置 AI 接口</string>
@@ -126,20 +126,20 @@
     <string name="plugin_loading_status_title">插件加载状态</string>
     <string name="plugin_loading_success">加载成功</string>
     <string name="plugin_loading_failed">加载失败</string>
-    <string name="plugin_loading">正在加载...</string>
+    <string name="plugin_loading">正在加载…</string>
     <string name="plugin_loading_timeout">加载超时，您可以点击右上角的\"跳过\"继续</string>
-    <string name="plugin_initializing">正在初始化...</string>
-    <string name="plugin_starting_server">正在启动MCP服务器...</string>
-    <string name="plugin_configuring_server">配置MCP服务器...</string>
+    <string name="plugin_initializing">正在初始化…</string>
+    <string name="plugin_starting_server">正在启动MCP服务器…</string>
+    <string name="plugin_configuring_server">配置MCP服务器…</string>
     <string name="plugin_server_failed">MCP服务器启动失败，您可以点击右上角的\"跳过\"继续</string>
     <string name="plugin_server_success">MCP服务器启动成功</string>
-    <string name="plugin_server_initializing">MCP服务器初始化中...</string>
-    <string name="plugin_loading_list">正在加载插件列表...</string>
+    <string name="plugin_server_initializing">MCP服务器初始化中…</string>
+    <string name="plugin_loading_list">正在加载插件列表…</string>
     <string name="plugin_no_plugins">没有检测到已安装的插件</string>
-    <string name="plugin_preparing">正在准备 %1$d 个插件...</string>
-    <string name="plugin_checking_env">正在检查环境...</string>
-    <string name="plugin_starting_plugins">正在准备启动插件...</string>
-    <string name="plugin_starting_number">正在启动插件 (%1$d/%2$d)%3$s...</string>
+    <string name="plugin_preparing">正在准备 %1$d 个插件…</string>
+    <string name="plugin_checking_env">正在检查环境…</string>
+    <string name="plugin_starting_plugins">正在准备启动插件…</string>
+    <string name="plugin_starting_number">正在启动插件 (%1$d/%2$d)%3$s…</string>
     <string name="plugin_disabled_suffix"> (插件已禁用)</string>
     <string name="plugin_termux_not_running">Termux未运行，无法启动插件</string>
     <string name="plugin_termux_not_authorized">Termux未授权，请先授权Termux再使用插件</string>
@@ -210,12 +210,12 @@
     
     <!-- AI Tools -->
     <string name="ai_tools_enabled">已启用AI工具功能</string>
-    <string name="tools_extracting">正在检测工具调用...</string>
+    <string name="tools_extracting">正在检测工具调用…</string>
     <string name="tools_executing">正在执行工具: %1$s</string>
     <string name="tools_completed">工具执行完成</string>
     <string name="tools_failed">工具执行失败: %1$s</string>
     <string name="tool_result">工具执行结果</string>
-    <string name="processing_input">正在处理输入...</string>
+    <string name="processing_input">正在处理输入…</string>
     <string name="references">参考资料:</string>
     <string name="tool_weather">天气查询</string>
     <string name="tool_calculator">计算器</string>
@@ -304,7 +304,7 @@
     <string name="select_example">选择一个示例命令:</string>
     <string name="execute_command">执行命令</string>
     <string name="result_placeholder">结果将显示在这里</string>
-    <string name="executing">执行中...</string>
+    <string name="executing">执行中…</string>
     <string name="command_success">命令执行成功:\n%1$s</string>
     <string name="command_failure">命令执行失败 (退出码: %1$d):\n%2$s</string>
     <string name="start_shizuku_first">请先启动Shizuku服务</string>
@@ -324,7 +324,7 @@
     <string name="user_preferences_settings">用户偏好详细设置</string>
     <string name="custom_description">自定义介绍</string>
     <string name="preferences_hint">请输入您的个人介绍（最多100字）</string>
-    <string name="enter_preferences">在此输入您的个人介绍...</string>
+    <string name="enter_preferences">在此输入您的个人介绍…</string>
     <string name="save">保存</string>
     <string name="cancel">取消</string>
     <string name="edit_preferences">编辑偏好介绍</string>
@@ -378,7 +378,7 @@
     <string name="script_code">脚本代码</string>
     <string name="script_parameters">脚本参数</string>
     <string name="execution_result">执行结果</string>
-    <string name="script_executing">正在执行脚本...</string>
+    <string name="script_executing">正在执行脚本…</string>
     <string name="script_execution_success">脚本执行成功</string>
     <string name="script_execution_error">脚本执行错误: %1$s</string>
     <string name="missing_parameters">缺少必要参数: %1$s</string>
@@ -403,7 +403,7 @@
     <string name="change_language">更改语言</string>
     <string name="select_language">选择语言</string>
     <string name="language_info">更改语言后，应用将自动重启以应用新的语言设置</string>
-    <string name="language_changing">正在切换语言...</string>
+    <string name="language_changing">正在切换语言…</string>
     <string name="language_changed">语言已更改，正在重启应用</string>
     
     <!-- 用户协议界面 -->
@@ -425,7 +425,7 @@
     
     <!-- Search Dialog -->
     <string name="search_files">搜索文件</string>
-    <string name="searching">正在搜索...</string>
+    <string name="searching">正在搜索…</string>
     <string name="case_sensitive">区分大小写</string>
     <string name="use_wildcard">使用通配符</string>
     <string name="search">搜索</string>
@@ -441,7 +441,7 @@
     <string name="share">分享</string>
     <string name="rename">重命名</string>
     <string name="delete">删除</string>
-    <string name="loading_files">正在加载文件...</string>
+    <string name="loading_files">正在加载文件…</string>
 
     <!-- ErrorDialog -->
     <string name="request_failed">请求失败</string>
@@ -604,7 +604,7 @@
     <string name="termux_wizard_open">打开Termux</string>
     
     <!-- ShizukuDemoScreen -->
-    <string name="shizuku_demo_loading">正在加载应用状态...</string>
+    <string name="shizuku_demo_loading">正在加载应用状态…</string>
     <string name="shizuku_demo_permission_failed">无法打开权限设置</string>
     <string name="shizuku_demo_overlay_failed">无法打开悬浮窗设置</string>
     <string name="shizuku_demo_battery_failed">无法打开电池优化设置</string>
@@ -750,7 +750,7 @@
     <string name="about_update_dialog_versions_info">"当前版本: %1$s\n新版本: %2$s"</string>
     <string name="about_update_dialog_release_notes_title">更新内容:</string>
     <string name="about_update_dialog_up_to_date">"当前已是最新版本: %1$s"</string>
-    <string name="about_update_dialog_checking_message">检查更新中...</string>
+    <string name="about_update_dialog_checking_message">检查更新中…</string>
     <string name="about_update_dialog_button_download">去下载</string>
     <string name="about_update_dialog_button_ok">确定</string>
     <string name="about_update_dialog_button_close">关闭</string>
@@ -765,7 +765,7 @@
     <string name="about_info_developer">开发者</string>
     <string name="about_info_contact">联系方式</string>
     <string name="about_info_project_address">项目地址</string>
-    <string name="about_button_checking_for_updates">检查中...</string>
+    <string name="about_button_checking_for_updates">检查中…</string>
     <string name="check_for_updates_button_text">检查更新</string>
 
     <!-- Help Screen Strings -->
@@ -917,8 +917,18 @@
     <string name="shizuku_demo_wizard_icon_cd">设置向导图标</string>
     <string name="shizuku_demo_termux_welcome">欢迎使用Termux配置工具\n点击对应按钮开始配置</string>
     <string name="shizuku_demo_executing_prefix">正在执行: </string>
-    <string name="shizuku_demo_ellipsis">...</string>
+    <string name="shizuku_demo_ellipsis">…</string>
     <string name="shizuku_demo_docs_link_failed">无法打开文档链接</string>
+
+    <string name="problem_library_deleted_snackbar">问题已删除</string>
+    <string name="problem_library_changes_saved_snackbar">更改已保存</string>
+    <string name="problem_library_loading">加载中…</string>
+    <string name="problem_library_clear_search_cd">清除搜索</string>
+    <string name="problem_library_empty_message">当您通过 AI 聊天解决问题时，系统会自动记录并添加至本问题库。</string>
+    <string name="problem_library_no_summary">无摘要信息</string>
+    <string name="problem_library_original_query_title">原始问题</string>
+    <string name="problem_library_record_time_prefix">记录时间：</string>
+    <string name="problem_library_no_tools_used">未使用工具</string>
 
     <!-- New Strings -->
     <string name="response">Response</string>
@@ -926,14 +936,11 @@
     <string name="remove_attachment">Remove attachment</string>
     <string name="hide_history">隐藏历史</string>
     <string name="show_history">显示历史</string>
-    <string name="close_floating_window">关闭悬浮窗</string>
     <string name="open_floating_window">开启悬浮窗</string>
     <string name="switch_to_chat">切换到聊天</string>
     <string name="open_webpage">打开网页</string>
-    <string name="chat_input_placeholder">请输入您的问题...</string>
+    <string name="chat_input_placeholder">请输入您的问题…</string>
     <string name="add_attachment">添加附件</string>
-    <string name="cancel">取消</string>
-    <string name="send">发送</string>
     <string name="insert_attachment">插入附件</string>
     <string name="delete_attachment">删除附件</string>
     <string name="select_export_platform">选择导出平台</string>
@@ -967,8 +974,8 @@
     <string name="back">返回</string>
     <string name="collapse_sidebar">收起侧边栏</string>
     <string name="expand_sidebar">展开侧边栏</string>
-    <string name="loading_ellipsis">...</string>
-    <string name="loading_text">正在加载...</string>
+    <string name="loading_ellipsis">…</string>
+    <string name="loading_text">正在加载…</string>
     <string name="network_status_content_description">网络状态</string>
     <string name="drawer_header_ai_features">AI功能</string>
     <string name="drawer_header_tools">工具</string>
@@ -999,9 +1006,9 @@
 
     <!-- FFmpegToolboxScreen.kt Strings -->
     <string name="ffmpeg_title_command">FFmpeg命令</string>
-    <string name="ffmpeg_placeholder_command">输入FFmpeg命令，不需要包含'ffmpeg'前缀</string>
+    <string name="ffmpeg_placeholder_command">输入FFmpeg命令，不需要包含\'ffmpeg\'前缀</string>
     <string name="ffmpeg_button_templates">命令模板</string>
-    <string name="ffmpeg_button_executing">执行中...</string>
+    <string name="ffmpeg_button_executing">执行中…</string>
     <string name="ffmpeg_button_execute">执行命令</string>
     <string name="ffmpeg_toast_enter_command">请输入命令</string>
     <string name="ffmpeg_error_execution_failed">执行失败: %1$s</string>
@@ -1019,7 +1026,7 @@
 -r: 帧率</string>
     <string name="ffmpeg_button_more_info">查看更多信息</string>
     <string name="ffmpeg_error_info_failed">获取信息失败: %1$s</string>
-    <string name="ffmpeg_progress_executing">正在执行命令，请稍候...</string>
+    <string name="ffmpeg_progress_executing">正在执行命令，请稍候…</string>
     <string name="ffmpeg_result_success">命令执行成功</string>
     <string name="ffmpeg_result_failed">命令执行失败</string>
     <string name="ffmpeg_result_command">命令: %1$s</string>
@@ -1055,7 +1062,7 @@
     <string name="logcat_status_stopped">已停止</string>
     <string name="logcat_status_search_query">搜索:%1$s</string>
     <string name="logcat_status_filter_active">过滤:%1$s</string>
-    <string name="logcat_empty_waiting">等待日志...</string>
+    <string name="logcat_empty_waiting">等待日志…</string>
     <string name="logcat_empty_start_prompt">点击开始捕获</string>
     <string name="logcat_scroll_to_bottom_desc">滚动到底部</string>
     <string name="logcat_error_dialog_title">错误</string>
@@ -1090,7 +1097,7 @@
     <string name="filter_category_custom">自定义过滤</string>
 
     <!-- MCPScreen.kt, PackageManagerScreen.kt, PackageDetailsDialog.kt Strings -->
-    <string name="mcp_search_placeholder">搜索插件...</string>
+    <string name="mcp_search_placeholder">搜索插件…</string>
     <string name="search_content_description">搜索</string>
     <string name="clear_search_content_description">清除</string>
     <string name="sort_options_content_description">排序选项</string>
@@ -1106,16 +1113,16 @@
     <string name="mcp_experimental_warning">该功能为实验性，目前还不太稳定。如有疑问，后续将会在Github跟进文档。</string>
     <string name="warning_content_description">警告</string>
     <string name="loading_content_description">Loading</string>
-    <string name="loading_text_alt">加载中...</string>
+    <string name="loading_text_alt">加载中…</string>
     <string name="warning_emoji">⚠️</string>
     <string name="mcp_no_plugins_found_search">未找到匹配插件</string>
     <string name="mcp_no_plugins_available">无可用插件</string>
     <string name="refresh_button">刷新</string>
     <string name="refreshing_content_description">Refreshing</string>
-    <string name="refreshing_text">刷新中...</string>
+    <string name="refreshing_text">刷新中…</string>
     <string name="pull_to_refresh">下拉刷新</string>
-    <string name="loading_more_items_progress">加载更多内容中...</string>
-    <string name="loading_more_items_auto">自动加载更多中...</string>
+    <string name="loading_more_items_progress">加载更多内容中…</string>
+    <string name="loading_more_items_auto">自动加载更多中…</string>
     <string name="load_more">加载更多</string>
     <string name="retry_button">重试</string>
     <string name="mcp_server_default_name">MCP 服务器</string>

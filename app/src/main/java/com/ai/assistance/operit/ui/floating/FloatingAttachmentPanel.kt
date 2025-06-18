@@ -56,27 +56,31 @@ fun FloatingAttachmentPanel(
     onAttachProblemMemory: () -> Unit,
     onDismiss: () -> Unit
 ) {
+    val floatingAttachScreen = stringResource(R.string.floating_attach_screen)
+    val floatingAttachNotifications = stringResource(R.string.floating_attach_notifications)
+    val floatingAttachLocation = stringResource(R.string.floating_attach_location)
+    val floatingAttachProblem = stringResource(R.string.floating_attach_problem)
     // 定义附件选项列表，便于使用LazyRow
     val attachmentOptions = remember {
         listOf(
             AttachmentOptionData(
                 icon = Icons.Default.ScreenshotMonitor,
-                label = stringResource(R.string.floating_attach_screen),
+                label = floatingAttachScreen,
                 onClick = onAttachScreenContent
             ),
             AttachmentOptionData(
                 icon = Icons.Default.Notifications,
-                label = stringResource(R.string.floating_attach_notifications),
+                label = floatingAttachNotifications,
                 onClick = onAttachNotifications
             ),
             AttachmentOptionData(
                 icon = Icons.Default.LocationOn,
-                label = stringResource(R.string.floating_attach_location),
+                label = floatingAttachLocation,
                 onClick = onAttachLocation
             ),
             AttachmentOptionData(
                 icon = Icons.Default.Memory,
-                label = stringResource(R.string.floating_attach_problem),
+                label = floatingAttachProblem,
                 onClick = onAttachProblemMemory
             )
         )

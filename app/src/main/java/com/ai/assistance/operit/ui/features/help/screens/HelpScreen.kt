@@ -47,7 +47,7 @@ fun HelpScreen(onBackPressed: () -> Unit = {}) {
                         modifier = Modifier.padding(bottom = 8.dp)
                 )
                 Text(
-                        text = stringResource(R.string.help_screen_intro_text),
+                        text = stringResource(R.string.help_screen_description),
                         style = MaterialTheme.typography.bodyMedium
                 )
             }
@@ -81,7 +81,7 @@ fun HelpScreen(onBackPressed: () -> Unit = {}) {
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                            text = stringResource(R.string.help_screen_github_docs_link),
+                            text = stringResource(R.string.help_screen_github_docs),
                             style = MaterialTheme.typography.titleSmall,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onSecondaryContainer
@@ -110,7 +110,7 @@ fun HelpScreen(onBackPressed: () -> Unit = {}) {
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                            text = stringResource(R.string.help_screen_website_link),
+                            text = stringResource(R.string.help_screen_official_website),
                             style = MaterialTheme.typography.titleSmall,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onTertiaryContainer

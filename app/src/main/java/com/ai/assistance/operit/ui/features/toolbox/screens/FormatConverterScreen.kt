@@ -25,10 +25,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.ai.assistance.operit.R
 import com.ai.assistance.operit.core.tools.AIToolHandler
 import com.ai.assistance.operit.core.tools.FileFormatConversionsResultData
 import com.ai.assistance.operit.data.model.AITool
@@ -227,10 +229,10 @@ fun FormatConverterScreen(navController: NavController) {
                             val extension = origFileName.substringAfterLast('.', "").lowercase()
                             selectedCategory = getCategoryFromExtension(extension)
                         } else {
-                            error = stringResource(R.string.format_converter_error_get_path)
+                            error = context.getString(R.string.format_converter_error_get_path)
                         }
                     } catch (e: Exception) {
-                        error = stringResource(R.string.format_converter_error_select_file, e.message ?: "")
+                        error = context.getString(R.string.format_converter_error_select_file, e.message ?: "")
                     }
                 }
             }
@@ -265,7 +267,7 @@ fun FormatConverterScreen(navController: NavController) {
     // 执行文件转换
     fun convertFile() {
         if (selectedFile == null || selectedTargetFormat == null || originalFileName == null) {
-            error = stringResource(R.string.format_converter_error_selection_incomplete)
+            error = context.getString(R.string.format_converter_error_selection_incomplete)
             return
         }
 
@@ -314,11 +316,11 @@ fun FormatConverterScreen(navController: NavController) {
                 if (result.success) {
                     convertedFile = targetPath
                 } else {
-                    error = result.error ?: stringResource(R.string.format_converter_error_conversion_failed)
+                    error = result.error ?: context.getString(R.string.format_converter_error_conversion_failed)
                 }
             } catch (e: Exception) {
                 Log.e("FormatConverterScreen", "Error converting file", e)
-                error = stringResource(R.string.error_generic_format, e.message ?: "")
+                error = context.getString(R.string.error_generic_format, e.message ?: "")
             } finally {
                 isLoading = false
                 // 无论成功还是失败，都清理缓存文件
@@ -339,11 +341,11 @@ fun FormatConverterScreen(navController: NavController) {
                 val result = toolHandler.executeTool(openFileTool)
 
                 if (!result.success) {
-                    error = stringResource(R.string.format_converter_error_open_file, result.error ?: "")
+                    error = context.getString(R.string.format_converter_error_open_file, result.error ?: "")
                 }
             } catch (e: Exception) {
                 Log.e("FormatConverterScreen", "Error opening file", e)
-                error = stringResource(R.string.error_generic_format, e.message ?: "")
+                error = context.getString(R.string.error_generic_format, e.message ?: "")
             }
         }
     }
@@ -730,6 +732,7 @@ fun getCategoryIcon(category: String): ImageVector {
 }
 
 /** 获取类别显示名称 */
+@Composable
 fun getCategoryDisplayName(category: String): String { // This is called by CategoryItem, which is Composable
     return getCategoryDisplayNameComposable(category = category)
 }

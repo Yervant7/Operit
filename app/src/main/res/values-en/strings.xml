@@ -66,7 +66,7 @@
     <string name="about_developer">Developer: &lt;a href="https://github.com/AAswordman"&gt;AAswordman&lt;/a&gt;</string>
     <string name="about_contact">Contact Us: aaswordsman@foxmail.com</string>
     <string name="about_website">&lt;a href="https://github.com/AAswordman/Operit"&gt;GitHub: https://github.com/AAswordman/Operit&lt;/a&gt;</string>
-    <string name="about_copyright">© 2023-2024 Operit. All Rights Reserved.</string>
+    <string name="about_copyright">© 2023–2024 Operit. All Rights Reserved.</string>
     
     <!-- AI Chat Screen -->
     <string name="configure_ai">Configure AI API</string>
@@ -126,20 +126,20 @@
     <string name="plugin_loading_status_title">Plugin Loading Status</string>
     <string name="plugin_loading_success">Loading successful</string>
     <string name="plugin_loading_failed">Loading failed</string>
-    <string name="plugin_loading">Loading...</string>
+    <string name="plugin_loading">Loading…</string>
     <string name="plugin_loading_timeout">Loading timeout, you can click \"Skip\" in the top right corner to continue</string>
-    <string name="plugin_initializing">Initializing...</string>
-    <string name="plugin_starting_server">Starting MCP server...</string>
-    <string name="plugin_configuring_server">Configuring MCP server...</string>
+    <string name="plugin_initializing">Initializing…</string>
+    <string name="plugin_starting_server">Starting MCP server…</string>
+    <string name="plugin_configuring_server">Configuring MCP server…</string>
     <string name="plugin_server_failed">MCP server failed to start, you can click \"Skip\" in the top right corner to continue</string>
     <string name="plugin_server_success">MCP server started successfully</string>
-    <string name="plugin_server_initializing">MCP server initializing...</string>
-    <string name="plugin_loading_list">Loading plugin list...</string>
+    <string name="plugin_server_initializing">MCP server initializing…</string>
+    <string name="plugin_loading_list">Loading plugin list…</string>
     <string name="plugin_no_plugins">No installed plugins detected</string>
-    <string name="plugin_preparing">Preparing %1$d plugins...</string>
-    <string name="plugin_checking_env">Checking environment...</string>
-    <string name="plugin_starting_plugins">Preparing to start plugins...</string>
-    <string name="plugin_starting_number">Starting plugin (%1$d/%2$d)%3$s...</string>
+    <string name="plugin_preparing">Preparing %1$d plugins…</string>
+    <string name="plugin_checking_env">Checking environment…</string>
+    <string name="plugin_starting_plugins">Preparing to start plugins…</string>
+    <string name="plugin_starting_number">Starting plugin (%1$d/%2$d)%3$s…</string>
     <string name="plugin_disabled_suffix"> (plugin disabled)</string>
     <string name="plugin_termux_not_running">Termux is not running, unable to start plugins</string>
     <string name="plugin_termux_not_authorized">Termux is not authorized, please authorize Termux before using plugins</string>
@@ -210,12 +210,12 @@
     
     <!-- AI Tools -->
     <string name="ai_tools_enabled">AI Tools Enabled</string>
-    <string name="tools_extracting">Detecting tool calls...</string>
+    <string name="tools_extracting">Detecting tool calls…</string>
     <string name="tools_executing">Executing tool: %1$s</string>
     <string name="tools_completed">Tool execution completed</string>
     <string name="tools_failed">Tool execution failed: %1$s</string>
     <string name="tool_result">Tool Execution Result</string>
-    <string name="processing_input">Processing input...</string>
+    <string name="processing_input">Processing input…</string>
     <string name="references">References:</string>
     <string name="tool_weather">Weather Query</string>
     <string name="tool_calculator">Calculator</string>
@@ -304,7 +304,7 @@
     <string name="select_example">Select an example command:</string>
     <string name="execute_command">Execute Command</string>
     <string name="result_placeholder">Results will be displayed here</string>
-    <string name="executing">Executing...</string>
+    <string name="executing">Executing…</string>
     <string name="command_success">Command executed successfully:\n%1$s</string>
     <string name="command_failure">Command execution failed (exit code: %1$d):\n%2$s</string>
     <string name="start_shizuku_first">Please start Shizuku service first</string>
@@ -324,7 +324,7 @@
     <string name="user_preferences_settings">Detailed User Preferences</string>
     <string name="custom_description">Custom Introduction</string>
     <string name="preferences_hint">Enter your personal introduction (max 100 characters)</string>
-    <string name="enter_preferences">Enter your personal introduction here...</string>
+    <string name="enter_preferences">Enter your personal introduction here…</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="edit_preferences">Edit Preferences</string>
@@ -378,7 +378,7 @@
     <string name="script_code">Script Code</string>
     <string name="script_parameters">Script Parameters</string>
     <string name="execution_result">Execution Result</string>
-    <string name="script_executing">Executing script...</string>
+    <string name="script_executing">Executing script…</string>
     <string name="script_execution_success">Script execution successful</string>
     <string name="script_execution_error">Script execution error: %1$s</string>
     <string name="missing_parameters">Missing required parameters: %1$s</string>
@@ -403,7 +403,7 @@
     <string name="change_language">Change Language</string>
     <string name="select_language">Select Language</string>
     <string name="language_info">The app will restart automatically to apply the new language setting</string>
-    <string name="language_changing">Changing language...</string>
+    <string name="language_changing">Changing language…</string>
     <string name="language_changed">Language changed, restarting app</string>
     
     <!-- User Agreement Screen -->
@@ -425,7 +425,7 @@
     
     <!-- Search Dialog -->
     <string name="search_files">Search Files</string>
-    <string name="searching">Searching...</string>
+    <string name="searching">Searching…</string>
     <string name="case_sensitive">Case sensitive</string>
     <string name="use_wildcard">Use wildcard</string>
     <string name="search">Search</string>
@@ -441,7 +441,7 @@
     <string name="share">Share</string>
     <string name="rename">Rename</string>
     <string name="delete">Delete</string>
-    <string name="loading_files">Loading files...</string>
+    <string name="loading_files">Loading files…</string>
 
     <!-- ErrorDialog -->
     <string name="request_failed">Request Failed</string>
@@ -604,7 +604,7 @@
     <string name="termux_wizard_open">Open Termux</string>
     
     <!-- ShizukuDemoScreen -->
-    <string name="shizuku_demo_loading">Loading application status...</string>
+    <string name="shizuku_demo_loading">Loading application status…</string>
     <string name="shizuku_demo_permission_failed">Cannot open permission settings</string>
     <string name="shizuku_demo_overlay_failed">Cannot open overlay settings</string>
     <string name="shizuku_demo_battery_failed">Cannot open battery optimization settings</string>
@@ -700,6 +700,9 @@
     <string name="ask">Ask</string>
     <string name="ai_planning_mode">AI Planning:</string>
     <string name="disabled">Disabled</string>
+    <string name="plugin_loading_skipped">Plugin loading skipped</string>
+    <string name="press_again_to_exit">Press again to exit</string>
+    <string name="update_available_notification">New version %1$s is available. Go to the "About" page for details.</string>
     <string name="dialog_title_prompt">Prompt</string>
     <string name="dialog_button_ok">OK</string>
     <string name="overlay_permission_denied_toast">Overlay permission denied, floating window mode closed</string>
@@ -747,7 +750,7 @@
     <string name="about_update_dialog_versions_info">"Current version: %1$s\nNew version: %2$s"</string>
     <string name="about_update_dialog_release_notes_title">Release Notes:</string>
     <string name="about_update_dialog_up_to_date">"Already up to date: %1$s"</string>
-    <string name="about_update_dialog_checking_message">Checking for updates...</string>
+    <string name="about_update_dialog_checking_message">Checking for updates…</string>
     <string name="about_update_dialog_button_download">Download</string>
     <string name="about_update_dialog_button_ok">OK</string>
     <string name="about_update_dialog_button_close">Close</string>
@@ -762,27 +765,27 @@
     <string name="about_info_developer">Developer</string>
     <string name="about_info_contact">Contact</string>
     <string name="about_info_project_address">Project Address</string>
-    <string name="about_button_checking_for_updates">Checking...</string>
+    <string name="about_button_checking_for_updates">Checking…</string>
     <string name="check_for_updates_button_text">Check for Updates</string>
 
     <!-- Help Screen Strings -->
     <string name="help_screen_title">Operit AI Tool Guide</string>
-    <string name="help_screen_subtitle">Operit AI Built-in Powerful Toolset</string>
-    <string name="help_screen_intro_text">Below are the built-in tools and extension packages that AI can call. Using these tools can help AI complete various tasks more efficiently.</string>
+    <string name="help_screen_subtitle">Operit AI\'s powerful built-in toolset</string>
+    <string name="help_screen_description">Here are the built-in tools and extensions that the AI can use. These tools help the AI complete various tasks more efficiently.</string>
     <string name="help_screen_github_cd">GitHub</string>
-    <string name="help_screen_github_docs_link">GitHub Docs</string>
-    <string name="help_screen_website_cd">Official Website</string>
-    <string name="help_screen_website_link">Official Website</string>
+    <string name="help_screen_github_docs">GitHub Docs</string>
+    <string name="help_screen_website_cd">Website</string>
+    <string name="help_screen_official_website">Official Website</string>
     <string name="help_screen_core_tools_title">Built-in Core Tools</string>
     <string name="help_screen_basic_tools_category_title">Basic Tools</string>
-    <string name="help_screen_filesystem_tools_category_title">File System Tools</string>
+    <string name="help_screen_filesystem_tools_category_title">Filesystem Tools</string>
     <string name="help_screen_http_tools_category_title">HTTP Tools</string>
-    <string name="help_screen_system_op_tools_category_title">System Operation Tools</string>
+    <string name="help_screen_system_tools_category_title">System Tools</string>
     <string name="help_screen_ui_auto_tools_category_title">UI Automation Tools</string>
     <string name="help_screen_ffmpeg_tools_category_title">FFmpeg Tools</string>
-    <string name="help_screen_available_packages_title">Available Extension Packages</string>
+    <string name="help_screen_extensions_title">Available Extensions</string>
     <string name="help_screen_usage_guide_title">Tool Usage Guide</string>
-    <string name="help_screen_need_more_help">For more help, please contact us</string>
+    <string name="help_screen_contact_us_prompt">For more help, please contact us</string>
     <string name="help_screen_collapse_cd">Collapse</string>
     <string name="help_screen_expand_cd">Expand</string>
 
@@ -914,13 +917,13 @@
     <string name="shizuku_demo_wizard_icon_cd">Setup Wizard Icon</string>
     <string name="shizuku_demo_termux_welcome">Welcome to Termux Configuration Tool\nClick the corresponding button to start configuration</string>
     <string name="shizuku_demo_executing_prefix">Executing: </string>
-    <string name="shizuku_demo_ellipsis">...</string>
+    <string name="shizuku_demo_ellipsis">…</string>
     <string name="shizuku_demo_docs_link_failed">Cannot open documentation link</string>
 
     <!-- ProblemLibraryScreen Strings -->
     <string name="problem_library_deleted_snackbar">Problem deleted</string>
     <string name="problem_library_changes_saved_snackbar">Changes saved</string>
-    <string name="problem_library_loading">Loading...</string>
+    <string name="problem_library_loading">Loading…</string>
     <string name="problem_library_clear_search_cd">Clear search</string>
     <string name="problem_library_empty_message">When you solve problems via AI chat, the system will automatically record and add them to this problem library.</string>
     <string name="problem_library_no_summary">No summary information</string>
@@ -934,11 +937,10 @@
     <string name="remove_attachment">Remove attachment</string>
     <string name="hide_history">Hide History</string>
     <string name="show_history">Show History</string>
-    <string name="close_floating_window">Close Floating Window</string>
     <string name="open_floating_window">Open Floating Window</string>
     <string name="switch_to_chat">Switch to Chat</string>
     <string name="open_webpage">Open Webpage</string>
-    <string name="chat_input_placeholder">Please enter your question...</string>
+    <string name="chat_input_placeholder">Please enter your question…</string>
     <string name="add_attachment">Add Attachment</string>
     <!-- <string name="cancel">Cancel</string> Already exists -->
     <!-- <string name="send">Send</string> Already exists -->
@@ -975,8 +977,8 @@
     <string name="back">Back</string>
     <string name="collapse_sidebar">Collapse sidebar</string>
     <string name="expand_sidebar">Expand sidebar</string>
-    <string name="loading_ellipsis">...</string>
-    <string name="loading_text">Loading...</string>
+    <string name="loading_ellipsis">…</string>
+    <string name="loading_text">Loading…</string>
     <string name="network_status_content_description">Network status</string>
     <string name="drawer_header_ai_features">AI Features</string>
     <string name="drawer_header_tools">Tools</string>
@@ -1008,9 +1010,9 @@
 
     <!-- FFmpegToolboxScreen.kt -->
     <string name="ffmpeg_title_command">FFmpeg Command</string>
-    <string name="ffmpeg_placeholder_command">Enter FFmpeg command, no 'ffmpeg' prefix needed</string>
+    <string name="ffmpeg_placeholder_command">Enter FFmpeg command, no \'ffmpeg\' prefix needed</string>
     <string name="ffmpeg_button_templates">Command Templates</string>
-    <string name="ffmpeg_button_executing">Executing...</string>
+    <string name="ffmpeg_button_executing">Executing…</string>
     <string name="ffmpeg_button_execute">Execute Command</string>
     <string name="ffmpeg_toast_enter_command">Please enter a command</string>
     <string name="ffmpeg_error_execution_failed">Execution failed: %1$s</string>
@@ -1028,7 +1030,7 @@
 -r: frame rate</string>
     <string name="ffmpeg_button_more_info">View More Info</string>
     <string name="ffmpeg_error_info_failed">Failed to get info: %1$s</string>
-    <string name="ffmpeg_progress_executing">Executing command, please wait...</string>
+    <string name="ffmpeg_progress_executing">Executing command, please wait…</string>
     <string name="ffmpeg_result_success">Command executed successfully</string>
     <string name="ffmpeg_result_failed">Command execution failed</string>
     <string name="ffmpeg_result_command">Command: %1$s</string>
@@ -1072,7 +1074,7 @@
     <string name="logcat_status_stopped">Stopped</string>
     <string name="logcat_status_search_query">Search:%1$s</string>
     <string name="logcat_status_filter_active">Filter:%1$s</string>
-    <string name="logcat_empty_waiting">Waiting for logs...</string>
+    <string name="logcat_empty_waiting">Waiting for logs…</string>
     <string name="logcat_empty_start_prompt">Click to start capturing</string>
     <string name="logcat_scroll_to_bottom_desc">Scroll to bottom</string>
     <string name="logcat_error_dialog_title">Error</string>
@@ -1099,7 +1101,7 @@
     <string name="filter_category_custom">Custom Filter</string>
 
     <!-- MCPScreen.kt, PackageManagerScreen.kt, PackageDetailsDialog.kt Strings from Batch 4 (already in values/strings.xml but adding here for completeness of this batch's translations) -->
-    <string name="mcp_search_placeholder">Search plugins...</string>
+    <string name="mcp_search_placeholder">Search plugins…</string>
     <string name="search_content_description">Search</string>
     <string name="clear_search_content_description">Clear</string>
     <string name="sort_options_content_description">Sort options</string>
@@ -1115,16 +1117,16 @@
     <string name="mcp_experimental_warning">This feature is experimental and currently unstable. Documentation will follow on Github if you have questions.</string>
     <string name="warning_content_description">Warning</string>
     <string name="loading_content_description">Loading</string>
-    <string name="loading_text_alt">Loading...</string>
+    <string name="loading_text_alt">Loading…</string>
     <string name="warning_emoji">⚠️</string>
     <string name="mcp_no_plugins_found_search">No matching plugins found</string>
     <string name="mcp_no_plugins_available">No plugins available</string>
     <string name="refresh_button">Refresh</string>
     <string name="refreshing_content_description">Refreshing</string>
-    <string name="refreshing_text">Refreshing...</string>
+    <string name="refreshing_text">Refreshing…</string>
     <string name="pull_to_refresh">Pull to refresh</string>
-    <string name="loading_more_items_progress">Loading more items...</string>
-    <string name="loading_more_items_auto">Auto-loading more...</string>
+    <string name="loading_more_items_progress">Loading more items…</string>
+    <string name="loading_more_items_auto">Auto-loading more…</string>
     <string name="load_more">Load More</string>
     <string name="retry_button">Retry</string>
     <string name="mcp_server_default_name">MCP Server</string>

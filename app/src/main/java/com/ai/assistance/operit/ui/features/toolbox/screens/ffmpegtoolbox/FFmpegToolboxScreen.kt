@@ -136,7 +136,7 @@ fun FFmpegToolboxScreen(navController: NavController) {
                                     toolName = "ffmpeg_execute",
                                     success = false,
                                     result = com.ai.assistance.operit.core.tools.StringResultData(""),
-                                    error = stringResource(R.string.ffmpeg_error_execution_failed, e.message ?: "")
+                                    error = context.getString(R.string.ffmpeg_error_execution_failed, e.message ?: "")
                                 )
                             } finally {
                                 isProcessing = false
@@ -234,7 +234,7 @@ fun FFmpegToolboxScreen(navController: NavController) {
                                     toolName = "ffmpeg_info",
                                     success = false,
                                     result = com.ai.assistance.operit.core.tools.StringResultData(""),
-                                    error = stringResource(R.string.ffmpeg_error_info_failed, e.message ?: "")
+                                    error = context.getString(R.string.ffmpeg_error_info_failed, e.message ?: "")
                                 )
                             }
                         }
