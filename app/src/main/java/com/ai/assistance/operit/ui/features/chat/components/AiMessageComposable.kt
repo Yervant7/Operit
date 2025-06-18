@@ -8,6 +8,7 @@ import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.ai.assistance.operit.data.model.ChatMessage
 import com.ai.assistance.operit.ui.common.markdown.StreamMarkdownRenderer
@@ -39,7 +40,7 @@ fun AiMessageComposable(
     // 移除Card背景，使用直接的Column布局
     Column(modifier = Modifier.fillMaxWidth().padding(vertical = 2.dp)) {
         Text(
-                text = "Response",
+                text = stringResource(com.ai.assistance.operit.R.string.response),
                 style = MaterialTheme.typography.labelSmall,
                 color = textColor.copy(alpha = 0.7f),
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 8.dp)

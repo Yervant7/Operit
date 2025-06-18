@@ -26,11 +26,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import com.ai.assistance.operit.R
 import com.ai.assistance.operit.core.subpack.ApkEditor
 import com.ai.assistance.operit.core.subpack.ExeEditor
 import com.ai.assistance.operit.core.subpack.KeyStoreHelper
@@ -63,7 +65,7 @@ fun ExportPlatformDialog(
                     horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                        "选择导出平台",
+                        stringResource(R.string.select_export_platform),
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center
@@ -77,7 +79,7 @@ fun ExportPlatformDialog(
                 ) {
                     PlatformButton(
                             icon = Icons.Default.Android,
-                            text = "Android",
+                            text = stringResource(R.string.android),
                             onClick = {
                                 onSelectAndroid()
                                 onDismiss()
@@ -86,7 +88,7 @@ fun ExportPlatformDialog(
 
                     PlatformButton(
                             icon = Icons.Default.DesktopWindows,
-                            text = "Windows",
+                            text = stringResource(R.string.windows),
                             onClick = {
                                 onSelectWindows()
                                 onDismiss()
@@ -99,7 +101,7 @@ fun ExportPlatformDialog(
                 TextButton(
                         onClick = onDismiss,
                         modifier = Modifier.align(Alignment.CenterHorizontally)
-                ) { Text("取消") }
+                ) { Text(stringResource(R.string.cancel)) }
             }
         }
     }
@@ -173,7 +175,7 @@ fun AndroidExportDialog(
         ) {
             Column(modifier = Modifier.padding(20.dp), horizontalAlignment = Alignment.Start) {
                 Text(
-                        "配置Android应用",
+                        stringResource(R.string.configure_android_app),
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold
                 )
@@ -183,8 +185,8 @@ fun AndroidExportDialog(
                 OutlinedTextField(
                         value = packageName,
                         onValueChange = { packageName = it },
-                        label = { Text("包名") },
-                        placeholder = { Text("com.example.webproject") },
+                        label = { Text(stringResource(R.string.package_name)) },
+                        placeholder = { Text(stringResource(R.string.default_package_name)) },
                         modifier = Modifier.fillMaxWidth(),
                         singleLine = true
                 )
@@ -194,8 +196,8 @@ fun AndroidExportDialog(
                 OutlinedTextField(
                         value = appName,
                         onValueChange = { appName = it },
-                        label = { Text("应用名称") },
-                        placeholder = { Text("Web Project") },
+                        label = { Text(stringResource(R.string.app_name_label)) },
+                        placeholder = { Text(stringResource(R.string.default_app_name)) },
                         modifier = Modifier.fillMaxWidth(),
                         singleLine = true
                 )
@@ -208,7 +210,7 @@ fun AndroidExportDialog(
                         verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                            "应用图标: ",
+                            stringResource(R.string.app_icon_label),
                             style = MaterialTheme.typography.bodyMedium,
                             modifier = Modifier.padding(end = 8.dp)
                     )
@@ -246,7 +248,7 @@ fun AndroidExportDialog(
                             if (bitmap != null) {
                                 Image(
                                         bitmap = bitmap,
-                                        contentDescription = "应用图标",
+                                        contentDescription = stringResource(R.string.app_icon),
                                         contentScale = ContentScale.Fit,
                                         modifier =
                                                 Modifier.size(70.dp).clip(RoundedCornerShape(4.dp))
@@ -254,14 +256,14 @@ fun AndroidExportDialog(
                             } else {
                                 Icon(
                                         imageVector = Icons.Default.Warning,
-                                        contentDescription = "加载失败",
+                                        contentDescription = stringResource(R.string.loading_failed),
                                         tint = MaterialTheme.colorScheme.error
                                 )
                             }
                         } else {
                             Icon(
                                     imageVector = Icons.Default.Image,
-                                    contentDescription = "选择图标",
+                                    contentDescription = stringResource(R.string.select_icon),
                                     tint = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
@@ -269,7 +271,7 @@ fun AndroidExportDialog(
 
                     // 提示文字
                     Text(
-                            "点击选择图标",
+                            stringResource(R.string.tap_to_select_icon),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             modifier = Modifier.padding(start = 8.dp)
@@ -280,14 +282,14 @@ fun AndroidExportDialog(
 
                 // 按钮区域
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                    TextButton(onClick = onDismiss) { Text("取消") }
+                    TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) }
 
                     Spacer(modifier = Modifier.width(8.dp))
 
                     Button(
                             onClick = { onExport(packageName, appName, iconUri) },
                             enabled = packageName.isNotEmpty() && appName.isNotEmpty()
-                    ) { Text("导出") }
+                    ) { Text(stringResource(R.string.export)) }
                 }
             }
         }
@@ -322,7 +324,7 @@ fun WindowsExportDialog(
         ) {
             Column(modifier = Modifier.padding(20.dp), horizontalAlignment = Alignment.Start) {
                 Text(
-                        "配置Windows应用",
+                        stringResource(R.string.configure_windows_app),
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.Bold
                 )
@@ -332,8 +334,8 @@ fun WindowsExportDialog(
                 OutlinedTextField(
                         value = appName,
                         onValueChange = { appName = it },
-                        label = { Text("应用名称") },
-                        placeholder = { Text("Web Project") },
+                        label = { Text(stringResource(R.string.app_name_label)) },
+                        placeholder = { Text(stringResource(R.string.default_app_name)) },
                         modifier = Modifier.fillMaxWidth(),
                         singleLine = true
                 )
@@ -346,7 +348,7 @@ fun WindowsExportDialog(
                         verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                            "应用图标: ",
+                            stringResource(R.string.app_icon_label),
                             style = MaterialTheme.typography.bodyMedium,
                             modifier = Modifier.padding(end = 8.dp)
                     )
@@ -384,7 +386,7 @@ fun WindowsExportDialog(
                             if (bitmap != null) {
                                 Image(
                                         bitmap = bitmap,
-                                        contentDescription = "应用图标",
+                                        contentDescription = stringResource(R.string.app_icon),
                                         contentScale = ContentScale.Fit,
                                         modifier =
                                                 Modifier.size(70.dp).clip(RoundedCornerShape(4.dp))
@@ -392,14 +394,14 @@ fun WindowsExportDialog(
                             } else {
                                 Icon(
                                         imageVector = Icons.Default.Warning,
-                                        contentDescription = "加载失败",
+                                        contentDescription = stringResource(R.string.loading_failed),
                                         tint = MaterialTheme.colorScheme.error
                                 )
                             }
                         } else {
                             Icon(
                                     imageVector = Icons.Default.Image,
-                                    contentDescription = "选择图标",
+                                    contentDescription = stringResource(R.string.select_icon),
                                     tint = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
@@ -407,7 +409,7 @@ fun WindowsExportDialog(
 
                     // 提示文字
                     Text(
-                            "点击选择图标",
+                            stringResource(R.string.tap_to_select_icon),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             modifier = Modifier.padding(start = 8.dp)
@@ -418,14 +420,14 @@ fun WindowsExportDialog(
 
                 // 按钮区域
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                    TextButton(onClick = onDismiss) { Text("取消") }
+                    TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) }
 
                     Spacer(modifier = Modifier.width(8.dp))
 
                     Button(
                             onClick = { onExport(appName, iconUri) },
                             enabled = appName.isNotEmpty()
-                    ) { Text("导出") }
+                    ) { Text(stringResource(R.string.export)) }
                 }
             }
         }
@@ -449,7 +451,7 @@ fun ExportProgressDialog(progress: Float, status: String, onCancel: () -> Unit) 
                     horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                        "导出中",
+                        stringResource(R.string.exporting),
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold
                 )
@@ -468,7 +470,7 @@ fun ExportProgressDialog(progress: Float, status: String, onCancel: () -> Unit) 
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                TextButton(onClick = onCancel) { Text("取消") }
+                TextButton(onClick = onCancel) { Text(stringResource(R.string.cancel)) }
             }
         }
     }
@@ -497,7 +499,7 @@ fun ExportCompleteDialog(
                     horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                        if (success) "导出成功" else "导出失败",
+                        if (success) stringResource(R.string.export_successful) else stringResource(R.string.export_failed),
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold,
                         color = if (success) Color.Green else Color.Red
@@ -506,7 +508,7 @@ fun ExportCompleteDialog(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 if (success && filePath != null) {
-                    Text("文件已保存到:", style = MaterialTheme.typography.bodyMedium)
+                    Text(stringResource(R.string.file_saved_to), style = MaterialTheme.typography.bodyMedium)
 
                     Text(
                             filePath,
@@ -544,12 +546,12 @@ fun ExportCompleteDialog(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center
                 ) {
-                    TextButton(onClick = onDismiss) { Text("关闭") }
+                    TextButton(onClick = onDismiss) { Text(stringResource(R.string.close)) }
 
                     if (success && filePath != null) {
                         Spacer(modifier = Modifier.width(8.dp))
 
-                        Button(onClick = { onOpenFile(filePath) }) { Text("打开文件") }
+                        Button(onClick = { onOpenFile(filePath) }) { Text(stringResource(R.string.open_file)) }
                     }
                 }
             }

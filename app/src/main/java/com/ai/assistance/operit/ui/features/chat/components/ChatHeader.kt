@@ -13,7 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.ai.assistance.operit.R
 
 @Composable
 fun ChatHeader(
@@ -47,7 +49,7 @@ fun ChatHeader(
                         ) {
                                 Icon(
                                         imageVector = Icons.Default.History,
-                                        contentDescription = if (showChatHistorySelector) "隐藏历史" else "显示历史",
+                                        contentDescription = if (showChatHistorySelector) stringResource(R.string.hide_history) else stringResource(R.string.show_history),
                                         tint = if (showChatHistorySelector)
                                             MaterialTheme.colorScheme.primary
                                         else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
@@ -75,7 +77,7 @@ fun ChatHeader(
                                 Icon(
                                         imageVector = Icons.Default.PictureInPicture,
                                         contentDescription =
-                                                if (isFloatingMode) "关闭悬浮窗" else "开启悬浮窗",
+                                                if (isFloatingMode) stringResource(R.string.close_floating_window) else stringResource(R.string.open_floating_window),
                                         tint =
                                                 if (isFloatingMode)
                                                         MaterialTheme.colorScheme.primary
@@ -104,7 +106,7 @@ fun ChatHeader(
                         ) {
                                 Icon(
                                         imageVector = Icons.Default.Web,
-                                        contentDescription = if (showWebView) "切换到聊天" else "打开网页",
+                                        contentDescription = if (showWebView) stringResource(R.string.switch_to_chat) else stringResource(R.string.open_webpage),
                                         tint = if (showWebView)
                                             MaterialTheme.colorScheme.primary
                                         else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),

@@ -26,11 +26,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ai.assistance.operit.R
 import com.ai.assistance.operit.data.model.AttachmentInfo
 import com.ai.assistance.operit.ui.common.animations.SimpleAnimatedVisibility
 
@@ -177,7 +179,7 @@ fun ChatInputSection(
                                         value = userMessage,
                                         onValueChange = onUserMessageChange,
                                         placeholder = {
-                                                Text("请输入您的问题...", style = modernTextStyle)
+                                                Text(stringResource(R.string.chat_input_placeholder), style = modernTextStyle)
                                         },
                                         modifier = Modifier.weight(1f).heightIn(min = 38.dp),
                                         textStyle = modernTextStyle,
@@ -225,7 +227,7 @@ fun ChatInputSection(
                                 ) {
                                         Icon(
                                                 imageVector = Icons.Default.Add,
-                                                contentDescription = "添加附件",
+                                                contentDescription = stringResource(R.string.add_attachment),
                                                 tint =
                                                         if (showAttachmentPanel)
                                                                 MaterialTheme.colorScheme.onPrimary
@@ -292,7 +294,7 @@ fun ChatInputSection(
                                                         if (isProcessing) Icons.Default.Close
                                                         else Icons.Default.Send,
                                                 contentDescription =
-                                                        if (isProcessing) "取消" else "发送",
+                                                        if (isProcessing) stringResource(R.string.cancel) else stringResource(R.string.send),
                                                 tint =
                                                         if (isProcessing)
                                                                 MaterialTheme.colorScheme.onError
@@ -369,7 +371,7 @@ fun AttachmentChip(attachmentInfo: AttachmentInfo, onRemove: () -> Unit, onInser
                         IconButton(onClick = onInsert, modifier = Modifier.size(14.dp)) {
                                 Icon(
                                         imageVector = Icons.Default.Add,
-                                        contentDescription = "插入附件",
+                                        contentDescription = stringResource(R.string.insert_attachment),
                                         modifier = Modifier.size(10.dp),
                                         tint = MaterialTheme.colorScheme.primary
                                 )
@@ -380,7 +382,7 @@ fun AttachmentChip(attachmentInfo: AttachmentInfo, onRemove: () -> Unit, onInser
                         IconButton(onClick = onRemove, modifier = Modifier.size(14.dp)) {
                                 Icon(
                                         imageVector = Icons.Default.Close,
-                                        contentDescription = "删除附件",
+                                        contentDescription = stringResource(R.string.delete_attachment),
                                         modifier = Modifier.size(10.dp),
                                         tint = MaterialTheme.colorScheme.onSurfaceVariant
                                 )

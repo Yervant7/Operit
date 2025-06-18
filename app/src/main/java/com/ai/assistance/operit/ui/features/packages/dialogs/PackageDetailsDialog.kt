@@ -12,8 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.ai.assistance.operit.R
 import com.ai.assistance.operit.core.tools.PackageTool
 import com.ai.assistance.operit.core.tools.packTool.PackageManager
 
@@ -39,7 +41,7 @@ fun PackageDetailsDialog(
 
     AlertDialog(
             onDismissRequest = onDismiss,
-            title = { Text(text = "Package Details") },
+            title = { Text(text = stringResource(R.string.package_details_title)) },
             text = {
                 Column {
                     Text(
@@ -51,7 +53,7 @@ fun PackageDetailsDialog(
                     Text(text = packageDescription, style = MaterialTheme.typography.bodyMedium)
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(
-                            text = "Package Tools",
+                            text = stringResource(R.string.package_tools_header),
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold
                     )
@@ -59,7 +61,7 @@ fun PackageDetailsDialog(
 
                     if (toolPackage?.tools == null || toolPackage.tools.isEmpty()) {
                         Text(
-                                text = "No tools found in this package",
+                                text = stringResource(R.string.no_tools_in_package),
                                 style = MaterialTheme.typography.bodyMedium
                         )
                     } else {
@@ -96,7 +98,7 @@ fun PackageDetailsDialog(
                                             IconButton(onClick = { onRunScript(tool) }) {
                                                 Icon(
                                                         imageVector = Icons.Default.PlayArrow,
-                                                        contentDescription = "Run Script",
+                                                        contentDescription = stringResource(R.string.run_script_content_description),
                                                         tint = MaterialTheme.colorScheme.primary
                                                 )
                                             }
@@ -105,17 +107,17 @@ fun PackageDetailsDialog(
                                         if (tool.parameters.isNotEmpty()) {
                                             Spacer(modifier = Modifier.height(8.dp))
                                             Text(
-                                                    text = "Script Parameters:" + ":",
+                                                    text = stringResource(R.string.script_parameters_header),
                                                     style = MaterialTheme.typography.bodyMedium,
                                                     fontWeight = FontWeight.Bold
                                             )
                                             for (param in tool.parameters) {
                                                 val requiredText =
-                                                        if (param.required) "(required)"
-                                                        else "(optional)"
+                                                        if (param.required) stringResource(R.string.parameter_required)
+                                                        else stringResource(R.string.parameter_optional)
                                                 Text(
                                                         text =
-                                                                "• ${param.name} $requiredText: ${param.description}",
+                                                                stringResource(R.string.parameter_display_format, param.name, requiredText, param.description),
                                                         style = MaterialTheme.typography.bodySmall
                                                 )
                                             }
@@ -127,6 +129,6 @@ fun PackageDetailsDialog(
                     }
                 }
             },
-            confirmButton = { TextButton(onClick = onDismiss) { Text(text = "OK") } }
+            confirmButton = { TextButton(onClick = onDismiss) { Text(text = stringResource(R.string.ok_button)) } }
     )
 }

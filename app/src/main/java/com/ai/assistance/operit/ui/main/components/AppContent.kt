@@ -113,7 +113,7 @@ fun AppContent(
                         // 显示当前聊天标题（仅在AI对话页面)
                         if (currentScreen is Screen.AiChat && currentChatTitle.isNotBlank()) {
                             Text(
-                                    text = "- $currentChatTitle",
+                                    text = stringResource(R.string.chat_title_prefix, currentChatTitle),
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8f),
                                     maxLines = 1,
@@ -154,9 +154,9 @@ fun AppContent(
                                 else 
                                     Icons.Default.Menu,
                                 contentDescription = when {
-                                    currentScreen.isSecondaryScreen -> "返回"
+                                    currentScreen.isSecondaryScreen -> stringResource(R.string.back)
                                     useTabletLayout -> 
-                                        if (isTabletSidebarExpanded) "收起侧边栏" else "展开侧边栏"
+                                        if (isTabletSidebarExpanded) stringResource(R.string.collapse_sidebar) else stringResource(R.string.expand_sidebar)
                                     else -> stringResource(id = R.string.menu)
                                 },
                                 tint = MaterialTheme.colorScheme.onPrimary
@@ -193,7 +193,7 @@ fun AppContent(
                                     contentAlignment = Alignment.Center
                             ) {
                                 Text(
-                                        text = "...",
+                                        text = stringResource(R.string.loading_ellipsis),
                                         style = MaterialTheme.typography.titleMedium,
                                         fontWeight = FontWeight.Bold
                                 )
@@ -202,7 +202,7 @@ fun AppContent(
 
                         Spacer(modifier = Modifier.height(16.dp))
                         Text(
-                                text = "正在加载...",
+                                text = stringResource(R.string.loading_text),
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.onSurface
                         )

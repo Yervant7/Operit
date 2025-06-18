@@ -78,7 +78,7 @@
     <string name="ai_chat">Chat IA</string>
     <string name="start_chat_hint">Comience una nueva conversación. Ingrese su pregunta para obtener una respuesta de la IA.</string>
     <string name="enter_question">Ingrese su pregunta</string>
-    <string name="send">Enviar</string>
+    <!-- <string name="send">Enviar</string> Already exists -->
     <string name="ai_response_placeholder">Esta es una respuesta simulada de la IA. En una aplicación real, aquí se integraría una llamada API de IA real.</string>
     <string name="network_unavailable">Conexión de red no disponible, verifique la configuración de su red</string>
     <string name="network_status">Estado de la red: %1$s</string>
@@ -89,7 +89,7 @@
     <string name="disable_floating_mode">Deshabilitar modo de ventana flotante</string>
     <string name="overlay_permission_required">Se requiere permiso de superposición</string>
     <string name="overlay_permission_denied">Permiso de superposición no otorgado, no se puede mostrar la ventana flotante</string>
-    <string name="close_floating_window">Cerrar ventana flotante</string>
+    <!-- <string name="close_floating_window">Cerrar ventana flotante</string> Already exists -->
 
     <!-- AI Tools -->
     <string name="ai_tools_enabled">Función de herramientas AI habilitada</string>
@@ -164,7 +164,7 @@
     <string name="preferences_hint">Ingrese su descripción personal (máximo 100 caracteres)</string>
     <string name="enter_preferences">Ingrese aquí su descripción personal...</string>
     <string name="save">Guardar</string>
-    <string name="cancel">Cancelar</string>
+    <!-- <string name="cancel">Cancelar</string> Already exists -->
     <string name="edit_preferences">Editar descripción de preferencias</string>
     <string name="reset_preferences">Restablecer preferencias</string>
     <string name="set_preferences">Establecer preferencias</string>
@@ -523,4 +523,248 @@
     <string name="problem_library_original_query_title">Consulta Original</string>
     <string name="problem_library_record_time_prefix">Hora de registro: </string>
     <string name="problem_library_no_tools_used">No se utilizaron herramientas</string>
+
+    <!-- New Spanish Translations -->
+    <string name="response">Respuesta</string>
+    <string name="attachments_count">Adjuntos (%1$d)</string>
+    <string name="remove_attachment">Eliminar adjunto</string>
+    <string name="hide_history">Ocultar historial</string>
+    <string name="show_history">Mostrar historial</string>
+    <!-- <string name="close_floating_window">Cerrar ventana flotante</string> Already exists -->
+    <string name="open_floating_window">Abrir ventana flotante</string>
+    <string name="switch_to_chat">Cambiar a Chat</string>
+    <string name="open_webpage">Abrir página web</string>
+    <string name="chat_input_placeholder">Por favor ingrese su pregunta...</string>
+    <string name="add_attachment">Añadir adjunto</string>
+    <!-- <string name="cancel">Cancelar</string> Already exists -->
+    <!-- <string name="send">Enviar</string> Already exists -->
+    <string name="insert_attachment">Insertar Adjunto</string>
+    <string name="delete_attachment">Eliminar Adjunto</string>
+    <string name="select_export_platform">Seleccionar plataforma de exportación</string>
+    <string name="android">Android</string>
+    <string name="windows">Windows</string>
+    <string name="configure_android_app">Configurar aplicación de Android</string>
+    <string name="package_name">Nombre del paquete</string>
+    <string name="default_package_name">com.example.webproject</string>
+    <string name="app_name_label">Nombre de la aplicación</string>
+    <string name="default_app_name">Web Project</string>
+    <string name="app_icon_label">Icono de la aplicación:</string>
+    <string name="app_icon">Icono de la aplicación</string>
+    <string name="loading_failed">Carga fallida</string>
+    <string name="select_icon">Seleccionar icono</string>
+    <string name="tap_to_select_icon">Toque para seleccionar el icono</string>
+    <string name="export">Exportar</string>
+    <string name="configure_windows_app">Configurar aplicación de Windows</string>
+    <string name="exporting">Exportando</string>
+    <string name="export_successful">Exportación exitosa</string>
+    <string name="export_failed">Error de exportación</string>
+    <string name="file_saved_to">Archivo guardado en:</string>
+    <string name="close">Cerrar</string>
+    <string name="open_file">Abrir archivo</string>
+
+    <!-- Currency and Image Editing -->
+    <string name="currency_format_cny">¥%.2f</string>
+    <string name="background_image_preview">Vista previa de la imagen de fondo</string>
+    <string name="recrop_image">Recortar imagen de nuevo</string>
+
+    <!-- General UI & Navigation Batch 3 -->
+    <string name="back">Volver</string>
+    <string name="collapse_sidebar">Contraer barra lateral</string>
+    <string name="expand_sidebar">Expandir barra lateral</string>
+    <string name="loading_ellipsis">...</string>
+    <string name="loading_text">Cargando...</string>
+    <string name="network_status_content_description">Estado de la red</string>
+    <string name="drawer_header_ai_features">Funciones de IA</string>
+    <string name="drawer_header_tools">Herramientas</string>
+    <string name="drawer_header_system">Sistema</string>
+    <string name="chat_title_prefix">- %1$s</string>
+
+    <!-- Batch 5 Spanish Translations -->
+    <!-- FormatConverterScreen.kt -->
+    <string name="format_converter_error_get_path">No se pudo obtener la ruta del archivo</string>
+    <string name="format_converter_error_select_file">Error al seleccionar el archivo: %1$s</string>
+    <string name="file_category_document">Documento</string>
+    <string name="file_category_image">Imagen</string>
+    <string name="file_category_audio">Audio</string>
+    <string name="file_category_video">Video</string>
+    <string name="file_category_archive">Archivo</string>
+    <string name="format_converter_error_selection_incomplete">Por favor complete todas las selecciones necesarias</string>
+    <string name="format_converter_error_conversion_failed">Falló la conversión, por favor intente de nuevo</string>
+    <!-- <string name="error_generic_format">Error: %1$s</string> Already defined in values-es/strings.xml from base, but with different name. Will use specific one for now. -->
+    <string name="format_converter_error_open_file">No se pudo abrir el archivo: %1$s</string>
+    <string name="format_converter_title_select_file">Seleccionar Archivo</string>
+    <string name="format_converter_button_select_file">Seleccionar Archivo</string>
+    <string name="format_converter_unknown_file">Archivo desconocido</string>
+    <string name="format_converter_title_select_format">Seleccionar Formato de Conversión</string>
+    <string name="format_converter_label_target_format">Formato de Destino</string>
+    <string name="format_converter_button_convert">Iniciar Conversión</string>
+    <string name="format_converter_icon_convert">Convertir</string>
+    <string name="format_converter_success_title">Conversión Exitosa</string>
+    <string name="format_converter_icon_open_file">Abrir archivo</string>
+
+    <!-- FFmpegToolboxScreen.kt -->
+    <string name="ffmpeg_title_command">Comando FFmpeg</string>
+    <string name="ffmpeg_placeholder_command">Ingrese el comando FFmpeg, sin el prefijo 'ffmpeg'</string>
+    <string name="ffmpeg_button_templates">Plantillas de Comandos</string>
+    <string name="ffmpeg_button_executing">Ejecutando...</string>
+    <string name="ffmpeg_button_execute">Ejecutar Comando</string>
+    <string name="ffmpeg_toast_enter_command">Por favor ingrese un comando</string>
+    <string name="ffmpeg_error_execution_failed">Falló la ejecución: %1$s</string>
+    <string name="ffmpeg_title_common_templates">Plantillas de Comandos Comunes</string>
+    <string name="ffmpeg_warning_template_paths">Nota: Al usar plantillas, reemplace input.mp4 y output.mp4 con las rutas de archivo reales</string>
+    <string name="ffmpeg_title_help">Ayuda de FFmpeg</string>
+    <string name="ffmpeg_help_intro">FFmpeg es una potente herramienta de procesamiento de audio/video. Puede ejecutar comandos FFmpeg directamente en esta pantalla.</string>
+    <string name="ffmpeg_help_common_params">Parámetros Comunes:</string>
+    <string name="ffmpeg_help_params_list">-i: archivo de entrada
+-c:v: códec de video
+-c:a: códec de audio
+-b:v: tasa de bits de video
+-b:a: tasa de bits de audio
+-s: resolución
+-r: velocidad de fotogramas</string>
+    <string name="ffmpeg_button_more_info">Ver Más Información</string>
+    <string name="ffmpeg_error_info_failed">Falló la obtención de información: %1$s</string>
+    <string name="ffmpeg_progress_executing">Ejecutando comando, por favor espere...</string>
+    <string name="ffmpeg_result_success">Comando ejecutado exitosamente</string>
+    <string name="ffmpeg_result_failed">Falló la ejecución del comando</string>
+    <string name="ffmpeg_result_command">Comando: %1$s</string>
+    <string name="ffmpeg_result_return_code">Código de Retorno: %1$s</string>
+    <string name="ffmpeg_result_duration">Tiempo de Procesamiento: %1$sms</string>
+    <string name="ffmpeg_result_output_label">Salida:</string>
+    <string name="ffmpeg_icon_use_template">Usar esta plantilla</string>
+    <string name="ffmpeg_template_video_to_mp4_name">Video a MP4</string>
+    <string name="ffmpeg_template_video_to_mp4_desc">Convertir video a formato MP4</string>
+    <string name="ffmpeg_template_video_compress_name">Comprimir Video</string>
+    <string name="ffmpeg_template_video_compress_desc">Comprimir tamaño de archivo de video</string>
+    <string name="ffmpeg_template_video_trim_name">Recortar Video</string>
+    <string name="ffmpeg_template_video_trim_desc">Recortar un segmento específico de un video</string>
+    <string name="ffmpeg_template_extract_audio_name">Extraer Audio</string>
+    <string name="ffmpeg_template_extract_audio_desc">Extraer audio de video</string>
+    <string name="ffmpeg_template_gif_creation_name">Crear GIF</string>
+    <string name="ffmpeg_template_gif_creation_desc">Convertir video a GIF</string>
+
+    <!-- LogcatScreen.kt & LogcatViewModel.kt & LogModels.kt -->
+    <string name="logcat_title">Visor de Logcat</string>
+    <string name="logcat_save_logs_desc">Guardar registros</string>
+    <string name="logcat_filter_options_desc">Opciones de filtro</string>
+    <string name="logcat_clear_logs_desc">Limpiar registros</string>
+    <string name="logcat_stop_capture_desc">Detener captura</string>
+    <string name="logcat_start_capture_desc">Iniciar captura</string>
+    <string name="logcat_search_placeholder">Buscar contenido del registro</string>
+    <string name="logcat_filter_placeholder">Condición de filtro (ej. *:E)</string>
+    <string name="logcat_filter_level_header">Nivel de Registro</string>
+    <string name="logcat_level_all">Todos</string>
+    <string name="log_level_verbose">Detallado</string>
+    <string name="log_level_debug">Depuración</string>
+    <string name="log_level_info">Información</string>
+    <string name="log_level_warning">Advertencia</string>
+    <string name="log_level_error">Error</string>
+    <string name="log_level_fatal">Fatal</string>
+    <string name="log_level_silent">Silencioso</string>
+    <string name="log_level_unknown">Desconocido</string>
+    <string name="logcat_auto_scroll">Desplazamiento automático</string>
+    <string name="logcat_preset_filters_header">Filtros Predefinidos</string>
+    <string name="logcat_status_capturing">Capturando</string>
+    <string name="logcat_status_stopped">Detenido</string>
+    <string name="logcat_status_search_query">Buscar:%1$s</string>
+    <string name="logcat_status_filter_active">Filtrar:%1$s</string>
+    <string name="logcat_empty_waiting">Esperando registros...</string>
+    <string name="logcat_empty_start_prompt">Clic para iniciar captura</string>
+    <string name="logcat_scroll_to_bottom_desc">Desplazar al final</string>
+    <string name="logcat_error_dialog_title">Error</string>
+    <string name="logcat_dialog_ok_button">Aceptar</string>
+    <string name="logcat_error_cannot_start">No se puede iniciar la captura de registros, verifique los permisos de la aplicación o intente un nivel de permiso más alto</string>
+    <string name="logcat_save_no_logs">No hay registros para guardar</string>
+    <string name="logcat_save_header_title">=== Registros de Operit ===</string>
+    <string name="logcat_save_header_date">Fecha: %1$s</string>
+    <string name="logcat_save_header_filter">Filtro: %1$s</string>
+    <string name="logcat_save_header_count">Entradas totales: %1$d</string>
+    <string name="logcat_save_header_separator">===================================</string>
+    <string name="logcat_save_error_create_file_permission">Error al guardar: No se puede crear el archivo, posiblemente un problema de permiso de almacenamiento</string>
+    <string name="logcat_save_error_output_stream">No se puede abrir el flujo de salida</string>
+    <string name="logcat_save_error_mediastore">Error al guardar en MediaStore: %1$s</string>
+    <string name="logcat_save_error_create_download_dir">No se puede crear el directorio de descargas</string>
+    <string name="logcat_save_error_create_operit_dir">No se puede crear el directorio operit</string>
+    <string name="logcat_save_error_file_empty">Falló la creación del archivo o el archivo está vacío</string>
+    <string name="logcat_save_error_filesystem">Error al guardar en el sistema de archivos: %1$s</string>
+    <string name="logcat_save_success">Registros guardados en: %1$s</string>
+    <string name="logcat_save_failed_generic">Error al guardar: %1$s</string>
+    <string name="filter_category_level">Nivel de Registro</string>
+    <string name="filter_category_system">Filtro de Sistema</string>
+    <string name="filter_category_app">Filtro de Aplicación</string>
+    <string name="filter_category_custom">Filtro Personalizado</string>
+
+    <!-- MCPScreen.kt, PackageManagerScreen.kt, PackageDetailsDialog.kt Strings from Batch 4 (already in values/strings.xml but adding here for completeness of this batch's translations) -->
+    <string name="mcp_search_placeholder">Buscar plugins...</string>
+    <string name="search_content_description">Buscar</string>
+    <string name="clear_search_content_description">Limpiar</string>
+    <string name="sort_options_content_description">Opciones de orden</string>
+    <string name="sort_by_header">Ordenar por</string>
+    <string name="sort_by_recommended">Recomendado</string>
+    <string name="sort_by_created_time">Fecha de creación</string>
+    <string name="sort_by_updated_time">Fecha de actualización</string>
+    <string name="sort_by_comments">Comentarios</string>
+    <string name="sort_by_reactions">Reacciones</string>
+    <string name="sort_direction_desc">↓</string>
+    <string name="sort_direction_asc">↑</string>
+    <string name="refresh_content_description">Actualizar</string>
+    <string name="mcp_experimental_warning">Esta función es experimental y actualmente inestable. La documentación seguirá en Github si tiene preguntas.</string>
+    <string name="warning_content_description">Advertencia</string>
+    <string name="loading_content_description">Cargando</string>
+    <string name="loading_text_alt">Cargando...</string>
+    <string name="warning_emoji">⚠️</string>
+    <string name="mcp_no_plugins_found_search">No se encontraron plugins coincidentes</string>
+    <string name="mcp_no_plugins_available">No hay plugins disponibles</string>
+    <string name="refresh_button">Actualizar</string>
+    <string name="refreshing_content_description">Actualizando</string>
+    <string name="refreshing_text">Actualizando...</string>
+    <string name="pull_to_refresh">Tirar para actualizar</string>
+    <string name="loading_more_items_progress">Cargando más elementos...</string>
+    <string name="loading_more_items_auto">Cargando más automáticamente...</string>
+    <string name="load_more">Cargar Más</string>
+    <string name="retry_button">Reintentar</string>
+    <string name="mcp_server_default_name">Servidor MCP</string>
+    <string name="uninstall_operation">Desinstalar</string>
+    <string name="install_operation">Instalar</string>
+    <string name="only_hjson_supported_snackbar">Solo se admiten archivos .hjson</string>
+    <string name="external_package_import_success_snackbar">Paquete externo importado exitosamente</string>
+    <string name="external_package_import_error_snackbar">Falló la importación del paquete externo: %1$s</string>
+    <string name="import_external_package_fab">Importar paquete externo</string>
+    <string name="tab_package_management">Gestión de Paquetes</string>
+    <string name="tab_mcp_marketplace">Mercado de Plugins</string>
+    <string name="tab_mcp_config">Configuración MCP</string>
+    <string name="no_packages_available_text">No hay paquetes disponibles</string>
+    <string name="package_import_failed_snackbar">Falló la importación del paquete</string>
+    <string name="package_remove_failed_snackbar">Falló la eliminación del paquete</string>
+    <string name="package_details_title">Detalles del Paquete</string>
+    <string name="package_tools_header">Herramientas del Paquete</string>
+    <string name="no_tools_in_package">No se encontraron herramientas en este paquete</string>
+    <string name="run_script_content_description">Ejecutar Script</string>
+    <string name="script_parameters_header">Parámetros del Script:</string>
+    <string name="parameter_required">(requerido)</string>
+    <string name="parameter_optional">(opcional)</string>
+    <string name="parameter_display_format">• %1$s %2$s: %3$s</string>
+    <string name="ok_button">Aceptar</string>
+
+    <!-- Batch 6 Spanish Translations -->
+    <string name="plugin_load_success_default">Carga exitosa</string>
+    <string name="plugin_load_failed_default">Error de carga</string>
+    <string name="floating_window_title">Asistente AI</string>
+    <string name="floating_window_send_message_title">Enviar Mensaje</string>
+    <string name="floating_window_toggle_attachments_close">Cerrar panel de adjuntos</string>
+    <string name="floating_window_toggle_attachments_open">Añadir adjunto</string>
+    <string name="floating_window_send_message_fab">Enviar mensaje</string>
+    <string name="floating_window_ball_chat_desc">Ventana de chat</string>
+    <string name="floating_window_minimize_desc">Minimizar</string>
+    <string name="message_item_copy_desc">Copiar este mensaje</string>
+    <string name="message_item_copied_toast">Mensaje copiado al portapapeles</string>
+    <string name="message_item_edit_desc">Editar este mensaje</string>
+    <string name="floating_attach_screen">Contenido de Pantalla</string>
+    <string name="floating_attach_notifications">Notificaciones Actuales</string>
+    <string name="floating_attach_location">Ubicación Actual</string>
+    <string name="floating_attach_problem">Memoria de Problemas</string>
+    <string name="floating_attach_note">Nota: Solo se admiten adjuntos especiales en la ventana flotante.
+Para añadir archivos o imágenes, por favor abra la interfaz de chat completa.</string>
 </resources>
+
+[end of app/src/main/res/values-es/strings.xml]

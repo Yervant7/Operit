@@ -399,7 +399,7 @@ fun SettingsScreen(
                                                                                 .settings_chat_input_token
                                                         ),
                                                 value = totalInputTokens.toString(),
-                                                cost = "¥${String.format("%.2f", chatInputCost)}"
+                                                cost = stringResource(R.string.currency_format_cny, chatInputCost)
                                         )
 
                                         TokenStatRow(
@@ -410,7 +410,7 @@ fun SettingsScreen(
                                                                                 .settings_chat_output_token
                                                         ),
                                                 value = totalOutputTokens.toString(),
-                                                cost = "¥${String.format("%.2f", chatOutputCost)}"
+                                                cost = stringResource(R.string.currency_format_cny, chatOutputCost)
                                         )
 
                                         TokenStatRow(
@@ -422,7 +422,7 @@ fun SettingsScreen(
                                                         ),
                                                 value = preferenceAnalysisInputTokens.toString(),
                                                 cost =
-                                                        "¥${String.format("%.2f", preferenceAnalysisInputCost)}"
+                                                        stringResource(R.string.currency_format_cny, preferenceAnalysisInputCost)
                                         )
 
                                         TokenStatRow(
@@ -434,7 +434,7 @@ fun SettingsScreen(
                                                         ),
                                                 value = preferenceAnalysisOutputTokens.toString(),
                                                 cost =
-                                                        "¥${String.format("%.2f", preferenceAnalysisOutputCost)}"
+                                                        stringResource(R.string.currency_format_cny, preferenceAnalysisOutputCost)
                                         )
 
                                         Divider(modifier = Modifier.padding(vertical = 8.dp))
@@ -450,7 +450,7 @@ fun SettingsScreen(
                                                                         preferenceAnalysisInputTokens +
                                                                         preferenceAnalysisOutputTokens)
                                                                 .toString(),
-                                                cost = "¥${String.format("%.2f", totalCost)}",
+                                                cost = stringResource(R.string.currency_format_cny, totalCost),
                                                 isHighlighted = true
                                         )
                                 }

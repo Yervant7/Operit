@@ -34,9 +34,11 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.consumePositionChange
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.ai.assistance.operit.R
 import com.ai.assistance.operit.data.mcp.InstallResult
 import com.ai.assistance.operit.data.mcp.MCPRepository
 import com.ai.assistance.operit.data.mcp.MCPRepositoryConstants.SortDirection
@@ -279,7 +281,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                                         onValueChange = { searchText.value = it },
                                         placeholder = {
                                                 Text(
-                                                        "搜索插件...",
+                                                        stringResource(R.string.mcp_search_placeholder),
                                                         style = MaterialTheme.typography.bodyMedium
                                                 )
                                         },
@@ -287,7 +289,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                                         leadingIcon = {
                                                 Icon(
                                                         imageVector = Icons.Default.Search,
-                                                        contentDescription = "搜索",
+                                                        contentDescription = stringResource(R.string.search_content_description),
                                                         tint =
                                                                 MaterialTheme.colorScheme
                                                                         .onSurfaceVariant
@@ -306,7 +308,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                                                                         imageVector =
                                                                                 Icons.Default
                                                                                         .CheckCircle,
-                                                                        contentDescription = "清除",
+                                                                        contentDescription = stringResource(R.string.clear_search_content_description),
                                                                         tint =
                                                                                 MaterialTheme
                                                                                         .colorScheme
@@ -348,7 +350,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                                         ) {
                                                 Icon(
                                                         imageVector = Icons.Default.Sort,
-                                                        contentDescription = "排序选项",
+                                                        contentDescription = stringResource(R.string.sort_options_content_description),
                                                         tint =
                                                                 MaterialTheme.colorScheme
                                                                         .onPrimaryContainer,
@@ -362,7 +364,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                                                 onDismissRequest = { showSortMenu = false }
                                         ) {
                                                 Text(
-                                                        text = "排序方式",
+                                                        text = stringResource(R.string.sort_by_header),
                                                         style = MaterialTheme.typography.titleSmall,
                                                         fontWeight = FontWeight.Bold,
                                                         modifier =
@@ -374,7 +376,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
 
                                                 // 排序选项
                                                 SortMenuItem(
-                                                        "推荐",
+                                                        stringResource(R.string.sort_by_recommended),
                                                         SortOptions.RECOMMENDED,
                                                         sortOption,
                                                         sortDirection
@@ -386,7 +388,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                                                 }
 
                                                 SortMenuItem(
-                                                        "创建时间",
+                                                        stringResource(R.string.sort_by_created_time),
                                                         SortOptions.CREATED,
                                                         sortOption,
                                                         sortDirection
@@ -398,7 +400,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                                                 }
 
                                                 SortMenuItem(
-                                                        "更新时间",
+                                                        stringResource(R.string.sort_by_updated_time),
                                                         SortOptions.UPDATED,
                                                         sortOption,
                                                         sortDirection
@@ -410,7 +412,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                                                 }
 
                                                 SortMenuItem(
-                                                        "评论数",
+                                                        stringResource(R.string.sort_by_comments),
                                                         SortOptions.COMMENTS,
                                                         sortOption,
                                                         sortDirection
@@ -422,7 +424,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                                                 }
 
                                                 SortMenuItem(
-                                                        "反应数",
+                                                        stringResource(R.string.sort_by_reactions),
                                                         SortOptions.REACTIONS,
                                                         sortOption,
                                                         sortDirection
@@ -460,7 +462,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                                 ) {
                                         Icon(
                                                 imageVector = Icons.Default.Refresh,
-                                                contentDescription = "刷新",
+                                                contentDescription = stringResource(R.string.refresh_content_description),
                                                 tint = MaterialTheme.colorScheme.onPrimaryContainer,
                                                 modifier = Modifier.size(18.dp)
                                         )
@@ -489,11 +491,11 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                         ) {
                                 Icon(
                                         imageVector = Icons.Default.Warning,
-                                        contentDescription = "警告",
+                                        contentDescription = stringResource(R.string.warning_content_description),
                                         tint = MaterialTheme.colorScheme.error
                                 )
                                 Text(
-                                        text = "该功能为实验性，目前还不太稳定。如有疑问，后续将会在Github跟进文档。",
+                                        text = stringResource(R.string.mcp_experimental_warning),
                                         style = MaterialTheme.typography.bodyMedium,
                                         color = MaterialTheme.colorScheme.onErrorContainer
                                 )
@@ -541,7 +543,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
 
                                                         Icon(
                                                                 imageVector = Icons.Default.Refresh,
-                                                                contentDescription = "Loading",
+                                                                contentDescription = stringResource(R.string.loading_content_description),
                                                                 modifier =
                                                                         Modifier.size(20.dp)
                                                                                 .graphicsLayer {
@@ -554,7 +556,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
 
                                         Spacer(modifier = Modifier.height(8.dp))
                                         Text(
-                                                text = "加载中...",
+                                                text = stringResource(R.string.loading_text_alt),
                                                 style = MaterialTheme.typography.bodyMedium,
                                                 color = MaterialTheme.colorScheme.onSurface
                                         )
@@ -567,7 +569,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                                         verticalArrangement = Arrangement.Center
                                 ) {
                                         Text(
-                                                text = "⚠️",
+                                                text = stringResource(R.string.warning_emoji),
                                                 style = MaterialTheme.typography.headlineLarge,
                                                 textAlign = TextAlign.Center,
                                                 color = MaterialTheme.colorScheme.error
@@ -576,8 +578,8 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                                         Text(
                                                 text =
                                                         if (debouncedSearchText.isNotBlank())
-                                                                "未找到匹配插件"
-                                                        else "无可用插件",
+                                                                stringResource(R.string.mcp_no_plugins_found_search)
+                                                        else stringResource(R.string.mcp_no_plugins_available),
                                                 style = MaterialTheme.typography.bodyLarge,
                                                 textAlign = TextAlign.Center,
                                                 color = MaterialTheme.colorScheme.onSurface
@@ -610,7 +612,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                                                         modifier = Modifier.size(16.dp)
                                                 )
                                                 Spacer(modifier = Modifier.width(4.dp))
-                                                Text("刷新")
+                                                Text(stringResource(R.string.refresh_button))
                                         }
                                 }
                         } else {
@@ -818,7 +820,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                                                                                                         Icons.Default
                                                                                                                 .Refresh,
                                                                                                 contentDescription =
-                                                                                                        "加载中",
+                                                                                                        stringResource(R.string.loading_content_description),
                                                                                                 tint =
                                                                                                         MaterialTheme
                                                                                                                 .colorScheme
@@ -848,9 +850,9 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                                                                                         text =
                                                                                                 if (isLoading
                                                                                                 )
-                                                                                                        "加载更多内容中..."
+                                                                                                        stringResource(R.string.loading_more_items_progress)
                                                                                                 else
-                                                                                                        "自动加载更多中...",
+                                                                                                        stringResource(R.string.loading_more_items_auto),
                                                                                         style =
                                                                                                 MaterialTheme
                                                                                                         .typography
@@ -914,7 +916,7 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                                                                                                         )
                                                                                         }
                                                                         }
-                                                                ) { Text("重试") }
+                                                                ) { Text(stringResource(R.string.retry_button)) }
                                                         }
                                                 }
                                         }
@@ -954,9 +956,9 @@ fun MCPScreen(mcpRepository: MCPRepository) {
                         installProgress = installProgress,
                         onDismissRequest = { viewModel.resetInstallState() },
                         result = installResult,
-                        serverName = currentInstallingServer?.name ?: "MCP 服务器",
+                        serverName = currentInstallingServer?.name ?: stringResource(R.string.mcp_server_default_name),
                         // 添加操作类型参数：卸载/安装
-                        operationType = if (isUninstallOperation) "卸载" else "安装"
+                        operationType = if (isUninstallOperation) stringResource(R.string.uninstall_operation) else stringResource(R.string.install_operation)
                 )
         }
 }
@@ -1004,8 +1006,8 @@ private fun SortMenuItem(
                                         Text(
                                                 text =
                                                         if (currentDirection == SortDirection.DESC)
-                                                                "↓"
-                                                        else "↑",
+                                                                stringResource(R.string.sort_direction_desc)
+                                                        else stringResource(R.string.sort_direction_asc),
                                                 color = MaterialTheme.colorScheme.primary,
                                                 fontWeight = FontWeight.Bold
                                         )
@@ -1020,11 +1022,11 @@ private fun SortMenuItem(
 @Composable
 fun getSortDisplayName(sortOption: SortOptions): String {
         return when (sortOption) {
-                SortOptions.RECOMMENDED -> "推荐"
-                SortOptions.CREATED -> "创建时间"
-                SortOptions.UPDATED -> "更新时间"
-                SortOptions.COMMENTS -> "评论数"
-                SortOptions.REACTIONS -> "反应数"
+                SortOptions.RECOMMENDED -> stringResource(R.string.sort_by_recommended)
+                SortOptions.CREATED -> stringResource(R.string.sort_by_created_time)
+                SortOptions.UPDATED -> stringResource(R.string.sort_by_updated_time)
+                SortOptions.COMMENTS -> stringResource(R.string.sort_by_comments)
+                SortOptions.REACTIONS -> stringResource(R.string.sort_by_reactions)
         }
 }
 
@@ -1061,7 +1063,7 @@ fun RefreshingIndicator(modifier: Modifier = Modifier, isRefreshing: Boolean, pr
                         ) {
                                 Icon(
                                         imageVector = Icons.Default.Refresh,
-                                        contentDescription = "Refreshing",
+                                        contentDescription = stringResource(R.string.refreshing_content_description),
                                         tint = MaterialTheme.colorScheme.primary,
                                         modifier =
                                                 Modifier.size(16.dp).graphicsLayer {
@@ -1072,7 +1074,7 @@ fun RefreshingIndicator(modifier: Modifier = Modifier, isRefreshing: Boolean, pr
 
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                                text = if (isRefreshing) "刷新中..." else "下拉刷新",
+                                text = if (isRefreshing) stringResource(R.string.refreshing_text) else stringResource(R.string.pull_to_refresh),
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.primary
                         )
@@ -1115,7 +1117,7 @@ fun LoadingItem(modifier: Modifier = Modifier) {
                                 verticalAlignment = Alignment.CenterVertically
                         ) {
                                 Text(
-                                        text = "加载更多",
+                                        text = stringResource(R.string.load_more),
                                         style = MaterialTheme.typography.bodyMedium,
                                         color = MaterialTheme.colorScheme.primary
                                 )

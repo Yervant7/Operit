@@ -36,9 +36,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.ai.assistance.operit.R
 
 /**
  * 专为浮动窗口设计的简化附件选择面板
@@ -59,22 +61,22 @@ fun FloatingAttachmentPanel(
         listOf(
             AttachmentOptionData(
                 icon = Icons.Default.ScreenshotMonitor,
-                label = "屏幕内容",
+                label = stringResource(R.string.floating_attach_screen),
                 onClick = onAttachScreenContent
             ),
             AttachmentOptionData(
                 icon = Icons.Default.Notifications,
-                label = "当前通知",
+                label = stringResource(R.string.floating_attach_notifications),
                 onClick = onAttachNotifications
             ),
             AttachmentOptionData(
                 icon = Icons.Default.LocationOn,
-                label = "当前位置",
+                label = stringResource(R.string.floating_attach_location),
                 onClick = onAttachLocation
             ),
             AttachmentOptionData(
                 icon = Icons.Default.Memory,
-                label = "问题记忆",
+                label = stringResource(R.string.floating_attach_problem),
                 onClick = onAttachProblemMemory
             )
         )
@@ -134,7 +136,7 @@ fun FloatingAttachmentPanel(
 
                 // 说明文本 - 添加水平padding并居中对齐
                 Text(
-                    text = "注意: 在浮动窗口中只支持特殊附件\n要添加文件或图片，请打开完整聊天界面",
+                    text = stringResource(R.string.floating_attach_note),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
                     textAlign = TextAlign.Center,

@@ -68,7 +68,7 @@ fun DrawerContent(
             Icon(
                     imageVector =
                             if (isNetworkAvailable) Icons.Default.Wifi else Icons.Default.WifiOff,
-                    contentDescription = "网络状态",
+                    contentDescription = stringResource(R.string.network_status_content_description),
                     tint =
                             if (isNetworkAvailable) MaterialTheme.colorScheme.primary
                             else MaterialTheme.colorScheme.error,
@@ -91,7 +91,7 @@ fun DrawerContent(
         // 分组导航菜单
 
         // AI功能组
-        NavigationDrawerItemHeader("AI功能")
+        NavigationDrawerItemHeader(stringResource(R.string.drawer_header_ai_features))
 
         // AI聊天
         CompactNavigationDrawerItem(
@@ -140,7 +140,7 @@ fun DrawerContent(
         Spacer(modifier = Modifier.height(8.dp))
 
         // 工具组
-        NavigationDrawerItemHeader("工具")
+        NavigationDrawerItemHeader(stringResource(R.string.drawer_header_tools))
 
         // 工具箱
         CompactNavigationDrawerItem(
@@ -167,7 +167,7 @@ fun DrawerContent(
         Spacer(modifier = Modifier.height(8.dp))
 
         // 系统组
-        NavigationDrawerItemHeader("系统")
+        NavigationDrawerItemHeader(stringResource(R.string.drawer_header_system))
 
         // 设置
         CompactNavigationDrawerItem(
@@ -231,7 +231,7 @@ fun CollapsedDrawerContent(
             Icon(
                     imageVector =
                             if (isNetworkAvailable) Icons.Default.Wifi else Icons.Default.WifiOff,
-                    contentDescription = "网络状态",
+                    contentDescription = stringResource(R.string.network_status_content_description),
                     tint =
                             if (isNetworkAvailable) MaterialTheme.colorScheme.primary
                             else MaterialTheme.colorScheme.error,

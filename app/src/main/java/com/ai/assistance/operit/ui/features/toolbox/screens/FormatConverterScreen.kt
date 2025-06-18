@@ -48,6 +48,18 @@ fun getCategoryFromExtension(extension: String): String? {
     }
 }
 
+@Composable
+private fun getCategoryDisplayNameComposable(category: String): String {
+    return when (category.lowercase()) {
+        "document" -> stringResource(R.string.file_category_document)
+        "image" -> stringResource(R.string.file_category_image)
+        "audio" -> stringResource(R.string.file_category_audio)
+        "video" -> stringResource(R.string.file_category_video)
+        "archive" -> stringResource(R.string.file_category_archive)
+        else -> category
+    }
+}
+
 // 获取文件路径
 fun getFilePathFromUri(context: android.content.Context, uri: Uri): Pair<String?, String?> {
     return try {
@@ -215,10 +227,10 @@ fun FormatConverterScreen(navController: NavController) {
                             val extension = origFileName.substringAfterLast('.', "").lowercase()
                             selectedCategory = getCategoryFromExtension(extension)
                         } else {
-                            error = "无法获取文件路径"
+                            error = stringResource(R.string.format_converter_error_get_path)
                         }
                     } catch (e: Exception) {
-                        error = "选择文件失败: ${e.message}"
+                        error = stringResource(R.string.format_converter_error_select_file, e.message ?: "")
                     }
                 }
             }
@@ -226,11 +238,11 @@ fun FormatConverterScreen(navController: NavController) {
     // 文件类型分类
     val categories =
             listOf(
-                    "document" to "文档",
-                    "image" to "图片",
-                    "audio" to "音频",
-                    "video" to "视频",
-                    "archive" to "压缩包"
+                    "document" to stringResource(R.string.file_category_document),
+                    "image" to stringResource(R.string.file_category_image),
+                    "audio" to stringResource(R.string.file_category_audio),
+                    "video" to stringResource(R.string.file_category_video),
+                    "archive" to stringResource(R.string.file_category_archive)
             )
 
     // 获取支持的格式转换
@@ -243,17 +255,17 @@ fun FormatConverterScreen(navController: NavController) {
                 supportedFormats = formatData?.conversions ?: emptyMap()
                 supportedCategories = formatData?.fileTypes ?: emptyMap()
             } else {
-                error = result.error ?: "Unknown error"
+                error = result.error ?: context.getString(R.string.unknown_error)
             }
         } catch (e: Exception) {
-            error = e.message
+            error = e.message ?: context.getString(R.string.unknown_error)
         }
     }
 
     // 执行文件转换
     fun convertFile() {
         if (selectedFile == null || selectedTargetFormat == null || originalFileName == null) {
-            error = "请完成所有必要的选择"
+            error = stringResource(R.string.format_converter_error_selection_incomplete)
             return
         }
 
@@ -302,11 +314,11 @@ fun FormatConverterScreen(navController: NavController) {
                 if (result.success) {
                     convertedFile = targetPath
                 } else {
-                    error = result.error ?: "转换失败，请重试"
+                    error = result.error ?: stringResource(R.string.format_converter_error_conversion_failed)
                 }
             } catch (e: Exception) {
                 Log.e("FormatConverterScreen", "Error converting file", e)
-                error = "Error: ${e.message}"
+                error = stringResource(R.string.error_generic_format, e.message ?: "")
             } finally {
                 isLoading = false
                 // 无论成功还是失败，都清理缓存文件
@@ -327,11 +339,11 @@ fun FormatConverterScreen(navController: NavController) {
                 val result = toolHandler.executeTool(openFileTool)
 
                 if (!result.success) {
-                    error = "无法打开文件: ${result.error}"
+                    error = stringResource(R.string.format_converter_error_open_file, result.error ?: "")
                 }
             } catch (e: Exception) {
                 Log.e("FormatConverterScreen", "Error opening file", e)
-                error = "Error: ${e.message}"
+                error = stringResource(R.string.error_generic_format, e.message ?: "")
             }
         }
     }
@@ -363,7 +375,7 @@ fun FormatConverterScreen(navController: NavController) {
         ) {
             Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
                 Text(
-                        text = "选择文件",
+                        text = stringResource(R.string.format_converter_title_select_file),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.onSurface
@@ -383,11 +395,11 @@ fun FormatConverterScreen(navController: NavController) {
                 ) {
                     Icon(
                             imageVector = Icons.Default.Add,
-                            contentDescription = "选择文件",
+                            contentDescription = stringResource(R.string.format_converter_button_select_file), // Reused for content desc
                             modifier = Modifier.size(24.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text("选择文件")
+                    Text(stringResource(R.string.format_converter_button_select_file))
                 }
 
                 selectedFile?.let { file ->
@@ -413,7 +425,7 @@ fun FormatConverterScreen(navController: NavController) {
                         Spacer(modifier = Modifier.width(8.dp))
                         // 显示原始文件名
                         Text(
-                                text = originalFileName ?: file.substringAfterLast('/', "未知文件"),
+                                text = originalFileName ?: file.substringAfterLast('/', stringResource(R.string.format_converter_unknown_file)),
                                 style = MaterialTheme.typography.bodyMedium,
                                 color = MaterialTheme.colorScheme.onSurface,
                                 modifier = Modifier.weight(1f)
@@ -432,7 +444,7 @@ fun FormatConverterScreen(navController: NavController) {
         ) {
             Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
                 Text(
-                        text = "选择转换格式",
+                        text = stringResource(R.string.format_converter_title_select_format),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.onSurface
@@ -463,7 +475,7 @@ fun FormatConverterScreen(navController: NavController) {
                 // 目标格式选择
                 if (selectedCategory != null) {
                     Text(
-                            text = "目标格式",
+                            text = stringResource(R.string.format_converter_label_target_format),
                             style = MaterialTheme.typography.titleSmall,
                             color = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.padding(vertical = 8.dp)
@@ -509,11 +521,11 @@ fun FormatConverterScreen(navController: NavController) {
             } else {
                 Icon(
                         imageVector = Icons.Default.Transform,
-                        contentDescription = "转换",
+                        contentDescription = stringResource(R.string.format_converter_icon_convert),
                         modifier = Modifier.size(24.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("开始转换", style = MaterialTheme.typography.titleMedium)
+                Text(stringResource(R.string.format_converter_button_convert), style = MaterialTheme.typography.titleMedium)
             }
         }
 
@@ -556,7 +568,7 @@ fun FormatConverterScreen(navController: NavController) {
             ) {
                 Column(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
                     Text(
-                            text = "转换成功",
+                        text = stringResource(R.string.format_converter_success_title),
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.primary
@@ -593,7 +605,7 @@ fun FormatConverterScreen(navController: NavController) {
                         ) {
                             Icon(
                                     imageVector = Icons.Default.OpenInNew,
-                                    contentDescription = "打开文件",
+                                    contentDescription = stringResource(R.string.format_converter_icon_open_file),
                                     tint = MaterialTheme.colorScheme.primary
                             )
                         }
@@ -718,15 +730,8 @@ fun getCategoryIcon(category: String): ImageVector {
 }
 
 /** 获取类别显示名称 */
-fun getCategoryDisplayName(category: String): String {
-    return when (category.lowercase()) {
-        "document" -> "文档"
-        "image" -> "图片"
-        "audio" -> "音频"
-        "video" -> "视频"
-        "archive" -> "压缩包"
-        else -> category
-    }
+fun getCategoryDisplayName(category: String): String { // This is called by CategoryItem, which is Composable
+    return getCategoryDisplayNameComposable(category = category)
 }
 
 /** 获取格式图标 */

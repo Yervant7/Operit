@@ -52,12 +52,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.times
+import com.ai.assistance.operit.R
 import com.ai.assistance.operit.core.tools.AIToolHandler
 import com.ai.assistance.operit.data.model.AttachmentInfo
 import com.ai.assistance.operit.data.model.ChatMessage
@@ -545,7 +547,7 @@ fun FloatingChatWindow(
             ) {
                 Icon(
                         imageVector = Icons.Default.Chat,
-                        contentDescription = "聊天窗口",
+                        contentDescription = stringResource(R.string.floating_window_ball_chat_desc),
                         tint = Color.White,
                         modifier = Modifier.size(24.dp).align(Alignment.Center)
                 )
@@ -679,7 +681,7 @@ fun FloatingChatWindow(
                                         verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Text(
-                                            text = "AI助手",
+                                            text = stringResource(R.string.floating_window_title),
                                             style =
                                                     MaterialTheme.typography.titleMedium.copy(
                                                             fontWeight = FontWeight.Medium
@@ -728,7 +730,7 @@ fun FloatingChatWindow(
                                         ) {
                                             Icon(
                                                     imageVector = Icons.Default.KeyboardArrowDown,
-                                                    contentDescription = "最小化",
+                                                    contentDescription = stringResource(R.string.floating_window_minimize_desc),
                                                     tint =
                                                             MaterialTheme.colorScheme
                                                                     .onSurfaceVariant,
@@ -772,7 +774,7 @@ fun FloatingChatWindow(
                                         ) {
                                             Icon(
                                                     imageVector = Icons.Default.Close,
-                                                    contentDescription = "关闭",
+                                                    contentDescription = stringResource(R.string.close),
                                                     tint =
                                                             if (closeHover.value) errorColor
                                                             else onSurfaceVariantColor,
@@ -859,7 +861,7 @@ fun FloatingChatWindow(
                                             verticalAlignment = Alignment.CenterVertically
                                     ) {
                                         Text(
-                                                text = "发送消息",
+                                                text = stringResource(R.string.floating_window_send_message_title),
                                                 style = MaterialTheme.typography.titleMedium,
                                                 color = MaterialTheme.colorScheme.onSurface
                                         )
@@ -872,7 +874,7 @@ fun FloatingChatWindow(
                                         ) {
                                             Icon(
                                                     imageVector = Icons.Default.Close,
-                                                    contentDescription = "关闭",
+                                                    contentDescription = stringResource(R.string.close),
                                                     tint =
                                                             MaterialTheme.colorScheme
                                                                     .onSurfaceVariant
@@ -942,7 +944,7 @@ fun FloatingChatWindow(
                                         OutlinedTextField(
                                                 value = userMessage,
                                                 onValueChange = { userMessage = it },
-                                                placeholder = { Text("请输入您的问题...") },
+                                                placeholder = { Text(stringResource(R.string.chat_input_placeholder)) },
                                                 modifier =
                                                         Modifier.fillMaxSize()
                                                                 .focusRequester(focusRequester),
@@ -1001,7 +1003,7 @@ fun FloatingChatWindow(
                                         ) {
                                             Icon(
                                                     imageVector = Icons.Default.Send,
-                                                    contentDescription = "发送",
+                                                    contentDescription = stringResource(R.string.send),
                                                     tint = MaterialTheme.colorScheme.onPrimary
                                             )
                                         }
@@ -1551,7 +1553,7 @@ fun FloatingChatWindow(
                 ) {
                     Icon(
                             imageVector = Icons.Default.Add,
-                            contentDescription = if (showAttachmentPanel) "关闭附件面板" else "添加附件",
+                            contentDescription = if (showAttachmentPanel) stringResource(R.string.floating_window_toggle_attachments_close) else stringResource(R.string.floating_window_toggle_attachments_open),
                             modifier = Modifier.size(16.dp) // 减小图标尺寸
                     )
                 }
@@ -1583,7 +1585,7 @@ fun FloatingChatWindow(
                 ) {
                     Icon(
                             imageVector = Icons.Default.Edit,
-                            contentDescription = "发送消息",
+                            contentDescription = stringResource(R.string.floating_window_send_message_fab),
                             modifier = Modifier.size(16.dp) // 减小图标尺寸
                     )
                 }
@@ -1779,7 +1781,7 @@ private fun MessageItem(
                                         clipboardManager.setPrimaryClip(clipData)
 
                                         // 显示复制成功的提示
-                                        Toast.makeText(context, "消息已复制到剪贴板", Toast.LENGTH_SHORT)
+                                        Toast.makeText(context, context.getString(R.string.message_item_copied_toast), Toast.LENGTH_SHORT)
                                                 .show()
 
                                         // 如果有外部回调，也调用它
@@ -1788,7 +1790,7 @@ private fun MessageItem(
             ) {
                 Icon(
                         imageVector = Icons.Default.ContentCopy,
-                        contentDescription = "复制此消息",
+                        contentDescription = stringResource(R.string.message_item_copy_desc),
                         modifier = Modifier.align(Alignment.Center).size(16.dp),
                         tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
                 )
@@ -1818,7 +1820,7 @@ private fun MessageItem(
             ) {
                 Icon(
                         imageVector = Icons.Default.Edit,
-                        contentDescription = "编辑此消息",
+                        contentDescription = stringResource(R.string.message_item_edit_desc),
                         modifier = Modifier.align(Alignment.Center).size(16.dp),
                         tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
                 )

@@ -27,8 +27,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.ai.assistance.operit.R
 import com.ai.assistance.operit.data.model.AttachmentInfo
 import com.ai.assistance.operit.ui.features.chat.attachments.AttachmentUtils
 
@@ -44,7 +46,7 @@ fun AttachmentPreview(
 
     Column(modifier = modifier) {
         Text(
-                text = "附件 (${attachments.size})",
+                text = stringResource(R.string.attachments_count, attachments.size),
                 style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)
@@ -120,7 +122,7 @@ private fun AttachmentItem(attachment: AttachmentInfo, onRemove: () -> Unit, onI
             IconButton(onClick = onRemove, modifier = Modifier.size(24.dp)) {
                 Icon(
                         imageVector = Icons.Default.Close,
-                        contentDescription = "Remove attachment",
+                        contentDescription = stringResource(R.string.remove_attachment),
                         tint = MaterialTheme.colorScheme.error,
                         modifier = Modifier.size(16.dp)
                 )

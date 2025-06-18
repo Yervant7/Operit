@@ -19,6 +19,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import com.ai.assistance.operit.R
 import com.ai.assistance.operit.core.tools.system.AndroidShellExecutor
 
 /** 日志查看器ViewModel，用于管理日志状态，确保在界面间导航时保持日志捕获状态 */
@@ -94,7 +95,7 @@ class LogcatViewModel(private val context: Context) : ViewModel() {
                 // 如果启动失败，显示一个空的错误日志
                 _logRecords.add(
                     LogRecord(
-                        message = "无法启动日志捕获，请检查应用权限或尝试使用更高权限级别",
+                        message = context.getString(R.string.logcat_error_cannot_start),
                         level = LogLevel.ERROR,
                         timestamp = System.currentTimeMillis(),
                         tag = "LogcatError"
@@ -169,7 +170,7 @@ class LogcatViewModel(private val context: Context) : ViewModel() {
                     
                 if (logsToSave.isEmpty()) {
                     withContext(Dispatchers.Main) {
-                        _saveResult.value = "没有日志可保存"
+                        _saveResult.value = context.getString(R.string.logcat_save_no_logs)
                         delay(3000) 
                         _saveResult.value = null
                     }
@@ -180,13 +181,13 @@ class LogcatViewModel(private val context: Context) : ViewModel() {
                 // 准备日志内容
                 val logContent = StringBuilder()
                 // 写入头部信息
-                logContent.append("=== Operit 日志 ===\n")
+                logContent.append(context.getString(R.string.logcat_save_header_title) + "\n")
                 logContent.append(
-                        "日期: ${SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())}\n"
+                        context.getString(R.string.logcat_save_header_date, SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())) + "\n"
                 )
-                logContent.append("过滤条件: ${_currentFilter.value}\n")
-                logContent.append("总条数: ${logsToSave.size}\n")
-                logContent.append("===================================\n\n")
+                logContent.append(context.getString(R.string.logcat_save_header_filter, _currentFilter.value) + "\n")
+                logContent.append(context.getString(R.string.logcat_save_header_count, logsToSave.size) + "\n")
+                logContent.append(context.getString(R.string.logcat_save_header_separator) + "\n\n")
 
                 // 写入日志
                 logsToSave.forEach { record ->
@@ -208,22 +209,22 @@ class LogcatViewModel(private val context: Context) : ViewModel() {
                     }
                 } catch (e: Exception) {
                     // 捕获保存过程中的特定异常，返回明确的错误信息
-                    "保存失败：${e.message ?: "未知错误"}"
+                    context.getString(R.string.logcat_save_failed_generic, e.message ?: context.getString(R.string.unknown_error))
                 }
 
                 withContext(Dispatchers.Main) {
                     // 检查保存路径是否包含错误信息
-                    if (filePath.startsWith("保存失败")) {
+                    if (filePath.startsWith(context.getString(R.string.logcat_save_failed_generic, "").substringBefore(":"))) { // Check for "保存失败" prefix
                         _saveResult.value = filePath
                     } else {
-                        _saveResult.value = "日志已保存至：$filePath"
+                        _saveResult.value = context.getString(R.string.logcat_save_success, filePath)
                     }
                     delay(3000) // 3秒后清除结果信息
                     _saveResult.value = null
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    _saveResult.value = "保存失败: ${e.message ?: "未知错误"}"
+                    _saveResult.value = context.getString(R.string.logcat_save_failed_generic, e.message ?: context.getString(R.string.unknown_error))
                     delay(3000) // 3秒后清除结果信息
                     _saveResult.value = null
                 }
@@ -254,18 +255,18 @@ class LogcatViewModel(private val context: Context) : ViewModel() {
                     )
 
             if (uri == null) {
-                return "保存失败：无法创建文件，可能是存储权限问题"
+                return context.getString(R.string.logcat_save_error_create_file_permission)
             }
 
             context.contentResolver.openOutputStream(uri)?.use { outputStream ->
                 outputStream.write(content.toByteArray())
-            } ?: throw Exception("无法打开输出流")
+            } ?: throw Exception(context.getString(R.string.logcat_save_error_output_stream))
 
             // 成功写入后，查询实际路径用于显示
             val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
             return "${downloadsDir.absolutePath}/operit/$fileName"
         } catch (e: Exception) {
-            throw Exception("MediaStore保存失败：${e.message}")
+            throw Exception(context.getString(R.string.logcat_save_error_mediastore, e.message ?: ""))
         }
     }
 
@@ -277,14 +278,14 @@ class LogcatViewModel(private val context: Context) : ViewModel() {
                     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
             
             if (downloadsDir == null || !downloadsDir.exists() && !downloadsDir.mkdirs()) {
-                throw Exception("无法创建下载目录")
+                throw Exception(context.getString(R.string.logcat_save_error_create_download_dir))
             }
             
             val operitDir = File(downloadsDir, "operit")
 
             // 确保目录存在
             if (!operitDir.exists() && !operitDir.mkdirs()) {
-                throw Exception("无法创建operit目录")
+                throw Exception(context.getString(R.string.logcat_save_error_create_operit_dir))
             }
 
             // 创建文件
@@ -294,12 +295,12 @@ class LogcatViewModel(private val context: Context) : ViewModel() {
             FileWriter(file).use { writer -> writer.write(content) }
 
             if (!file.exists() || file.length() == 0L) {
-                throw Exception("文件创建失败或为空")
+                throw Exception(context.getString(R.string.logcat_save_error_file_empty))
             }
 
             return file.absolutePath
         } catch (e: Exception) {
-            throw Exception("文件系统保存失败：${e.message}")
+            throw Exception(context.getString(R.string.logcat_save_error_filesystem, e.message ?: ""))
         }
     }
 

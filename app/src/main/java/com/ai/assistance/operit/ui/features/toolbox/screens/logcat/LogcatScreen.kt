@@ -24,12 +24,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.ai.assistance.operit.R
 import java.util.*
 import kotlinx.coroutines.*
 
@@ -91,7 +93,7 @@ fun LogcatScreen(navController: NavController? = null) {
     Scaffold(
             topBar = {
                 TopAppBar(
-                        title = { Text("日志查看器") },
+                        title = { Text(stringResource(R.string.logcat_title)) },
                         actions = {
                             // 保存日志按钮
                             val isSaving by viewModel.isSaving.collectAsState()
@@ -105,7 +107,7 @@ fun LogcatScreen(navController: NavController? = null) {
                                         imageVector =
                                                 if (isSaving) Icons.Default.Pending
                                                 else Icons.Default.Save,
-                                        contentDescription = "保存日志",
+                                        contentDescription = stringResource(R.string.logcat_save_logs_desc),
                                         tint =
                                                 if (!isSaving && logRecords.isNotEmpty())
                                                         MaterialTheme.colorScheme.primary
@@ -120,7 +122,7 @@ fun LogcatScreen(navController: NavController? = null) {
                             IconButton(onClick = { showFilterOptions = !showFilterOptions }) {
                                 Icon(
                                         imageVector = Icons.Default.Search,
-                                        contentDescription = "过滤选项"
+                                        contentDescription = stringResource(R.string.logcat_filter_options_desc)
                                 )
                             }
 
@@ -128,7 +130,7 @@ fun LogcatScreen(navController: NavController? = null) {
                             IconButton(onClick = { viewModel.clearLogs() }) {
                                 Icon(
                                         imageVector = Icons.Default.ClearAll,
-                                        contentDescription = "清除日志"
+                                        contentDescription = stringResource(R.string.logcat_clear_logs_desc)
                                 )
                             }
 
@@ -146,7 +148,7 @@ fun LogcatScreen(navController: NavController? = null) {
                                         imageVector =
                                                 if (isCapturing) Icons.Default.Stop
                                                 else Icons.Default.PlayArrow,
-                                        contentDescription = if (isCapturing) "停止捕获" else "开始捕获",
+                                        contentDescription = if (isCapturing) stringResource(R.string.logcat_stop_capture_desc) else stringResource(R.string.logcat_start_capture_desc),
                                         tint =
                                                 if (isCapturing) MaterialTheme.colorScheme.error
                                                 else MaterialTheme.colorScheme.primary
@@ -183,7 +185,7 @@ fun LogcatScreen(navController: NavController? = null) {
                             CompactSearchField(
                                     value = searchQuery,
                                     onValueChange = { searchQuery = it },
-                                    placeholder = "搜索日志内容",
+                                    placeholder = stringResource(R.string.logcat_search_placeholder),
                                     modifier = Modifier.weight(1f),
                                     leadingIcon = {
                                         Icon(
@@ -214,7 +216,7 @@ fun LogcatScreen(navController: NavController? = null) {
                             CompactSearchField(
                                     value = filterInput,
                                     onValueChange = { filterInput = it },
-                                    placeholder = "过滤条件 (如 *:E)",
+                                    placeholder = stringResource(R.string.logcat_filter_placeholder),
                                     modifier = Modifier.weight(1f),
                                     trailingIcon = {
                                         IconButton(
@@ -241,7 +243,7 @@ fun LogcatScreen(navController: NavController? = null) {
 
                         // 日志级别过滤区域
                         CollapsibleSectionHeader(
-                                title = "日志级别",
+                                title = stringResource(R.string.logcat_filter_level_header),
                                 expanded = showLevelFilters,
                                 onToggle = { showLevelFilters = !showLevelFilters }
                         )
@@ -260,7 +262,7 @@ fun LogcatScreen(navController: NavController? = null) {
                                 FilterChip(
                                         selected = levelFilter == null,
                                         onClick = { levelFilter = null },
-                                        label = { Text("全部", fontSize = 11.sp) },
+                                        label = { Text(stringResource(R.string.logcat_level_all), fontSize = 11.sp) },
                                         modifier = Modifier.height(24.dp)
                                 )
 
@@ -282,7 +284,7 @@ fun LogcatScreen(navController: NavController? = null) {
                                                                 else level
                                                     },
                                                     label = {
-                                                        Text(level.displayName, fontSize = 11.sp)
+                                        Text(stringResource(getIdForLogLevel(level)), fontSize = 11.sp)
                                                     },
                                                     modifier = Modifier.height(24.dp),
                                                     colors =
@@ -306,7 +308,7 @@ fun LogcatScreen(navController: NavController? = null) {
                                 )
 
                                 Text(
-                                        "自动滚动",
+                                        stringResource(R.string.logcat_auto_scroll),
                                         fontSize = 11.sp,
                                         modifier = Modifier.padding(end = 8.dp)
                                 )
@@ -316,7 +318,7 @@ fun LogcatScreen(navController: NavController? = null) {
                         // 预设过滤器区域
                         if (presetFilters.isNotEmpty()) {
                             CollapsibleSectionHeader(
-                                    title = "预设过滤器",
+                                    title = stringResource(R.string.logcat_preset_filters_header),
                                     expanded = showPresetFilters,
                                     onToggle = { showPresetFilters = !showPresetFilters }
                             )
@@ -392,7 +394,7 @@ fun LogcatScreen(navController: NavController? = null) {
                 Spacer(modifier = Modifier.width(4.dp))
 
                 Text(
-                        if (isCapturing) "捕获中" else "已停止",
+                        if (isCapturing) stringResource(R.string.logcat_status_capturing) else stringResource(R.string.logcat_status_stopped),
                         style = MaterialTheme.typography.bodySmall,
                         fontSize = 10.sp,
                         fontWeight = FontWeight.Medium
@@ -412,7 +414,7 @@ fun LogcatScreen(navController: NavController? = null) {
                 // 如有过滤器，则显示
                 if (searchQuery.isNotEmpty()) {
                     Text(
-                            "搜索:$searchQuery",
+                            stringResource(R.string.logcat_status_search_query, searchQuery),
                             style = MaterialTheme.typography.bodySmall,
                             fontSize = 10.sp,
                             color = MaterialTheme.colorScheme.primary
@@ -431,7 +433,7 @@ fun LogcatScreen(navController: NavController? = null) {
                                             .padding(horizontal = 4.dp, vertical = 1.dp)
                     ) {
                         Text(
-                                levelFilter!!.displayName,
+                                stringResource(getIdForLogLevel(levelFilter!!)),
                                 style = MaterialTheme.typography.bodySmall,
                                 fontSize = 9.sp,
                                 color = levelFilter!!.color,
@@ -444,7 +446,7 @@ fun LogcatScreen(navController: NavController? = null) {
                 if (currentFilter.isNotEmpty()) {
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
-                            "过滤:$currentFilter",
+                            stringResource(R.string.logcat_status_filter_active, currentFilter),
                             style = MaterialTheme.typography.bodySmall,
                             fontSize = 10.sp,
                             color = MaterialTheme.colorScheme.secondary,
@@ -472,7 +474,7 @@ fun LogcatScreen(navController: NavController? = null) {
                         Spacer(modifier = Modifier.height(8.dp))
 
                         Text(
-                                text = if (isCapturing) "等待日志..." else "点击开始捕获",
+                                text = if (isCapturing) stringResource(R.string.logcat_empty_waiting) else stringResource(R.string.logcat_empty_start_prompt),
                                 style = MaterialTheme.typography.titleMedium,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -506,7 +508,7 @@ fun LogcatScreen(navController: NavController? = null) {
                             ) {
                                 Icon(
                                         imageVector = Icons.Default.ArrowDownward,
-                                        contentDescription = "滚动到底部",
+                                        contentDescription = stringResource(R.string.logcat_scroll_to_bottom_desc),
                                         modifier = Modifier.size(20.dp)
                                 )
                             }
@@ -521,9 +523,35 @@ fun LogcatScreen(navController: NavController? = null) {
     if (showError && errorMessage != null) {
         AlertDialog(
                 onDismissRequest = { showError = false },
-                title = { Text("错误") },
+                title = { Text(stringResource(R.string.logcat_error_dialog_title)) },
                 text = { Text(errorMessage!!) },
-                confirmButton = { TextButton(onClick = { showError = false }) { Text("确定") } }
+                confirmButton = { TextButton(onClick = { showError = false }) { Text(stringResource(R.string.logcat_dialog_ok_button)) } }
         )
+    }
+}
+
+@Composable
+private fun getIdForLogLevel(level: LogLevel): Int {
+    return when (level) {
+        LogLevel.VERBOSE -> R.string.log_level_verbose
+        LogLevel.DEBUG -> R.string.log_level_debug
+        LogLevel.INFO -> R.string.log_level_info
+        LogLevel.WARNING -> R.string.log_level_warning
+        LogLevel.ERROR -> R.string.log_level_error
+        LogLevel.FATAL -> R.string.log_level_fatal
+        LogLevel.SILENT -> R.string.log_level_silent
+        else -> R.string.log_level_unknown
+    }
+}
+
+// Helper function to get string resource ID for FilterCategory (if needed in UI)
+@Composable
+private fun getIdForFilterCategory(category: FilterCategory): Int {
+    return when (category) {
+        FilterCategory.LEVEL -> R.string.filter_category_level
+        FilterCategory.SYSTEM -> R.string.filter_category_system
+        FilterCategory.APP -> R.string.filter_category_app
+        FilterCategory.CUSTOM -> R.string.filter_category_custom
+        // Add cases for other categories if they exist and need display names
     }
 }

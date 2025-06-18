@@ -16,8 +16,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.ai.assistance.operit.R
 import com.ai.assistance.operit.core.tools.AIToolHandler
 import com.ai.assistance.operit.core.tools.PackageTool
 import com.ai.assistance.operit.core.tools.ToolPackage
@@ -77,7 +79,7 @@ fun PackageManagerScreen() {
                                 if (it.moveToFirst() && nameIndex >= 0) {
                                     val fileName = it.getString(nameIndex)
                                     if (!fileName.endsWith(".hjson")) {
-                                        snackbarHostState.showSnackbar(message = "只支持.hjson文件")
+                                        snackbarHostState.showSnackbar(message = context.getString(R.string.only_hjson_supported_snackbar))
                                         return@launch
                                     }
                                 }
@@ -101,13 +103,13 @@ fun PackageManagerScreen() {
                             availablePackages.value = packageManager.getAvailablePackages()
                             importedPackages.value = packageManager.getImportedPackages()
 
-                            snackbarHostState.showSnackbar(message = "外部包导入成功")
+                            snackbarHostState.showSnackbar(message = context.getString(R.string.external_package_import_success_snackbar))
 
                             // Clean up the temporary file
                             tempFile.delete()
                         } catch (e: Exception) {
                             Log.e("PackageManagerScreen", "Failed to import external package", e)
-                            snackbarHostState.showSnackbar(message = "外部包导入失败: ${e.message}")
+                            snackbarHostState.showSnackbar(message = context.getString(R.string.external_package_import_error_snackbar, e.message))
                         }
                     }
                 }
@@ -149,7 +151,7 @@ fun PackageManagerScreen() {
                                             elevation = 6.dp,
                                             shape = FloatingActionButtonDefaults.shape
                                     )
-                    ) { Icon(imageVector = Icons.Rounded.Add, contentDescription = "导入外部包") }
+                    ) { Icon(imageVector = Icons.Rounded.Add, contentDescription = stringResource(R.string.import_external_package_fab)) }
                 }
             }
     ) { paddingValues ->
@@ -198,7 +200,7 @@ fun PackageManagerScreen() {
                                 )
                                 Spacer(Modifier.width(8.dp))
                                 Text(
-                                        "包管理",
+                                        stringResource(R.string.tab_package_management),
                                         style = MaterialTheme.typography.bodyMedium,
                                         maxLines = 1,
                                         overflow = TextOverflow.Ellipsis
@@ -226,7 +228,7 @@ fun PackageManagerScreen() {
                                 )
                                 Spacer(Modifier.width(8.dp))
                                 Text(
-                                        "插件市场",
+                                        stringResource(R.string.tab_mcp_marketplace),
                                         style = MaterialTheme.typography.bodyMedium,
                                         maxLines = 1,
                                         overflow = TextOverflow.Ellipsis
@@ -254,7 +256,7 @@ fun PackageManagerScreen() {
                                 )
                                 Spacer(Modifier.width(8.dp))
                                 Text(
-                                        "MCP配置",
+                                        stringResource(R.string.tab_mcp_config),
                                         style = MaterialTheme.typography.bodyMedium,
                                         maxLines = 1,
                                         overflow = TextOverflow.Ellipsis
@@ -276,7 +278,7 @@ fun PackageManagerScreen() {
                     PackageTab.PACKAGES -> {
                         // 显示包列表
                         if (availablePackages.value.isEmpty()) {
-                            EmptyState(message = "没有可用的包")
+                            EmptyState(message = stringResource(R.string.no_packages_available_text))
                         } else {
                             Surface(
                                     modifier = Modifier.fillMaxSize(),
@@ -328,7 +330,7 @@ fun PackageManagerScreen() {
                                                     // 只在失败时显示提示
                                                     snackbarHostState.showSnackbar(
                                                             message =
-                                                                    if (isChecked) "包导入失败" else "包移除失败"
+                                                                    if (isChecked) context.getString(R.string.package_import_failed_snackbar) else context.getString(R.string.package_remove_failed_snackbar)
                                                     )
                                                 }
                                             }

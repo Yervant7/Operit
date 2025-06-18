@@ -919,4 +919,249 @@
     <string name="shizuku_demo_executing_prefix">正在执行: </string>
     <string name="shizuku_demo_ellipsis">...</string>
     <string name="shizuku_demo_docs_link_failed">无法打开文档链接</string>
+
+    <!-- New Strings -->
+    <string name="response">Response</string>
+    <string name="attachments_count">附件 (%1$d)</string>
+    <string name="remove_attachment">Remove attachment</string>
+    <string name="hide_history">隐藏历史</string>
+    <string name="show_history">显示历史</string>
+    <string name="close_floating_window">关闭悬浮窗</string>
+    <string name="open_floating_window">开启悬浮窗</string>
+    <string name="switch_to_chat">切换到聊天</string>
+    <string name="open_webpage">打开网页</string>
+    <string name="chat_input_placeholder">请输入您的问题...</string>
+    <string name="add_attachment">添加附件</string>
+    <string name="cancel">取消</string>
+    <string name="send">发送</string>
+    <string name="insert_attachment">插入附件</string>
+    <string name="delete_attachment">删除附件</string>
+    <string name="select_export_platform">选择导出平台</string>
+    <string name="android">Android</string>
+    <string name="windows">Windows</string>
+    <string name="configure_android_app">配置Android应用</string>
+    <string name="package_name">包名</string>
+    <string name="default_package_name">com.example.webproject</string>
+    <string name="app_name_label">应用名称</string> <!-- Changed from app_name to app_name_label to avoid conflict -->
+    <string name="default_app_name">Web Project</string>
+    <string name="app_icon_label">应用图标: </string>
+    <string name="app_icon">应用图标</string>
+    <string name="loading_failed">加载失败</string>
+    <string name="select_icon">选择图标</string>
+    <string name="tap_to_select_icon">点击选择图标</string>
+    <string name="export">导出</string>
+    <string name="configure_windows_app">配置Windows应用</string>
+    <string name="exporting">导出中</string>
+    <string name="export_successful">导出成功</string>
+    <string name="export_failed">导出失败</string>
+    <string name="file_saved_to">文件已保存到:</string>
+    <string name="close">关闭</string>
+    <string name="open_file">打开文件</string>
+
+    <!-- Currency and Image Editing -->
+    <string name="currency_format_cny">¥%.2f</string>
+    <string name="background_image_preview">背景图片预览</string>
+    <string name="recrop_image">重新裁剪</string>
+
+    <!-- General UI & Navigation -->
+    <string name="back">返回</string>
+    <string name="collapse_sidebar">收起侧边栏</string>
+    <string name="expand_sidebar">展开侧边栏</string>
+    <string name="loading_ellipsis">...</string>
+    <string name="loading_text">正在加载...</string>
+    <string name="network_status_content_description">网络状态</string>
+    <string name="drawer_header_ai_features">AI功能</string>
+    <string name="drawer_header_tools">工具</string>
+    <string name="drawer_header_system">系统</string>
+    <string name="chat_title_prefix">- %1$s</string>
+
+    <!-- FormatConverterScreen.kt Strings -->
+    <string name="format_converter_error_get_path">无法获取文件路径</string>
+    <string name="format_converter_error_select_file">选择文件失败: %1$s</string>
+    <string name="file_category_document">文档</string>
+    <string name="file_category_image">图片</string>
+    <string name="file_category_audio">音频</string>
+    <string name="file_category_video">视频</string>
+    <string name="file_category_archive">压缩包</string>
+    <string name="format_converter_error_selection_incomplete">请完成所有必要的选择</string>
+    <string name="format_converter_error_conversion_failed">转换失败，请重试</string>
+    <string name="error_generic_format">Error: %1$s</string>
+    <string name="format_converter_error_open_file">无法打开文件: %1$s</string>
+    <string name="format_converter_title_select_file">选择文件</string>
+    <string name="format_converter_button_select_file">选择文件</string>
+    <string name="format_converter_unknown_file">未知文件</string>
+    <string name="format_converter_title_select_format">选择转换格式</string>
+    <string name="format_converter_label_target_format">目标格式</string>
+    <string name="format_converter_button_convert">开始转换</string>
+    <string name="format_converter_icon_convert">转换</string>
+    <string name="format_converter_success_title">转换成功</string>
+    <string name="format_converter_icon_open_file">打开文件</string>
+
+    <!-- FFmpegToolboxScreen.kt Strings -->
+    <string name="ffmpeg_title_command">FFmpeg命令</string>
+    <string name="ffmpeg_placeholder_command">输入FFmpeg命令，不需要包含'ffmpeg'前缀</string>
+    <string name="ffmpeg_button_templates">命令模板</string>
+    <string name="ffmpeg_button_executing">执行中...</string>
+    <string name="ffmpeg_button_execute">执行命令</string>
+    <string name="ffmpeg_toast_enter_command">请输入命令</string>
+    <string name="ffmpeg_error_execution_failed">执行失败: %1$s</string>
+    <string name="ffmpeg_title_common_templates">常用命令模板</string>
+    <string name="ffmpeg_warning_template_paths">注意: 使用模板时，请将input.mp4和output.mp4替换为实际文件路径</string>
+    <string name="ffmpeg_title_help">FFmpeg帮助</string>
+    <string name="ffmpeg_help_intro">FFmpeg是一个强大的音视频处理工具。在此界面，您可以直接执行FFmpeg命令。</string>
+    <string name="ffmpeg_help_common_params">常用参数:</string>
+    <string name="ffmpeg_help_params_list">-i: 输入文件
+-c:v: 视频编码器
+-c:a: 音频编码器
+-b:v: 视频比特率
+-b:a: 音频比特率
+-s: 分辨率
+-r: 帧率</string>
+    <string name="ffmpeg_button_more_info">查看更多信息</string>
+    <string name="ffmpeg_error_info_failed">获取信息失败: %1$s</string>
+    <string name="ffmpeg_progress_executing">正在执行命令，请稍候...</string>
+    <string name="ffmpeg_result_success">命令执行成功</string>
+    <string name="ffmpeg_result_failed">命令执行失败</string>
+    <string name="ffmpeg_result_command">命令: %1$s</string>
+    <string name="ffmpeg_result_return_code">返回码: %1$s</string>
+    <string name="ffmpeg_result_duration">处理时间: %1$sms</string>
+    <string name="ffmpeg_result_output_label">输出:</string>
+    <string name="ffmpeg_icon_use_template">使用此模板</string>
+    <string name="ffmpeg_template_video_to_mp4_name">视频转MP4</string>
+    <string name="ffmpeg_template_video_to_mp4_desc">将视频转换为MP4格式</string>
+    <string name="ffmpeg_template_video_compress_name">视频压缩</string>
+    <string name="ffmpeg_template_video_compress_desc">降低视频比特率以减小文件大小</string>
+    <string name="ffmpeg_template_video_trim_name">视频裁剪</string>
+    <string name="ffmpeg_template_video_trim_desc">裁剪视频的特定时间段</string>
+    <string name="ffmpeg_template_extract_audio_name">提取音频</string>
+    <string name="ffmpeg_template_extract_audio_desc">从视频中提取音轨并保存为MP3</string>
+    <string name="ffmpeg_template_gif_creation_name">GIF动图制作</string>
+    <string name="ffmpeg_template_gif_creation_desc">从视频片段创建GIF动图</string>
+
+    <!-- LogcatScreen.kt & LogcatViewModel.kt & LogModels.kt Strings -->
+    <string name="logcat_title">日志查看器</string>
+    <string name="logcat_save_logs_desc">保存日志</string>
+    <string name="logcat_filter_options_desc">过滤选项</string>
+    <string name="logcat_clear_logs_desc">清除日志</string>
+    <string name="logcat_stop_capture_desc">停止捕获</string>
+    <string name="logcat_start_capture_desc">开始捕获</string>
+    <string name="logcat_search_placeholder">搜索日志内容</string>
+    <string name="logcat_filter_placeholder">过滤条件 (如 *:E)</string>
+    <string name="logcat_filter_level_header">日志级别</string>
+    <string name="logcat_level_all">全部</string>
+    <string name="logcat_auto_scroll">自动滚动</string>
+    <string name="logcat_preset_filters_header">预设过滤器</string>
+    <string name="logcat_status_capturing">捕获中</string>
+    <string name="logcat_status_stopped">已停止</string>
+    <string name="logcat_status_search_query">搜索:%1$s</string>
+    <string name="logcat_status_filter_active">过滤:%1$s</string>
+    <string name="logcat_empty_waiting">等待日志...</string>
+    <string name="logcat_empty_start_prompt">点击开始捕获</string>
+    <string name="logcat_scroll_to_bottom_desc">滚动到底部</string>
+    <string name="logcat_error_dialog_title">错误</string>
+    <string name="logcat_dialog_ok_button">确定</string>
+    <string name="logcat_error_cannot_start">无法启动日志捕获，请检查应用权限或尝试使用更高权限级别</string>
+    <string name="logcat_save_no_logs">没有日志可保存</string>
+    <string name="logcat_save_header_title">=== Operit 日志 ===</string>
+    <string name="logcat_save_header_date">日期: %1$s</string>
+    <string name="logcat_save_header_filter">过滤条件: %1$s</string>
+    <string name="logcat_save_header_count">总条数: %1$d</string>
+    <string name="logcat_save_header_separator">===================================</string>
+    <string name="logcat_save_error_create_file_permission">保存失败：无法创建文件，可能是存储权限问题</string>
+    <string name="logcat_save_error_output_stream">无法打开输出流</string>
+    <string name="logcat_save_error_mediastore">MediaStore保存失败：%1$s</string>
+    <string name="logcat_save_error_create_download_dir">无法创建下载目录</string>
+    <string name="logcat_save_error_create_operit_dir">无法创建operit目录</string>
+    <string name="logcat_save_error_file_empty">文件创建失败或为空</string>
+    <string name="logcat_save_failed_generic">保存失败: %1$s</string>
+    <string name="logcat_save_error_filesystem">文件系统保存失败：%1$s</string>
+    <string name="logcat_save_success">日志已保存至：%1$s</string>
+    <string name="log_level_verbose">详细</string>
+    <string name="log_level_debug">调试</string>
+    <string name="log_level_info">信息</string>
+    <string name="log_level_warning">警告</string>
+    <string name="log_level_error">错误</string>
+    <string name="log_level_fatal">致命</string>
+    <string name="log_level_silent">静默</string>
+    <string name="log_level_unknown">未知</string>
+    <string name="filter_category_level">日志级别</string>
+    <string name="filter_category_system">系统过滤</string>
+    <string name="filter_category_app">应用过滤</string>
+    <string name="filter_category_custom">自定义过滤</string>
+
+    <!-- MCPScreen.kt, PackageManagerScreen.kt, PackageDetailsDialog.kt Strings -->
+    <string name="mcp_search_placeholder">搜索插件...</string>
+    <string name="search_content_description">搜索</string>
+    <string name="clear_search_content_description">清除</string>
+    <string name="sort_options_content_description">排序选项</string>
+    <string name="sort_by_header">排序方式</string>
+    <string name="sort_by_recommended">推荐</string>
+    <string name="sort_by_created_time">创建时间</string>
+    <string name="sort_by_updated_time">更新时间</string>
+    <string name="sort_by_comments">评论数</string>
+    <string name="sort_by_reactions">反应数</string>
+    <string name="sort_direction_desc">↓</string>
+    <string name="sort_direction_asc">↑</string>
+    <string name="refresh_content_description">刷新</string>
+    <string name="mcp_experimental_warning">该功能为实验性，目前还不太稳定。如有疑问，后续将会在Github跟进文档。</string>
+    <string name="warning_content_description">警告</string>
+    <string name="loading_content_description">Loading</string>
+    <string name="loading_text_alt">加载中...</string>
+    <string name="warning_emoji">⚠️</string>
+    <string name="mcp_no_plugins_found_search">未找到匹配插件</string>
+    <string name="mcp_no_plugins_available">无可用插件</string>
+    <string name="refresh_button">刷新</string>
+    <string name="refreshing_content_description">Refreshing</string>
+    <string name="refreshing_text">刷新中...</string>
+    <string name="pull_to_refresh">下拉刷新</string>
+    <string name="loading_more_items_progress">加载更多内容中...</string>
+    <string name="loading_more_items_auto">自动加载更多中...</string>
+    <string name="load_more">加载更多</string>
+    <string name="retry_button">重试</string>
+    <string name="mcp_server_default_name">MCP 服务器</string>
+    <string name="uninstall_operation">卸载</string>
+    <string name="install_operation">安装</string>
+    <string name="only_hjson_supported_snackbar">只支持.hjson文件</string>
+    <string name="external_package_import_success_snackbar">外部包导入成功</string>
+    <string name="external_package_import_error_snackbar">外部包导入失败: %1$s</string>
+    <string name="import_external_package_fab">导入外部包</string>
+    <string name="tab_package_management">包管理</string>
+    <string name="tab_mcp_marketplace">插件市场</string>
+    <string name="tab_mcp_config">MCP配置</string>
+    <string name="no_packages_available_text">没有可用的包</string>
+    <string name="package_import_failed_snackbar">包导入失败</string>
+    <string name="package_remove_failed_snackbar">包移除失败</string>
+    <string name="package_details_title">Package Details</string>
+    <string name="package_tools_header">Package Tools</string>
+    <string name="no_tools_in_package">No tools found in this package</string>
+    <string name="run_script_content_description">Run Script</string>
+    <string name="script_parameters_header">Script Parameters:</string>
+    <string name="parameter_required">(required)</string>
+    <string name="parameter_optional">(optional)</string>
+    <string name="parameter_display_format">• %1$s %2$s: %3$s</string>
+    <string name="ok_button">OK</string>
+
+    <!-- PluginLoadingScreen.kt & related states -->
+    <string name="plugin_load_success_default">加载成功</string>
+    <string name="plugin_load_failed_default">加载失败</string>
+
+    <!-- FloatingChatWindow.kt & its internal MessageItem -->
+    <string name="floating_window_title">AI助手</string>
+    <string name="floating_window_send_message_title">发送消息</string>
+    <string name="floating_window_toggle_attachments_close">关闭附件面板</string>
+    <string name="floating_window_toggle_attachments_open">添加附件</string>
+    <string name="floating_window_send_message_fab">发送消息</string>
+    <string name="floating_window_ball_chat_desc">聊天窗口</string>
+    <string name="floating_window_minimize_desc">最小化</string>
+    <string name="message_item_copy_desc">复制此消息</string>
+    <string name="message_item_copied_toast">消息已复制到剪贴板</string>
+    <string name="message_item_edit_desc">编辑此消息</string>
+
+    <!-- FloatingAttachmentPanel.kt Strings -->
+    <string name="floating_attach_screen">屏幕内容</string>
+    <string name="floating_attach_notifications">当前通知</string>
+    <string name="floating_attach_location">当前位置</string>
+    <string name="floating_attach_problem">问题记忆</string>
+    <string name="floating_attach_note">注意: 在浮动窗口中只支持特殊附件
+要添加文件或图片，请打开完整聊天界面</string>
 </resources>

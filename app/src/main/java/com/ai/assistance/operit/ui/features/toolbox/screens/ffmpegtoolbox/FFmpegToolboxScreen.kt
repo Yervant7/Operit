@@ -13,11 +13,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.ai.assistance.operit.R
 import com.ai.assistance.operit.core.tools.AIToolHandler
 import com.ai.assistance.operit.core.tools.FFmpegResultData
 import com.ai.assistance.operit.data.model.AITool
@@ -46,28 +48,28 @@ fun FFmpegToolboxScreen(navController: NavController) {
     // 命令模板
     val commandTemplates = listOf(
         CommandTemplate(
-            name = "视频转MP4",
-            description = "将视频转换为MP4格式",
+            name = stringResource(R.string.ffmpeg_template_video_to_mp4_name),
+            description = stringResource(R.string.ffmpeg_template_video_to_mp4_desc),
             command = "-i input.mp4 -c:v libx264 -c:a aac output.mp4"
         ),
         CommandTemplate(
-            name = "视频压缩",
-            description = "压缩视频文件大小",
+            name = stringResource(R.string.ffmpeg_template_video_compress_name),
+            description = stringResource(R.string.ffmpeg_template_video_compress_desc),
             command = "-i input.mp4 -vf scale=1280:-1 -c:v libx264 -crf 23 -preset medium -c:a aac -b:a 128k output.mp4"
         ),
         CommandTemplate(
-            name = "视频裁剪",
-            description = "裁剪视频的特定片段",
+            name = stringResource(R.string.ffmpeg_template_video_trim_name),
+            description = stringResource(R.string.ffmpeg_template_video_trim_desc),
             command = "-i input.mp4 -ss 00:00:30 -t 00:00:10 -c:v copy -c:a copy output.mp4"
         ),
         CommandTemplate(
-            name = "提取音频",
-            description = "从视频中提取音频",
+            name = stringResource(R.string.ffmpeg_template_extract_audio_name),
+            description = stringResource(R.string.ffmpeg_template_extract_audio_desc),
             command = "-i input.mp4 -vn -acodec copy output.aac"
         ),
         CommandTemplate(
-            name = "GIF制作",
-            description = "将视频转换为GIF",
+            name = stringResource(R.string.ffmpeg_template_gif_creation_name),
+            description = stringResource(R.string.ffmpeg_template_gif_creation_desc),
             command = "-i input.mp4 -vf \"fps=10,scale=320:-1:flags=lanczos\" -c:v gif output.gif"
         )
     )
@@ -81,7 +83,7 @@ fun FFmpegToolboxScreen(navController: NavController) {
         // 命令输入区域
         Column {
             Text(
-                text = "FFmpeg命令",
+                text = stringResource(R.string.ffmpeg_title_command),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(bottom = 8.dp)
@@ -91,7 +93,7 @@ fun FFmpegToolboxScreen(navController: NavController) {
                 value = ffmpegCommand,
                 onValueChange = { ffmpegCommand = it },
                 modifier = Modifier.fillMaxWidth().heightIn(min = 100.dp),
-                placeholder = { Text("输入FFmpeg命令，不需要包含'ffmpeg'前缀") },
+                placeholder = { Text(stringResource(R.string.ffmpeg_placeholder_command)) },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                 maxLines = 5
             )
@@ -106,12 +108,12 @@ fun FFmpegToolboxScreen(navController: NavController) {
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.secondaryContainer
                     )
-                ) { Text("命令模板") }
+                ) { Text(stringResource(R.string.ffmpeg_button_templates)) }
 
                 Button(
                     onClick = {
                         if (ffmpegCommand.isEmpty()) {
-                            Toast.makeText(context, "请输入命令", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, context.getString(R.string.ffmpeg_toast_enter_command), Toast.LENGTH_SHORT).show()
                             return@Button
                         }
 
@@ -134,7 +136,7 @@ fun FFmpegToolboxScreen(navController: NavController) {
                                     toolName = "ffmpeg_execute",
                                     success = false,
                                     result = com.ai.assistance.operit.core.tools.StringResultData(""),
-                                    error = "执行失败: ${e.message}"
+                                    error = stringResource(R.string.ffmpeg_error_execution_failed, e.message ?: "")
                                 )
                             } finally {
                                 isProcessing = false
@@ -146,7 +148,7 @@ fun FFmpegToolboxScreen(navController: NavController) {
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.primary
                     )
-                ) { Text(if (isProcessing) "执行中..." else "执行命令") }
+                ) { Text(if (isProcessing) stringResource(R.string.ffmpeg_button_executing) else stringResource(R.string.ffmpeg_button_execute)) }
             }
         }
 
@@ -163,7 +165,7 @@ fun FFmpegToolboxScreen(navController: NavController) {
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     Text(
-                        text = "常用命令模板",
+                        text = stringResource(R.string.ffmpeg_title_common_templates),
                         style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold
                     )
@@ -179,7 +181,7 @@ fun FFmpegToolboxScreen(navController: NavController) {
                     }
 
                     Text(
-                        text = "注意: 使用模板时，请将input.mp4和output.mp4替换为实际文件路径",
+                        text = stringResource(R.string.ffmpeg_warning_template_paths),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.error
                     )
@@ -199,30 +201,24 @@ fun FFmpegToolboxScreen(navController: NavController) {
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    text = "FFmpeg帮助",
+                    text = stringResource(R.string.ffmpeg_title_help),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = "FFmpeg是一个强大的音视频处理工具。在此界面，您可以直接执行FFmpeg命令。",
+                    text = stringResource(R.string.ffmpeg_help_intro),
                     style = MaterialTheme.typography.bodyMedium
                 )
 
                 Text(
-                    text = "常用参数:",
+                    text = stringResource(R.string.ffmpeg_help_common_params),
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.Medium
                 )
 
                 Text(
-                    text = "-i: 输入文件\n" +
-                            "-c:v: 视频编码器\n" +
-                            "-c:a: 音频编码器\n" +
-                            "-b:v: 视频比特率\n" +
-                            "-b:a: 音频比特率\n" +
-                            "-s: 分辨率\n" +
-                            "-r: 帧率",
+                    text = stringResource(R.string.ffmpeg_help_params_list),
                     style = MaterialTheme.typography.bodySmall
                 )
 
@@ -238,7 +234,7 @@ fun FFmpegToolboxScreen(navController: NavController) {
                                     toolName = "ffmpeg_info",
                                     success = false,
                                     result = com.ai.assistance.operit.core.tools.StringResultData(""),
-                                    error = "获取信息失败: ${e.message}"
+                                    error = stringResource(R.string.ffmpeg_error_info_failed, e.message ?: "")
                                 )
                             }
                         }
@@ -247,7 +243,7 @@ fun FFmpegToolboxScreen(navController: NavController) {
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.secondary
                     )
-                ) { Text("查看更多信息") }
+                ) { Text(stringResource(R.string.ffmpeg_button_more_info)) }
             }
         }
 
@@ -256,7 +252,7 @@ fun FFmpegToolboxScreen(navController: NavController) {
             LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
 
             Text(
-                text = "正在执行命令，请稍候...",
+                text = stringResource(R.string.ffmpeg_progress_executing),
                 style = MaterialTheme.typography.bodyMedium,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth()
@@ -289,7 +285,7 @@ fun FFmpegToolboxScreen(navController: NavController) {
                         Spacer(modifier = Modifier.width(8.dp))
 
                         Text(
-                            text = if (result.success) "命令执行成功" else "命令执行失败",
+                            text = if (result.success) stringResource(R.string.ffmpeg_result_success) else stringResource(R.string.ffmpeg_result_failed),
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold,
                             color = if (result.success)
@@ -303,7 +299,7 @@ fun FFmpegToolboxScreen(navController: NavController) {
                     // 显示错误信息或执行结果
                     if (!result.success && result.error != null) {
                         Text(
-                            text = result.error,
+                            text = result.error!!,
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onErrorContainer
                         )
@@ -311,19 +307,19 @@ fun FFmpegToolboxScreen(navController: NavController) {
                         val ffmpegResult = result.result as FFmpegResultData
 
                         Text(
-                            text = "命令: ${ffmpegResult.command}",
+                            text = stringResource(R.string.ffmpeg_result_command, ffmpegResult.command),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
                         )
 
                         Text(
-                            text = "返回码: ${ffmpegResult.returnCode}",
+                            text = stringResource(R.string.ffmpeg_result_return_code, ffmpegResult.returnCode.toString()),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
                         )
 
                         Text(
-                            text = "处理时间: ${ffmpegResult.duration}ms",
+                            text = stringResource(R.string.ffmpeg_result_duration, ffmpegResult.duration),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
                         )
@@ -332,7 +328,7 @@ fun FFmpegToolboxScreen(navController: NavController) {
                             Spacer(modifier = Modifier.height(8.dp))
 
                             Text(
-                                text = "输出:",
+                                text = stringResource(R.string.ffmpeg_result_output_label),
                                 style = MaterialTheme.typography.bodyMedium,
                                 fontWeight = FontWeight.Medium,
                                 color = MaterialTheme.colorScheme.onPrimaryContainer
@@ -393,7 +389,7 @@ fun TemplateItem(template: CommandTemplate, onSelect: () -> Unit) {
             IconButton(onClick = onSelect) {
                 Icon(
                     imageVector = Icons.Default.ContentCopy,
-                    contentDescription = "使用此模板",
+                    contentDescription = stringResource(R.string.ffmpeg_icon_use_template),
                     tint = MaterialTheme.colorScheme.primary
                 )
             }
