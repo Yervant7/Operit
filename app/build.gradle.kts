@@ -13,8 +13,8 @@ android {
         applicationId = "com.ai.assistance.operit"
         minSdk = 26
         targetSdk = 34
-        versionCode = 9
-        versionName = "1.1.6"
+        versionCode = 11
+        versionName = "1.1.7"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -88,6 +88,14 @@ dependencies {
     // Desugaring support for modern Java APIs on older Android
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
 
+    // ML Kit - 文本识别
+    implementation("com.google.mlkit:text-recognition:16.0.0")
+    // ML Kit - 多语言识别支持
+    implementation("com.google.mlkit:text-recognition-chinese:16.0.0")
+    implementation("com.google.mlkit:text-recognition-japanese:16.0.0")
+    implementation("com.google.mlkit:text-recognition-korean:16.0.0")
+    implementation("com.google.mlkit:text-recognition-devanagari:16.0.0")
+    
     // diff
     implementation("io.github.java-diff-utils:java-diff-utils:4.12")
     

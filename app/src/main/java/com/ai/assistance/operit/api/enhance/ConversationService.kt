@@ -14,7 +14,9 @@ import com.ai.assistance.operit.util.stream.splitBy
 import com.ai.assistance.operit.util.stream.stream
 import com.github.difflib.DiffUtils
 import com.github.difflib.UnifiedDiffUtils
-import com.github.difflib.patch.PatchFailedException
+import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
+import com.google.gson.reflect.TypeToken
 import java.util.Calendar
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
@@ -479,109 +481,227 @@ class ConversationService(private val context: Context) {
     }
 
     /**
-     * 处理文件绑定操作，通过生成和应用unified diff来智能合并AI生成的代码和原始文件内容
-     * @param originalContent 原始文件内容
-     * @param aiGeneratedCode AI生成的代码（包含"//existing code"标记）
-     * @param multiServiceManager 服务管理器，用于获取文件绑定专用的服务
-     * @return 合并后的文件内容
+     * Data class for search-replace operations, used for JSON deserialization.
+     */
+    private data class SearchReplaceOperation(val search: String, val replace: String)
+
+    /**
+     * Processes file binding using a two-step approach to balance token cost and reliability.
+     * 1. Attempts a custom, low-token "loose text patch" that is whitespace-insensitive.
+     * 2. If that fails, falls back to a robust but more token-intensive full-content merge.
+     *
+     * @param originalContent The original content of the file.
+     * @param aiGeneratedCode The AI-generated code with placeholders, representing the desired changes.
+     * @param multiServiceManager The service manager for AI communication.
+     * @return A Pair containing the final merged content and a diff string representing the changes.
      */
     suspend fun processFileBinding(
-            originalContent: String,
-            aiGeneratedCode: String,
-            multiServiceManager: MultiServiceManager
+        originalContent: String,
+        aiGeneratedCode: String,
+        multiServiceManager: MultiServiceManager
     ): Pair<String, String> {
+        // --- Attempt 1: Custom Loose Text Patch (Low Token Cost) ---
+        Log.d(TAG, "Attempt 1: Trying Custom Loose Text Patch...")
         try {
-            Log.d(
-                    TAG,
-                    "开始处理文件绑定 (unified diff)：原始文件长度=${originalContent.length}，AI生成代码长度=${aiGeneratedCode.length}"
-            )
-            // System prompt defining the role and rules for the AI
-            val systemPrompt =
-                    """
-                You are an expert file patching utility. Your task is to analyze the original file and the AI-generated code (which contains placeholders like "//existing code" or "// ... existing code ...") and produce a patch in the standard **unified diff format**.
+            val normalizedOriginalContent = originalContent.replace("\r\n", "\n")
+            val normalizedAiGeneratedCode = aiGeneratedCode.replace("\r\n", "\n").trim()
+
+            val systemPrompt = """
+                You are a code editing assistant. Your task is to transform the 'Original File' based on the 'AI-Generated Code' by creating a custom patch file. The placeholder `// ... existing code ...` in the AI code represents the entire original content.
+
                 **CRITICAL RULES:**
-                - Your output MUST be ONLY the unified diff patch. Do not add any explanations, introductory text, or markdown code blocks around the patch.
-                - The diff must compare the original file with the final intended version of the file.
-                - Use `--- a/file` for the original and `+++ b/file` for the new version. Do not change these path names.
-                - **To save tokens, reduce the number of context lines (lines not starting with `+` or `-`) to the absolute minimum necessary for the patch to be applied correctly, ideally 3 lines or less.**
+                1. Your output MUST ONLY be the patch content, following the custom format below. Do not add any explanations or markdown.
+                2. The format for each change consists of a SEARCH block and a REPLACE block.
+                3. The SEARCH block starts with `<<<<<<< SEARCH`, ends with `=======`, and contains the **exact, verbatim text** from the 'Original File' to be replaced.
+                4. The REPLACE block starts after `=======`, ends with `>>>>>>> REPLACE`, and contains the new code. To correctly append or prepend, you must include the original content (represented by the placeholder) in the REPLACE block.
+
+                Example for appending:
+                AI-Generated Code:
+                `// ... existing code ...
+                new line`
+                Resulting Patch:
+                <<<<<<< SEARCH
+                original content
+                =======
+                original content
+                new line
+                >>>>>>> REPLACE
                 """.trimIndent()
 
-            // User prompt providing the actual data
-            val userPrompt =
-                    """
+            val userPrompt = """
                 **Original File Content:**
                 ```
-                ${originalContent.trim()}
+                $normalizedOriginalContent
                 ```
 
                 **AI-Generated Code (with placeholders):**
                 ```
-                ${aiGeneratedCode.trim()}
+                $normalizedAiGeneratedCode
                 ```
 
-                Now, generate ONLY the patch in the unified diff format.
+                Now, generate ONLY the patch in the custom format.
+                """.trimIndent()
+            
+            val modelParameters = runBlocking { apiPreferences.getAllModelParameters() }
+            val fileBindingService = multiServiceManager.getServiceForFunction(FunctionType.FILE_BINDING)
+
+            val contentBuilder = StringBuilder()
+            fileBindingService.sendMessage(userPrompt, listOf(Pair("system", systemPrompt)), modelParameters)
+                .collect { content -> contentBuilder.append(content) }
+            
+            val patchResponse = ChatUtils.removeThinkingContent(contentBuilder.toString())
+            
+            val (success, patchedContent) = applyLooseTextPatch(normalizedOriginalContent, patchResponse)
+
+            if (success) {
+                Log.d(TAG, "Attempt 1: Custom Loose Text Patch succeeded.")
+                apiPreferences.updatePreferenceAnalysisTokens(fileBindingService.inputTokenCount, fileBindingService.outputTokenCount)
+                
+                val finalDiff = UnifiedDiffUtils.generateUnifiedDiff(
+                    "a/file", "b/file",
+                    normalizedOriginalContent.lines(),
+                    DiffUtils.diff(normalizedOriginalContent.lines(), patchedContent.lines()),
+                    3
+                ).joinToString("\n")
+
+                return Pair(patchedContent, finalDiff)
+            } else {
+                 Log.w(TAG, "Attempt 1: Custom Loose Text Patch failed. Falling back to robust full merge.")
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Attempt 1: Error during Custom Loose Text Patch. Falling back...", e)
+        }
+
+        // --- Attempt 2: Robust Full-Content Merge (Fallback) ---
+        Log.d(TAG, "Attempt 2 (Fallback): Trying robust full-content merge...")
+        try {
+            val normalizedOriginalContent = originalContent.replace("\r\n", "\n")
+            val normalizedAiGeneratedCode = aiGeneratedCode.replace("\r\n", "\n").trim()
+            val mergeSystemPrompt = """
+                You are an expert programmer. Your task is to create the final, complete content of a file by merging the 'Original File Content' with the 'Intended Changes'.
+
+                The 'Intended Changes' block uses a special placeholder, `// ... existing code ...`, which you MUST replace with the complete and verbatim 'Original File Content'.
+
+                **CRITICAL RULES:**
+                1. Your final output must be ONLY the fully merged file content.
+                2. Do NOT add any explanations or markdown code blocks (like ```).
+
+                Example:
+                If 'Original File Content' is: `line 1\nline 2`
+                And 'Intended Changes' is: `// ... existing code ...\nnew line 3`
+                Your final output must be: `line 1\nline 2\nnew line 3`
+                """.trimIndent()
+            
+            val mergeUserPrompt = """
+                **Original File Content:**
+                ```
+                $normalizedOriginalContent
+                ```
+
+                **AI-Generated Code (with placeholders):**
+                ```
+                $normalizedAiGeneratedCode
+                ```
+
+                Now, generate ONLY the complete and final merged file content.
                 """.trimIndent()
 
             val modelParameters = runBlocking { apiPreferences.getAllModelParameters() }
-            Log.d(TAG, "准备调用文件绑定服务生成 unified diff")
-            val fileBindingService =
-                    multiServiceManager.getServiceForFunction(FunctionType.FILE_BINDING)
+            val fileBindingService = multiServiceManager.getServiceForFunction(FunctionType.FILE_BINDING)
+            
             val contentBuilder = StringBuilder()
-            val stream =
-                    fileBindingService.sendMessage(
-                            message = userPrompt,
-                            chatHistory = listOf(Pair("system", systemPrompt)),
-                            modelParameters = modelParameters
-                    )
-            stream.collect { content -> contentBuilder.append(content) }
-            val aiResponse = ChatUtils.removeThinkingContent(contentBuilder.toString().trim())
+            fileBindingService.sendMessage(mergeUserPrompt, listOf(Pair("system", mergeSystemPrompt)), modelParameters)
+                .collect { content -> contentBuilder.append(content) }
+            
+            val mergedContentFromAI = ChatUtils.removeThinkingContent(contentBuilder.toString().trim())
 
-            if (aiResponse.isBlank()) {
-                Log.w(TAG, "文件绑定(unified diff)处理返回空内容，保留原始内容")
+            if (mergedContentFromAI.isBlank()) {
+                Log.w(TAG, "Attempt 2: Full merge returned empty content. Returning original.")
                 return Pair(originalContent, "")
             }
 
-            Log.d(TAG, "成功生成 Unified Diff，准备应用补丁. Diff:\n$aiResponse")
-            val mergedContent = applyUnifiedDiff(originalContent, aiResponse)
+            val diffString = UnifiedDiffUtils.generateUnifiedDiff(
+                "a/file", "b/file",
+                normalizedOriginalContent.lines(),
+                DiffUtils.diff(normalizedOriginalContent.lines(), mergedContentFromAI.lines()),
+                3
+            ).joinToString("\n")
 
-            val inputTokens = fileBindingService.inputTokenCount
-            val outputTokens = fileBindingService.outputTokenCount
-            try {
-                Log.d(TAG, "文件绑定处理(unified diff)使用了输入token: $inputTokens, 输出token: $outputTokens")
-                apiPreferences.updatePreferenceAnalysisTokens(inputTokens, outputTokens)
-            } catch (e: Exception) {
-                Log.e(TAG, "更新token统计失败", e)
-            }
+            Log.d(TAG, "Attempt 2: Robust full-content merge successful.")
+            apiPreferences.updatePreferenceAnalysisTokens(fileBindingService.inputTokenCount, fileBindingService.outputTokenCount)
+            return Pair(mergedContentFromAI, diffString)
 
-            return Pair(mergedContent, aiResponse)
         } catch (e: Exception) {
-            Log.e(TAG, "处理文件绑定时(unified diff)出错", e)
-            return Pair(originalContent, "Error processing file binding: ${e.message}")
+            Log.e(TAG, "Attempt 2: Error during robust full-merge fallback.", e)
+            return Pair(originalContent, "Error during fallback file binding: ${e.message}")
         }
     }
 
     /**
-     * 应用unified diff格式的补丁到原始内容
-     * @param originalContent 原始文件内容
-     * @param patchStr unified diff格式的补丁字符串
-     * @return 应用补丁后的内容
+     * Normalizes a block of text for a "loose" comparison. This makes the comparison
+     * insensitive to leading/trailing whitespace on each line, and also to the
+     * amount of internal whitespace between non-whitespace characters. It preserves
+     * the number of lines (including blank ones) to ensure an unambiguous replacement.
      */
-    private fun applyUnifiedDiff(originalContent: String, patchStr: String): String {
+    private fun normalizeBlock(block: String): String {
+        return block.lines()
+            .joinToString("\n") { it.trim().replace("\\s+".toRegex(), " ") }
+    }
+
+    /**
+     * Applies a series of search-and-replace operations from a custom patch format
+     * using a "loose" matching algorithm that ignores leading/trailing whitespace on each line.
+     *
+     * @return A Pair of (Boolean, String) indicating success and the modified content.
+     */
+    private fun applyLooseTextPatch(originalContent: String, patchText: String): Pair<Boolean, String> {
+        var modifiedContent = originalContent
         try {
-            val originalLines = originalContent.lines()
-            // 清理AI可能添加的Markdown代码块
-            val cleanPatchStr =
-                    patchStr.removePrefix("```diff").removePrefix("```").removeSuffix("```").trim()
-            val patch = UnifiedDiffUtils.parseUnifiedDiff(cleanPatchStr.lines())
-            val resultLines = DiffUtils.patch(originalLines, patch)
-            Log.d(TAG, "Unified diff 补丁应用成功")
-            return resultLines.joinToString("\n")
-        } catch (e: PatchFailedException) {
-            Log.e(TAG, "应用 unified diff 补丁失败. Patch:\n$patchStr", e)
-            return originalContent
+            val patchRegex = """(?s)<<<<<<< SEARCH\n(.*?)\n=======\n(.*?)\n>>>>>>> REPLACE""".toRegex()
+            val operations = patchRegex.findAll(patchText).map {
+                // groupValues[1] is the SEARCH block, groupValues[2] is the REPLACE block
+                it.groupValues[1].trim() to it.groupValues[2].trim()
+            }.toList()
+
+            if (operations.isEmpty()) {
+                Log.w(TAG, "Custom patch was empty or did not match expected format.")
+                return Pair(false, originalContent)
+            }
+
+            for ((searchBlock, replaceBlock) in operations) {
+                val normalizedSearch = normalizeBlock(searchBlock)
+                if (normalizedSearch.isEmpty()) continue
+
+                val originalLines = modifiedContent.lines()
+                val searchLinesCount = searchBlock.lines().size
+                var matchIndex = -1
+                
+                // Find a unique loose match
+                for (i in 0..(originalLines.size - searchLinesCount)) {
+                    val windowBlock = originalLines.subList(i, i + searchLinesCount).joinToString("\n")
+                    if (normalizeBlock(windowBlock) == normalizedSearch) {
+                        if (matchIndex != -1) { // Ambiguous match
+                            Log.w(TAG, "Loose Patch failed: ambiguous match for search block:\n$searchBlock")
+                            return Pair(false, originalContent) 
+                        }
+                        matchIndex = i
+                    }
+                }
+                
+                if (matchIndex != -1) { // Unique match found
+                    val modifiedLinesList = originalLines.toMutableList()
+                    repeat(searchLinesCount) { modifiedLinesList.removeAt(matchIndex) }
+                    modifiedLinesList.addAll(matchIndex, replaceBlock.lines())
+                    modifiedContent = modifiedLinesList.joinToString("\n")
+                } else { // No match found
+                    Log.w(TAG, "Loose Patch failed: could not find a unique match for block:\n$searchBlock")
+                    return Pair(false, originalContent)
+                }
+            }
+            return Pair(true, modifiedContent)
         } catch (e: Exception) {
-            Log.e(TAG, "解析或应用 unified diff 时发生未知错误", e)
-            return originalContent
+            Log.e(TAG, "Failed to apply custom loose text patch.", e)
+            return Pair(false, originalContent)
         }
     }
 }

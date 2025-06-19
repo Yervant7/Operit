@@ -62,6 +62,53 @@ class AttachmentManager(private val context: Context, private val toolHandler: A
     suspend fun handleAttachment(filePath: String) =
             withContext(Dispatchers.IO) {
                 try {
+                    // 检查是否是媒体选择器特殊路径
+                    if (filePath.contains("/sdcard/.transforms/synthetic/picker/") ||
+                                    filePath.contains("/com.android.providers.media.photopicker/")
+                    ) {
+                        Log.d(TAG, "检测到媒体选择器特殊路径: $filePath")
+
+                        try {
+                            // 尝试从特殊路径提取实际URI
+                            val actualUri = extractMediaStoreUri(filePath)
+                            if (actualUri != null) {
+                                // 使用提取出的URI创建临时文件
+                                val fileName = filePath.substringAfterLast('/')
+                                val tempFile = createTempFileFromUri(actualUri, fileName)
+
+                                if (tempFile != null) {
+                                    Log.d(TAG, "成功从媒体选择器路径创建临时文件: ${tempFile.absolutePath}")
+
+                                    // 创建附件对象
+                                    val mimeType =
+                                            getMimeTypeFromPath(tempFile.name) ?: "image/jpeg"
+                                    val attachmentInfo =
+                                            AttachmentInfo(
+                                                    filePath = tempFile.absolutePath,
+                                                    fileName = fileName,
+                                                    mimeType = mimeType,
+                                                    fileSize = tempFile.length()
+                                            )
+
+                                    // 添加到附件列表
+                                    val currentList = _attachments.value
+                                    if (!currentList.any { it.filePath == tempFile.absolutePath }) {
+                                        _attachments.value = currentList + attachmentInfo
+                                    }
+
+                                    _toastEvent.emit("已添加附件: $fileName")
+                                    return@withContext
+                                } else {
+                                    Log.e(TAG, "无法从媒体路径创建临时文件")
+                                    _toastEvent.emit("无法处理媒体文件，请尝试其他方式")
+                                }
+                            }
+                        } catch (e: Exception) {
+                            Log.e(TAG, "处理媒体选择器路径失败", e)
+                            // 继续尝试常规处理方法
+                        }
+                    }
+
                     // Check if it's a content URI path
                     if (filePath.startsWith("content://")) {
                         // Handle as URI
@@ -77,9 +124,22 @@ class AttachmentManager(private val context: Context, private val toolHandler: A
                         // Infer MIME type
                         val mimeType = contentResolver.getType(uri) ?: "application/octet-stream"
 
+                        // 检查是否是图片类型
+                        val isImage = mimeType.startsWith("image/")
+
+                        // 对于图片类型，转换为实际文件路径
+                        val actualFilePath =
+                                if (isImage) {
+                                    // 创建一个临时文件来保存图片
+                                    val tempFile = createTempFileFromUri(uri, fileName)
+                                    tempFile?.absolutePath ?: filePath
+                                } else {
+                                    filePath // 非图片类型保留原始路径
+                                }
+
                         val attachmentInfo =
                                 AttachmentInfo(
-                                        filePath = filePath, // Keep original URI string
+                                        filePath = actualFilePath, // 对图片使用绝对路径
                                         fileName = fileName,
                                         mimeType = mimeType,
                                         fileSize = fileSize
@@ -87,7 +147,7 @@ class AttachmentManager(private val context: Context, private val toolHandler: A
 
                         // Add to attachment list
                         val currentList = _attachments.value
-                        if (!currentList.any { it.filePath == filePath }) {
+                        if (!currentList.any { it.filePath == actualFilePath }) {
                             _attachments.value = currentList + attachmentInfo
                         }
 
@@ -104,9 +164,17 @@ class AttachmentManager(private val context: Context, private val toolHandler: A
                         val fileSize = file.length()
                         val mimeType = getMimeTypeFromPath(filePath) ?: "application/octet-stream"
 
+                        // 图片文件使用绝对路径
+                        val actualFilePath =
+                                if (mimeType.startsWith("image/")) {
+                                    file.absolutePath
+                                } else {
+                                    filePath
+                                }
+
                         val attachmentInfo =
                                 AttachmentInfo(
-                                        filePath = filePath,
+                                        filePath = actualFilePath,
                                         fileName = fileName,
                                         mimeType = mimeType,
                                         fileSize = fileSize
@@ -114,7 +182,7 @@ class AttachmentManager(private val context: Context, private val toolHandler: A
 
                         // Add to attachment list
                         val currentList = _attachments.value
-                        if (!currentList.any { it.filePath == filePath }) {
+                        if (!currentList.any { it.filePath == actualFilePath }) {
                             _attachments.value = currentList + attachmentInfo
                         }
 
@@ -123,6 +191,66 @@ class AttachmentManager(private val context: Context, private val toolHandler: A
                 } catch (e: Exception) {
                     _toastEvent.emit("添加附件失败: ${e.message}")
                     Log.e(TAG, "添加附件错误", e)
+                }
+            }
+
+    /** 从媒体选择器路径提取真实的MediaStore URI */
+    private fun extractMediaStoreUri(filePath: String): Uri? {
+        try {
+            // 从文件名中提取媒体ID
+            val mediaId = filePath.substringAfterLast('/').substringBefore('.')
+            if (mediaId.toLongOrNull() != null) {
+                // 构造MediaStore URI
+                return Uri.parse("content://media/external/images/media/$mediaId")
+            }
+
+            // 尝试通过直接构造content URI
+            if (filePath.contains("com.android.providers.media.photopicker")) {
+                val path = "content://com.android.providers.media.photopicker/media/$mediaId"
+                return Uri.parse(path)
+            }
+
+            // 最后尝试直接将路径转为URI
+            return Uri.parse("file://$filePath")
+        } catch (e: Exception) {
+            Log.e(TAG, "提取媒体URI失败: $filePath", e)
+            return null
+        }
+    }
+
+    /** 从URI创建临时文件 */
+    private suspend fun createTempFileFromUri(uri: Uri, fileName: String): java.io.File? =
+            withContext(Dispatchers.IO) {
+                try {
+                    val fileExtension = fileName.substringAfterLast('.', "jpg")
+
+                    // 使用外部存储Download/Operit/cleanOnExit目录，而不是缓存目录
+                    val externalDir = java.io.File("/sdcard/Download/Operit/cleanOnExit")
+
+                    // 确保目录存在
+                    if (!externalDir.exists()) {
+                        externalDir.mkdirs()
+                    }
+
+                    val tempFile =
+                            java.io.File(
+                                    externalDir,
+                                    "img_${System.currentTimeMillis()}.$fileExtension"
+                            )
+
+                    context.contentResolver.openInputStream(uri)?.use { input ->
+                        tempFile.outputStream().use { output -> input.copyTo(output) }
+                    }
+
+                    if (tempFile.exists() && tempFile.length() > 0) {
+                        Log.d(TAG, "成功创建临时图片文件: ${tempFile.absolutePath}")
+                        return@withContext tempFile
+                    }
+
+                    return@withContext null
+                } catch (e: Exception) {
+                    Log.e(TAG, "创建临时文件失败", e)
+                    return@withContext null
                 }
             }
 

@@ -437,6 +437,55 @@ open class DebuggerFileSystemTools(context: Context) : AccessibilityFileSystemTo
                     Log.e(TAG, "Error during Word document conversion", e)
                     // 转换失败，继续尝试读取原始文件
                 }
+            } else if (fileExt == "jpg" ||
+                            fileExt == "jpeg" ||
+                            fileExt == "png" ||
+                            fileExt == "gif" ||
+                            fileExt == "bmp"
+            ) {
+                Log.d(TAG, "Detected image file, attempting to extract text using OCR")
+
+                try {
+                    // 使用BitmapFactory读取图片
+                    val bitmap = android.graphics.BitmapFactory.decodeFile(path)
+                    if (bitmap != null) {
+                        // 使用OCRUtils提取文本
+                        val ocrText =
+                                kotlinx.coroutines.runBlocking {
+                                    com.ai.assistance.operit.util.OCRUtils.recognizeText(
+                                            context,
+                                            bitmap
+                                    )
+                                }
+
+                        if (ocrText.isNotBlank()) {
+                            Log.d(TAG, "Successfully extracted text from image using OCR")
+
+                            // 返回提取的文本
+                            return ToolResult(
+                                    toolName = tool.name,
+                                    success = true,
+                                    result =
+                                            FileContentData(
+                                                    path = path,
+                                                    content = ocrText,
+                                                    size = ocrText.length.toLong()
+                                            ),
+                                    error = ""
+                            )
+                        } else {
+                            Log.w(
+                                    TAG,
+                                    "OCR extraction returned empty text, falling back to raw content"
+                            )
+                        }
+                    } else {
+                        Log.w(TAG, "Failed to decode image file, falling back to raw content")
+                    }
+                } catch (e: Exception) {
+                    Log.e(TAG, "Error during OCR text extraction", e)
+                    // OCR提取失败，回退到读取原始文件
+                }
             }
 
             // 对于非Word文档或转换失败的情况，直接读取文件内容

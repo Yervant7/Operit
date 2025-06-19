@@ -167,7 +167,9 @@ class ChatViewModel(private val context: Context) : ViewModel() {
                         context = context,
                         viewModelScope = viewModelScope,
                         onChatHistoryLoaded = { messages: List<ChatMessage> ->
-                            if (::floatingWindowDelegate.isInitialized && floatingWindowDelegate.isFloatingMode.value) {
+                            if (::floatingWindowDelegate.isInitialized &&
+                                            floatingWindowDelegate.isFloatingMode.value
+                            ) {
                                 floatingWindowDelegate.updateFloatingWindowMessages(messages)
                             }
                         },
@@ -494,7 +496,7 @@ class ChatViewModel(private val context: Context) : ViewModel() {
                 chatHistoryDelegate.updateChatHistory(rewindHistory)
 
                 messageProcessingDelegate.updateUserMessage(finalMessage.content)
-                messageProcessingDelegate.sendUserMessage(emptyList())
+                messageProcessingDelegate.sendUserMessage(emptyList(), currentChatId.value)
             } catch (e: Exception) {
                 Log.e(TAG, "回档并重新发送消息失败", e)
                 uiStateDelegate.showErrorMessage("回档失败: ${e.message}")
@@ -719,6 +721,7 @@ class ChatViewModel(private val context: Context) : ViewModel() {
                 messageProcessingDelegate.setInputProcessingState(true, "正在获取屏幕内容...")
                 uiStateDelegate.showToast("正在获取屏幕内容...")
 
+                // 直接委托给attachmentManager执行
                 attachmentManager.captureScreenContent()
 
                 // 完成后立即更新悬浮窗中的附件列表
@@ -728,9 +731,7 @@ class ChatViewModel(private val context: Context) : ViewModel() {
                 messageProcessingDelegate.setInputProcessingState(false, "")
             } catch (e: Exception) {
                 Log.e(TAG, "截取屏幕内容失败", e)
-                // 修改: 使用错误弹窗而不是 Toast 显示屏幕内容获取错误
                 uiStateDelegate.showErrorMessage("截取屏幕内容失败: ${e.message}")
-                // 发生错误时也需要清除进度显示
                 messageProcessingDelegate.setInputProcessingState(false, "")
             }
         }
@@ -745,6 +746,7 @@ class ChatViewModel(private val context: Context) : ViewModel() {
                 messageProcessingDelegate.setInputProcessingState(true, "正在获取当前通知...")
                 uiStateDelegate.showToast("正在获取当前通知...")
 
+                // 直接委托给attachmentManager执行
                 attachmentManager.captureNotifications()
 
                 // 完成后立即更新悬浮窗中的附件列表
@@ -754,9 +756,7 @@ class ChatViewModel(private val context: Context) : ViewModel() {
                 messageProcessingDelegate.setInputProcessingState(false, "")
             } catch (e: Exception) {
                 Log.e(TAG, "获取通知数据失败", e)
-                // 修改: 使用错误弹窗而不是 Toast 显示通知获取错误
                 uiStateDelegate.showErrorMessage("获取通知数据失败: ${e.message}")
-                // 发生错误时也需要清除进度显示
                 messageProcessingDelegate.setInputProcessingState(false, "")
             }
         }
@@ -771,6 +771,7 @@ class ChatViewModel(private val context: Context) : ViewModel() {
                 messageProcessingDelegate.setInputProcessingState(true, "正在获取位置信息...")
                 uiStateDelegate.showToast("正在获取位置信息...")
 
+                // 直接委托给attachmentManager执行
                 attachmentManager.captureLocation()
 
                 // 完成后立即更新悬浮窗中的附件列表
@@ -780,9 +781,7 @@ class ChatViewModel(private val context: Context) : ViewModel() {
                 messageProcessingDelegate.setInputProcessingState(false, "")
             } catch (e: Exception) {
                 Log.e(TAG, "获取位置数据失败", e)
-                // 修改: 使用错误弹窗而不是 Toast 显示位置获取错误
                 uiStateDelegate.showErrorMessage("获取位置数据失败: ${e.message}")
-                // 发生错误时也需要清除进度显示
                 messageProcessingDelegate.setInputProcessingState(false, "")
             }
         }

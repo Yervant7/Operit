@@ -69,6 +69,7 @@ object SystemPromptConfig {
 
       File System Tools:
       - list_files: List files in a directory. Parameters: path (e.g. "/sdcard/Download")
+      - read_file: Read the content of a file. For image files (jpg, jpeg, png, gif, bmp), it automatically extracts text using OCR. Parameters: path (file path)
       - read_file_part: Read the content of a file by parts (200 lines per part). Parameters: path (file path), partIndex (part number, starts from 0)
       - apply_file: Applies intelligent edits to a file. For the 'content' parameter, provide the new code but use "// ... existing code ..." placeholders for any parts of the original file that should remain unchanged. You MUST NOT provide the entire file content. A specialized service will create a proper patch from your partial code. Parameters: path (file path), content (the code to apply, with placeholders)
       - delete_file: Delete a file or directory. Parameters: path (target path), recursive (boolean, default false)
@@ -236,6 +237,7 @@ object SystemPromptConfig {
 
         文件系统工具：
         - list_files: 列出目录中的文件。参数：path（例如"/sdcard/Download"）
+        - read_file: 读取文件内容。对于图片文件(jpg, jpeg, png, gif, bmp)，会自动使用OCR提取文本。参数：path（文件路径）
         - read_file_part: 分部分读取文件内容（每部分200行）。参数：path（文件路径），partIndex（部分编号，从0开始）
         - apply_file: 智能地修改文件。在'content'参数中，提供新的代码，但对于应保持不变的任何原始文件部分，请使用 "// ... existing code ..." 占位符。你绝对不能提供完整的文件内容。一个专门的服务会根据你的部分代码创建补丁。参数：path（文件路径），content（要应用的代码，带占位符）
         - delete_file: 删除文件或目录。参数：path（目标路径），recursive（布尔值，默认false）

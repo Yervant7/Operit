@@ -417,7 +417,10 @@ fun ModelApiSettingsSection(
                                         apiProviderType = selectedApiProvider
                                 )
 
-                                Log.d(TAG, "API设置保存完成")
+                                // 刷新所有AI服务实例，确保使用最新配置
+                                com.ai.assistance.operit.api.EnhancedAIService.refreshAllServices(configManager.appContext)
+
+                                Log.d(TAG, "API设置保存完成并刷新服务")
                                 showNotification("API设置已保存")
                             }
                         }

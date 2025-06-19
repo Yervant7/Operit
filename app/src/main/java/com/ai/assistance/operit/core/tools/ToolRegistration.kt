@@ -215,6 +215,20 @@ fun registerAllTools(handler: AIToolHandler, context: Context) {
             executor = { tool -> kotlinx.coroutines.runBlocking { fileSystemTools.readFile(tool) } }
     )
 
+    // 分段读取文件内容
+    handler.registerTool(
+            name = "read_file_part",
+            category = ToolCategory.FILE_READ,
+            descriptionGenerator = { tool ->
+                val path = tool.parameters.find { it.name == "path" }?.value ?: ""
+                val partIndex = tool.parameters.find { it.name == "partIndex" }?.value ?: "0"
+                "分段读取文件 (部分 $partIndex): $path"
+            },
+            executor = { tool ->
+                kotlinx.coroutines.runBlocking { fileSystemTools.readFilePart(tool) }
+            }
+    )
+
     // 写入文件
     handler.registerTool(
             name = "write_file",

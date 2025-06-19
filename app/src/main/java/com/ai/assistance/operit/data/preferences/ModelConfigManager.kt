@@ -28,6 +28,10 @@ private val Context.apiDataStore: DataStore<Preferences> by
 
 class ModelConfigManager(private val context: Context) {
 
+    // 提供context访问器
+    val appContext: Context
+        get() = context
+
     // 定义key
     companion object {
         // 配置相关key
@@ -62,7 +66,7 @@ class ModelConfigManager(private val context: Context) {
     suspend fun initializeIfNeeded() {
         // 确保API提供商类型已初始化
         apiPreferences.ensureApiProviderTypeInitialized()
-        
+
         val configList = configListFlow.first()
 
         if (configList.isEmpty() || configList == listOf(DEFAULT_CONFIG_ID)) {
@@ -461,7 +465,7 @@ class ModelConfigManager(private val context: Context) {
 
         // 保存更新后的配置
         saveModelConfig(updatedConfig)
-        
+
         // 如果是更新默认配置，同步更新ApiPreferences
         if (configId == DEFAULT_CONFIG_ID) {
             apiPreferences.saveApiSettings(apiKey, apiEndpoint, modelName)
@@ -489,7 +493,7 @@ class ModelConfigManager(private val context: Context) {
 
         // 保存更新后的配置
         saveModelConfig(updatedConfig)
-        
+
         // 如果是更新默认配置，同步更新ApiPreferences
         if (configId == DEFAULT_CONFIG_ID) {
             apiPreferences.saveApiSettings(apiKey, apiEndpoint, modelName, apiProviderType)

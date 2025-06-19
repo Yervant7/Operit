@@ -239,11 +239,17 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         Log.d(TAG, "onResume called")
+
+        // 清理临时文件目录
+        cleanTemporaryFiles()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         Log.d(TAG, "onDestroy called")
+
+        // 清理临时文件目录
+        cleanTemporaryFiles()
 
         // 确保隐藏加载界面
         pluginLoadingState.hide()
@@ -337,11 +343,11 @@ class MainActivity : ComponentActivity() {
                 Log.d(TAG, "设置窗口首选刷新率: $refreshRate Hz")
             }
         }
-        
+
         // 启用硬件加速以提高渲染性能
         window.setFlags(
-            android.view.WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
-            android.view.WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED
+                android.view.WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
+                android.view.WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED
         )
     }
 
@@ -519,5 +525,29 @@ class MainActivity : ComponentActivity() {
 
         Log.d(TAG, "Selected refresh rate: $refreshRate Hz")
         return refreshRate
+    }
+
+    /** 清理临时文件目录 删除Download/Operit/cleanOnExit目录中的所有文件 */
+    private fun cleanTemporaryFiles() {
+        lifecycleScope.launch {
+            try {
+                val tempDir = java.io.File("/sdcard/Download/Operit/cleanOnExit")
+                if (tempDir.exists() && tempDir.isDirectory) {
+                    Log.d(TAG, "开始清理临时文件目录: ${tempDir.absolutePath}")
+                    val files = tempDir.listFiles()
+                    var deletedCount = 0
+
+                    files?.forEach { file ->
+                        if (file.isFile && file.delete()) {
+                            deletedCount++
+                        }
+                    }
+
+                    Log.d(TAG, "已删除${deletedCount}个临时文件")
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "清理临时文件失败", e)
+            }
+        }
     }
 }
